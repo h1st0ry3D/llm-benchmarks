@@ -1,0 +1,68 @@
+[
+  {
+    "model": "Exp-IQ4_XS",
+    "ctx": 8192,
+    "kv": "q8_0",
+    "ngl": 99,
+    "desc": "8K-ref",
+    "load_time_s": 4.0,
+    "vram_model_mb": 5085,
+    "vram_total_mb": 12282,
+    "speed_tok_s": 78.5
+  },
+  {
+    "model": "Exp-IQ4_XS",
+    "ctx": 131072,
+    "kv": "q4_0",
+    "ngl": 99,
+    "desc": "128K-q4_0",
+    "load_time_s": 3.0,
+    "vram_model_mb": 6699,
+    "vram_total_mb": 12282,
+    "speed_tok_s": 78.0
+  },
+  {
+    "model": "Exp-IQ4_XS",
+    "ctx": 131072,
+    "kv": "q8_0",
+    "ngl": 99,
+    "desc": "128K-q8_0",
+    "load_time_s": 3.0,
+    "vram_model_mb": 7725,
+    "vram_total_mb": 12282,
+    "speed_tok_s": 78.4
+  },
+  {
+    "model": "Exp-Q6_K",
+    "ctx": 8192,
+    "kv": "q8_0",
+    "ngl": 99,
+    "desc": "8K-ref",
+    "load_time_s": 7.2,
+    "vram_model_mb": 6839,
+    "vram_total_mb": 12282,
+    "speed_tok_s": 59.0
+  },
+  {
+    "model": "Exp-Q6_K",
+    "ctx": 131072,
+    "kv": "q4_0",
+    "ngl": 99,
+    "desc": "128K-q4_0",
+    "load_time_s": 4.0,
+    "vram_model_mb": 8455,
+    "vram_total_mb": 12282,
+    "speed_tok_s": 58.8
+  },
+  {
+    "model": "Exp-Q6_K",
+    "ctx": 131072,
+    "kv": "q8_0",
+    "ngl": 99,
+    "desc": "128K-q8_0",
+    "load_time_s": 4.1,
+    "vram_model_mb": 9479,
+    "vram_total_mb": 12282,
+    "speed_tok_s": 59.0
+  }
+]
