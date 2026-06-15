@@ -1,0 +1,44 @@
+[
+  {
+    "label": "MTP-Q6_K ngl=25 kv=q4_0 ctx=131072",
+    "status": "OK",
+    "vram_mib": 6926,
+    "speed_tok_s": 14.3
+  },
+  {
+    "label": "MTP-Q6_K ngl=30 kv=q4_0 ctx=131072",
+    "status": "OK",
+    "vram_mib": 7154,
+    "speed_tok_s": 15.1
+  },
+  {
+    "label": "non-MTP-IQ4_XS ngl=20 kv=q4_0 ctx=131072",
+    "status": "OK",
+    "vram_mib": 5010,
+    "speed_tok_s": 17.0
+  },
+  {
+    "label": "non-MTP-IQ4_XS ngl=25 kv=q4_0 ctx=131072",
+    "status": "OK",
+    "vram_mib": 5260,
+    "speed_tok_s": 19.2
+  },
+  {
+    "label": "non-MTP-IQ4_XS ngl=30 kv=q4_0 ctx=131072",
+    "status": "OK",
+    "vram_mib": 5526,
+    "speed_tok_s": 20.0
+  },
+  {
+    "label": "non-MTP-IQ4_XS ngl=40 kv=q4_0 ctx=131072",
+    "status": "OK",
+    "vram_mib": 6097,
+    "speed_tok_s": 35.2
+  },
+  {
+    "label": "non-MTP-IQ4_XS ngl=50 kv=q4_0 ctx=131072",
+    "status": "OK",
+    "vram_mib": 6196,
+    "speed_tok_s": 38.6
+  }
+]

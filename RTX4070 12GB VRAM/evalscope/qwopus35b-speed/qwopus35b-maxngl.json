@@ -1,0 +1,32 @@
+[
+  {
+    "ngl": 50,
+    "vram_mib": 6180,
+    "speed_tok_s": 40.4
+  },
+  {
+    "ngl": 60,
+    "vram_mib": 6187,
+    "speed_tok_s": 37.0
+  },
+  {
+    "ngl": 70,
+    "vram_mib": 6074,
+    "speed_tok_s": 39.9
+  },
+  {
+    "ngl": 80,
+    "vram_mib": 6167,
+    "speed_tok_s": 34.5
+  },
+  {
+    "ngl": 90,
+    "vram_mib": 6140,
+    "speed_tok_s": 38.1
+  },
+  {
+    "ngl": 99,
+    "vram_mib": 6246,
+    "speed_tok_s": 31.3
+  }
+]

@@ -1,0 +1,110 @@
+[
+  {
+    "ctx": 8192,
+    "kv": "q8_0",
+    "ngl": 99,
+    "desc": "baseline",
+    "status": "OK",
+    "vram_mib": 7067,
+    "speed_tok_s": 21.2
+  },
+  {
+    "ctx": 16384,
+    "kv": "q8_0",
+    "ngl": 99,
+    "desc": "16K reference",
+    "status": "OK",
+    "vram_mib": 7159,
+    "speed_tok_s": 9.0
+  },
+  {
+    "ctx": 32768,
+    "kv": "q8_0",
+    "ngl": 30,
+    "desc": "32K-low-ngl",
+    "status": "OK",
+    "vram_mib": 6692,
+    "speed_tok_s": 5.2
+  },
+  {
+    "ctx": 32768,
+    "kv": "q4_0",
+    "ngl": 40,
+    "desc": "32K-med-ngl",
+    "status": "OK",
+    "vram_mib": 7023,
+    "speed_tok_s": 8.4
+  },
+  {
+    "ctx": 32768,
+    "kv": "q4_0",
+    "ngl": 99,
+    "desc": "32K-full-ngl",
+    "status": "OK",
+    "vram_mib": 7073,
+    "speed_tok_s": 10.7
+  },
+  {
+    "ctx": 65536,
+    "kv": "q4_0",
+    "ngl": 20,
+    "desc": "64K-low-ngl",
+    "status": "OK",
+    "vram_mib": 6175,
+    "speed_tok_s": 5.7
+  },
+  {
+    "ctx": 65536,
+    "kv": "q4_0",
+    "ngl": 30,
+    "desc": "64K-med-ngl",
+    "status": "OK",
+    "vram_mib": 6619,
+    "speed_tok_s": 11.8
+  },
+  {
+    "ctx": 131072,
+    "kv": "q4_0",
+    "ngl": 15,
+    "desc": "128K-low-ngl",
+    "status": "OK",
+    "vram_mib": 6251,
+    "speed_tok_s": 5.7
+  },
+  {
+    "ctx": 131072,
+    "kv": "q4_0",
+    "ngl": 20,
+    "desc": "128K-med-ngl",
+    "status": "OK",
+    "vram_mib": 6649,
+    "speed_tok_s": 4.6
+  },
+  {
+    "ctx": 131072,
+    "kv": "q4_0",
+    "ngl": 25,
+    "desc": "128K-high-ngl",
+    "status": "OK",
+    "vram_mib": 6911,
+    "speed_tok_s": 9.1
+  },
+  {
+    "ctx": 131072,
+    "kv": "q4_1",
+    "ngl": 15,
+    "desc": "128K-q4_1-low",
+    "status": "OK",
+    "vram_mib": 6183,
+    "speed_tok_s": 9.3
+  },
+  {
+    "ctx": 131072,
+    "kv": "q4_1",
+    "ngl": 20,
+    "desc": "128K-q4_1-med",
+    "status": "OK",
+    "vram_mib": 6451,
+    "speed_tok_s": 5.7
+  }
+]
