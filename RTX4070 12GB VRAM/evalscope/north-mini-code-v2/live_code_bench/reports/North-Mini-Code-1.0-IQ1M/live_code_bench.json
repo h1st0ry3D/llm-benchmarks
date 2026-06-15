@@ -1,0 +1,57 @@
+{
+    "name": "North-Mini-Code-1.0-IQ1M@live_code_bench",
+    "dataset_name": "live_code_bench",
+    "dataset_pretty_name": "Live-Code-Bench",
+    "dataset_description": "\n## Overview\n\nLiveCodeBench is a contamination-free benchmark for evaluating code generation models on real-world competitive programming problems. It continuously collects new problems from coding platforms to ensure models haven't seen the test data during training.\n\n## Task Description\n\n- **Task Type**: Competitive Programming / Code Generation\n- **Input**: Programming problem description with input/output format\n- **Output**: Complete solution code\n- **Source**: Problems from LeetCode, Codeforces, and AtCoder\n\n## Key Features\n\n- Continuously updated with new problems post model training cutoff\n- Problems from major competitive programming platforms\n- Multiple test cases per problem for thorough evaluation\n- Date-based filtering to control for data contamination\n- Supports both local and sandbox code execution\n\n## Evaluation Notes\n\n- Default configuration uses **0-shot** evaluation\n- **Security Warning**: By default, code is executed in the local environment. We recommend using sandbox execution. See the [sandbox documentation](https://evalscope.readthedocs.io/en/latest/user_guides/sandbox.html) for details.\n- Use `start_date` and `end_date` parameters to filter problems by date\n- Default timeout is 6 seconds per test case\n- Supports `pass@k` metric calculation\n",
+    "model_name": "North-Mini-Code-1.0-IQ1M",
+    "score": 1.0,
+    "metrics": [
+        {
+            "name": "mean_acc",
+            "num": 1,
+            "score": 1.0,
+            "macro_score": 1.0,
+            "categories": [
+                {
+                    "name": [
+                        "default"
+                    ],
+                    "num": 1,
+                    "score": 1.0,
+                    "macro_score": 1.0,
+                    "subsets": [
+                        {
+                            "name": "release_latest",
+                            "score": 1.0,
+                            "num": 1
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "name": "mean_acc_pass@1",
+            "num": 1,
+            "score": 1.0,
+            "macro_score": 1.0,
+            "categories": [
+                {
+                    "name": [
+                        "default"
+                    ],
+                    "num": 1,
+                    "score": 1.0,
+                    "macro_score": 1.0,
+                    "subsets": [
+                        {
+                            "name": "release_latest",
+                            "score": 1.0,
+                            "num": 1
+                        }
+                    ]
+                }
+            ]
+        }
+    ],
+    "analysis": "N/A"
+}

@@ -1,0 +1,125 @@
+analysis_report: false
+api_url: http://localhost:8080/v1
+chat_template: null
+dataset_args:
+  bfcl_v4:
+    aggregation: mean
+    data_statistics: null
+    dataset_id: https://github.com/ShishirPatil/gorilla/tree/main/berkeley-function-call-leaderboard
+    default_subset: default
+    description: '
+
+      ## Overview
+
+
+      BFCL-v4 (Berkeley Function-Calling Leaderboard V4) is a comprehensive benchmark
+      for evaluating agentic function-calling capabilities of LLMs. It tests web search,
+      memory operations, and format sensitivity as building blocks for agentic applications.
+
+
+      ## Task Description
+
+
+      - **Task Type**: Agentic Function Calling Evaluation
+
+      - **Input**: Scenarios requiring function calls for web search, memory, etc.
+
+      - **Output**: Correct function calls with proper arguments
+
+      - **Capabilities**: Web search, memory read/write, format handling
+
+
+      ## Key Features
+
+
+      - Holistic agentic evaluation framework
+
+      - Tests building blocks for LLM agents (search, memory, formatting)
+
+      - Multiple scoring categories for detailed analysis
+
+      - Supports both FC models and non-FC models
+
+      - Optional web search with SerpAPI integration
+
+
+      ## Evaluation Notes
+
+
+      - **Installation Required**: `pip install bfcl-eval==2025.10.27.1`
+
+      - Primary metric: **Accuracy** per category
+
+      - Configure `is_fc_model` based on model capabilities
+
+      - Optional: Set `SERPAPI_API_KEY` for web search tasks
+
+      - [Usage Example](https://evalscope.readthedocs.io/en/latest/third_party/bfcl_v4.html)
+
+      '
+    eval_split: train
+    extra_params:
+      SERPAPI_API_KEY: null
+      is_fc_model: true
+      underscore_to_dot: true
+    few_shot_num: 0
+    few_shot_prompt_template: null
+    few_shot_random: false
+    filters: null
+    force_redownload: false
+    metric_list:
+    - acc
+    name: bfcl_v4
+    output_types:
+    - generation
+    paper_url: null
+    pretty_name: BFCL-v4
+    prompt_template: null
+    query_template: null
+    review_timeout: null
+    sample_example: null
+    sandbox_config: {}
+    shuffle: false
+    shuffle_choices: false
+    subset_list:
+    - live_simple
+    system_prompt: null
+    tags:
+    - FunctionCalling
+    - Agent
+    train_split: null
+dataset_dir: /home/hko/.cache/modelscope/hub/datasets
+dataset_hub: modelscope
+datasets:
+- bfcl_v4
+debug: false
+enable_progress_tracker: true
+eval_backend: Native
+eval_batch_size: 1
+eval_config: null
+eval_type: openai_api
+evalscope_version: 1.5.2.post1
+generation_config:
+  batch_size: 1
+  max_tokens: 1024
+  temperature: 0.001
+ignore_errors: true
+judge_model_args: {}
+judge_strategy: auto
+judge_worker_num: null
+limit: 20
+model: Gemma-4-12B
+model_args: {}
+model_id: Gemma-4-12B
+model_task: text_generation
+no_timestamp: true
+repeats: 1
+rerun_review: false
+sandbox_manager_config: {}
+sandbox_type: docker
+seed: 42
+stream: null
+timeout: null
+use_cache: null
+use_sandbox: false
+work_dir: /home/hko/agent/evalscope-results/bfcl-v4-quick/Gemma-4-12B

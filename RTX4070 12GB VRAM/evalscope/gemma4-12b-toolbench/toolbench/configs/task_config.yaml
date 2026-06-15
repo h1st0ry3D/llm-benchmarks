@@ -1,0 +1,128 @@
+analysis_report: false
+api_url: http://localhost:8080/v1
+chat_template: null
+dataset_args:
+  tool_bench:
+    aggregation: mean
+    data_statistics: null
+    dataset_id: AI-ModelScope/ToolBench-Static
+    default_subset: default
+    description: '
+
+      ## Overview
+
+
+      ToolBench-Static is a benchmark for evaluating AI models'' ability to use tools
+      and execute function calls in a static evaluation setting. It tests models on
+      realistic tool-use scenarios with ground-truth comparisons.
+
+
+      ## Task Description
+
+
+      - **Task Type**: Tool Use / Function Calling Evaluation
+
+      - **Input**: Conversation with available tools and context
+
+      - **Output**: Correct tool/function call sequence
+
+      - **Subsets**: In-domain (seen tools) and Out-of-domain (unseen tools)
+
+
+      ## Key Features
+
+
+      - Static evaluation (no actual tool execution)
+
+      - Tests both tool selection and parameter generation
+
+      - In-domain and out-of-domain evaluation splits
+
+      - Multiple evaluation metrics for comprehensive assessment
+
+      - Tests planning and action execution capabilities
+
+
+      ## Evaluation Notes
+
+
+      - Default configuration uses **0-shot** evaluation
+
+      - Five metrics: Act.EM, Plan.EM, F1, HalluRate, Rouge-L
+
+      - F1 score is the primary metric
+
+      - HalluRate measures tool hallucination frequency
+
+      - See the [usage documentation](https://evalscope.readthedocs.io/en/latest/third_party/toolbench.html)
+      for detailed setup
+
+      '
+    eval_split: test
+    extra_params: {}
+    few_shot_num: 0
+    few_shot_prompt_template: null
+    few_shot_random: false
+    filters: null
+    force_redownload: false
+    metric_list:
+    - Act.EM
+    - Plan.EM
+    - F1
+    - HalluRate
+    - Rouge-L
+    name: tool_bench
+    output_types:
+    - generation
+    paper_url: null
+    pretty_name: ToolBench-Static
+    prompt_template: null
+    query_template: null
+    review_timeout: null
+    sample_example: null
+    sandbox_config: {}
+    shuffle: false
+    shuffle_choices: false
+    subset_list:
+    - in_domain
+    - out_of_domain
+    system_prompt: null
+    tags:
+    - Reasoning
+    - FunctionCalling
+    train_split: null
+dataset_dir: /home/hko/.cache/modelscope/hub/datasets
+dataset_hub: modelscope
+datasets:
+- tool_bench
+debug: false
+enable_progress_tracker: true
+eval_backend: Native
+eval_batch_size: 4
+eval_config: null
+eval_type: openai_api
+evalscope_version: 1.5.2.post1
+generation_config:
+  batch_size: 4
+  max_tokens: 2048
+  temperature: 0.0
+ignore_errors: true
+judge_model_args: {}
+judge_strategy: auto
+judge_worker_num: null
+limit: 50
+model: Gemma-4-12B-Q4XL
+model_args: {}
+model_id: Gemma-4-12B-Q4XL
+model_task: text_generation
+no_timestamp: true
+repeats: 1
+rerun_review: false
+sandbox_manager_config: {}
+sandbox_type: docker
+seed: 42
+stream: null
+timeout: null
+use_cache: null
+use_sandbox: false
+work_dir: /home/hko/agent/evalscope-results/gemma4-12b-toolbench/toolbench

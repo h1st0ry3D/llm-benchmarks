@@ -1,0 +1,139 @@
+2026-06-14 14:05:39 - evalscope - INFO: Running with native backend
+2026-06-14 14:05:39 - evalscope - INFO: Dump task config to /home/hko/agent/evalscope-results/gemma4-12b-lcb/live_code_bench/configs/task_config.yaml
+2026-06-14 14:05:39 - evalscope - INFO: {
+    "model": "Gemma-4-12B-Q4XL",
+    "model_id": "Gemma-4-12B-Q4XL",
+    "model_args": {},
+    "model_task": "text_generation",
+    "chat_template": null,
+    "datasets": [
+        "live_code_bench"
+    ],
+    "dataset_args": {
+        "live_code_bench": {
+            "name": "live_code_bench",
+            "dataset_id": "AI-ModelScope/code_generation_lite",
+            "output_types": [
+                "generation"
+            ],
+            "subset_list": [
+                "release_latest"
+            ],
+            "default_subset": "default",
+            "few_shot_num": 0,
+            "few_shot_random": false,
+            "train_split": null,
+            "eval_split": "test",
+            "prompt_template": "### Question:\n{question_content}\n\n{format_prompt} ### Answer: (use the provided format with backticks)\n\n",
+            "few_shot_prompt_template": null,
+            "system_prompt": null,
+            "query_template": null,
+            "pretty_name": "Live-Code-Bench",
+            "description": "\n## Overview\n\nLiveCodeBench is a contamination-free benchmark for evaluating code generation models on real-world competitive programming problems. It continuously collects new problems from coding platforms to ensure models haven't seen the test data during training.\n\n## Task Description\n\n- **Task Type**: Competitive Programming / Code Generation\n- **Input**: Programming problem description with input/output format\n- **Output**: Complete solution code\n- **Source**: Problems from LeetCode, Codeforces, and AtCoder\n\n## Key Features\n\n- Continuously updated with new problems post model training cutoff\n- Problems from major competitive programming platforms\n- Multiple test cases per problem for thorough evaluation\n- Date-based filtering to control for data contamination\n- Supports both local and sandbox code execution\n\n## Evaluation Notes\n\n- Default configuration uses **0-shot** evaluation\n- **Security Warning**: By default, code is executed in the local environment. We recommend using sandbox execution. See the [sandbox documentation](https://evalscope.readthedocs.io/en/latest/user_guides/sandbox.html) for details.\n- Use `start_date` and `end_date` parameters to filter problems by date\n- Default timeout is 6 seconds per test case\n- Supports `pass@k` metric calculation\n",
+            "paper_url": null,
+            "data_statistics": null,
+            "sample_example": null,
+            "tags": [
+                "Coding"
+            ],
+            "filters": null,
+            "metric_list": [
+                "acc"
+            ],
+            "aggregation": "mean_and_pass_at_k",
+            "shuffle": false,
+            "shuffle_choices": false,
+            "force_redownload": false,
+            "review_timeout": 6,
+            "extra_params": {
+                "start_date": null,
+                "end_date": null,
+                "debug": false
+            },
+            "sandbox_config": {
+                "image": "python:3.11-slim",
+                "tools_config": {
+                    "shell_executor": {},
+                    "python_executor": {}
+                }
+            }
+        }
+    },
+    "dataset_dir": "/home/hko/.cache/modelscope/hub/datasets",
+    "dataset_hub": "modelscope",
+    "repeats": 1,
+    "generation_config": {
+        "batch_size": 1,
+        "max_tokens": 2048,
+        "temperature": 0.0
+    },
+    "eval_type": "openai_api",
+    "eval_backend": "Native",
+    "eval_config": null,
+    "limit": 20,
+    "eval_batch_size": 1,
+    "use_cache": null,
+    "rerun_review": false,
+    "work_dir": "/home/hko/agent/evalscope-results/gemma4-12b-lcb/live_code_bench",
+    "no_timestamp": true,
+    "enable_progress_tracker": true,
+    "ignore_errors": true,
+    "debug": false,
+    "seed": 42,
+    "api_url": "http://localhost:8080/v1",
+    "timeout": null,
+    "stream": null,
+    "judge_strategy": "auto",
+    "judge_worker_num": null,
+    "judge_model_args": {},
+    "analysis_report": false,
+    "use_sandbox": false,
+    "sandbox_type": "docker",
+    "sandbox_manager_config": {},
+    "evalscope_version": "1.5.2.post1"
+}
+2026-06-14 14:05:39 - evalscope - INFO: Start loading benchmark dataset: live_code_bench
+2026-06-14 14:05:39 - evalscope - INFO: Start evaluating 1 subsets of live_code_bench: ['release_latest']
+2026-06-14 14:05:39 - evalscope - INFO: Unified pool: 20 items to process, 0 already fully cached (20 total across all subsets).
+2026-06-14 14:05:39 - evalscope - INFO: Loading model for prediction...
+2026-06-14 14:05:39 - evalscope - INFO: Creating model Gemma-4-12B-Q4XL with eval_type=openai_api base_url=http://localhost:8080/v1, config={'retries': 5, 'retry_interval': 10, 'batch_size': 1, 'max_tokens': 2048, 'temperature': 0.0}, model_args={}
+2026-06-14 14:05:39 - evalscope - INFO: Model loaded successfully.
+2026-06-14 14:06:39 - evalscope - INFO: Evaluating[live_code_bench]  20%| 4/20 [Elapsed: 01:00 < Remaining: 05:15, 19.71s/it]
+2026-06-14 14:07:40 - evalscope - INFO: Evaluating[live_code_bench]  35%| 7/20 [Elapsed: 02:00 < Remaining: 03:43, 17.21s/it]
+2026-06-14 14:08:40 - evalscope - INFO: Evaluating[live_code_bench]  50%| 10/20 [Elapsed: 03:01 < Remaining: 03:15, 19.55s/it]
+2026-06-14 14:09:40 - evalscope - INFO: Evaluating[live_code_bench]  60%| 12/20 [Elapsed: 04:01 < Remaining: 03:37, 27.13s/it]
+2026-06-14 14:10:41 - evalscope - INFO: Evaluating[live_code_bench]  75%| 15/20 [Elapsed: 05:02 < Remaining: 01:38, 19.80s/it]
+2026-06-14 14:11:42 - evalscope - INFO: Evaluating[live_code_bench]  90%| 18/20 [Elapsed: 06:02 < Remaining: 00:41, 20.77s/it]
+2026-06-14 14:12:42 - evalscope - INFO: Evaluating[live_code_bench]  95%| 19/20 [Elapsed: 07:03 < Remaining: 00:26, 26.97s/it]
+2026-06-14 14:12:48 - evalscope - INFO: Evaluating[live_code_bench] 100%| 20/20 [Elapsed: 07:08 < Remaining: 00:00, 27.15s/it]
+2026-06-14 14:12:48 - evalscope - INFO: Unified pool finished for live_code_bench.
+2026-06-14 14:12:48 - evalscope - INFO: Aggregating scores for subset: release_latest
+2026-06-14 14:12:48 - evalscope - INFO: Generating report...
+2026-06-14 14:12:48 - evalscope - INFO: 
+live_code_bench report table:
++------------------+-----------------+-----------------+----------------+-------+---------+---------+
+| Model            | Dataset         | Metric          | Subset         |   Num |   Score | Cat.0   |
++==================+=================+=================+================+=======+=========+=========+
+| Gemma-4-12B-Q4XL | live_code_bench | mean_acc        | release_latest |    20 |    0.85 | default |
++------------------+-----------------+-----------------+----------------+-------+---------+---------+
+| Gemma-4-12B-Q4XL | live_code_bench | mean_acc_pass@1 | release_latest |    20 |    0.85 | default |
++------------------+-----------------+-----------------+----------------+-------+---------+---------+ 
+
+2026-06-14 14:12:48 - evalscope - INFO: Skipping report analysis (`analysis_report=False`).
+2026-06-14 14:12:48 - evalscope - INFO: Dump report to: /home/hko/agent/evalscope-results/gemma4-12b-lcb/live_code_bench/reports/Gemma-4-12B-Q4XL/live_code_bench.json 
+
+2026-06-14 14:12:48 - evalscope - INFO: Benchmark live_code_bench evaluation finished.
+2026-06-14 14:12:48 - evalscope - INFO: Running[eval] 100%| 1/1 [Elapsed: 07:09 < Remaining: 00:00, 429.19s/benchmark]
+2026-06-14 14:12:48 - evalscope - INFO: Overall report table: 
++------------------+-----------------+-----------------+----------------+-------+---------+---------+
+| Model            | Dataset         | Metric          | Subset         |   Num |   Score | Cat.0   |
++==================+=================+=================+================+=======+=========+=========+
+| Gemma-4-12B-Q4XL | live_code_bench | mean_acc        | release_latest |    20 |    0.85 | default |
++------------------+-----------------+-----------------+----------------+-------+---------+---------+
+| Gemma-4-12B-Q4XL | live_code_bench | mean_acc_pass@1 | release_latest |    20 |    0.85 | default |
++------------------+-----------------+-----------------+----------------+-------+---------+---------+ 
+
+2026-06-14 14:12:48 - evalscope - INFO: HTML report generated: /home/hko/agent/evalscope-results/gemma4-12b-lcb/live_code_bench/reports/report.html
+2026-06-14 14:12:48 - evalscope - INFO: Finished evaluation for Gemma-4-12B-Q4XL on ['live_code_bench']
+2026-06-14 14:12:48 - evalscope - INFO: Output directory: /home/hko/agent/evalscope-results/gemma4-12b-lcb/live_code_bench
+2026-06-14 14:13:16 - evalscope - INFO: Args: Task config is provided with TaskConfig type.

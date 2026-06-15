@@ -1,0 +1,54 @@
+{
+    "name": "Gemma-4-12B@bfcl_v4",
+    "dataset_name": "bfcl_v4",
+    "dataset_pretty_name": "BFCL-v4",
+    "dataset_description": "\n## Overview\n\nBFCL-v4 (Berkeley Function-Calling Leaderboard V4) is a comprehensive benchmark for evaluating agentic function-calling capabilities of LLMs. It tests web search, memory operations, and format sensitivity as building blocks for agentic applications.\n\n## Task Description\n\n- **Task Type**: Agentic Function Calling Evaluation\n- **Input**: Scenarios requiring function calls for web search, memory, etc.\n- **Output**: Correct function calls with proper arguments\n- **Capabilities**: Web search, memory read/write, format handling\n\n## Key Features\n\n- Holistic agentic evaluation framework\n- Tests building blocks for LLM agents (search, memory, formatting)\n- Multiple scoring categories for detailed analysis\n- Supports both FC models and non-FC models\n- Optional web search with SerpAPI integration\n\n## Evaluation Notes\n\n- **Installation Required**: `pip install bfcl-eval==2025.10.27.1`\n- Primary metric: **Accuracy** per category\n- Configure `is_fc_model` based on model capabilities\n- Optional: Set `SERPAPI_API_KEY` for web search tasks\n- [Usage Example](https://evalscope.readthedocs.io/en/latest/third_party/bfcl_v4.html)\n",
+    "model_name": "Gemma-4-12B",
+    "score": 1.0,
+    "metrics": [
+        {
+            "name": "acc",
+            "num": 20,
+            "score": 1.0,
+            "macro_score": 1.0,
+            "categories": [
+                {
+                    "name": [
+                        "default"
+                    ],
+                    "num": 20,
+                    "score": 1.0,
+                    "macro_score": 1.0,
+                    "subsets": [
+                        {
+                            "name": "live_simple",
+                            "score": 1.0,
+                            "num": 20
+                        }
+                    ]
+                },
+                {
+                    "name": [
+                        "-"
+                    ],
+                    "num": 40,
+                    "score": 0.55,
+                    "macro_score": 0.55,
+                    "subsets": [
+                        {
+                            "name": "LIVE",
+                            "score": 1.0,
+                            "num": 20
+                        },
+                        {
+                            "name": "OVERALL",
+                            "score": 0.1,
+                            "num": 20
+                        }
+                    ]
+                }
+            ]
+        }
+    ],
+    "analysis": "N/A"
+}

@@ -1,0 +1,143 @@
+2026-06-14 15:42:23 - evalscope - INFO: Starting benchmark with args: 
+2026-06-14 15:42:23 - evalscope - INFO: {
+    "model": "north-mini-code",
+    "model_id": "north-mini-code",
+    "attn_implementation": null,
+    "api": "openai",
+    "tokenizer_path": null,
+    "port": 8877,
+    "url": "http://localhost:8080/v1/chat/completions",
+    "headers": {
+        "Authorization": "Bearer not-needed"
+    },
+    "connect_timeout": null,
+    "read_timeout": null,
+    "total_timeout": 21600,
+    "api_key": "not-needed",
+    "no_test_connection": false,
+    "number": 10,
+    "parallel": 1,
+    "rate": -1,
+    "sleep_interval": 5,
+    "sla_auto_tune": false,
+    "sla_variable": "parallel",
+    "sla_params": null,
+    "sla_num_runs": 3,
+    "sla_upper_bound": 65536,
+    "sla_lower_bound": 1,
+    "sla_number_multiplier": null,
+    "db_commit_interval": 1000,
+    "queue_size_multiplier": 5,
+    "in_flight_task_multiplier": 2,
+    "log_every_n_query": 10,
+    "debug": false,
+    "enable_progress_tracker": false,
+    "visualizer": null,
+    "wandb_api_key": null,
+    "swanlab_api_key": null,
+    "name": "/home/hko/agent/evalscope-results/north-mini-code-speed/iq2_32k_q4_ngl40/speed",
+    "outputs_dir": "/home/hko/agent/evalscope-results/north-mini-code-speed/iq2_32k_q4_ngl40/speed",
+    "no_timestamp": false,
+    "max_prompt_length": 9223372036854775807,
+    "min_prompt_length": 0,
+    "prefix_length": 0,
+    "prompt": "Write a Python function to merge two sorted arrays.",
+    "query_template": null,
+    "apply_chat_template": true,
+    "image_width": 224,
+    "image_height": 224,
+    "image_format": "RGB",
+    "image_num": 1,
+    "image_patch_size": 28,
+    "dataset": "openqa",
+    "dataset_path": null,
+    "frequency_penalty": null,
+    "repetition_penalty": null,
+    "logprobs": null,
+    "max_tokens": 256,
+    "min_tokens": null,
+    "n_choices": null,
+    "seed": null,
+    "stop": null,
+    "stop_token_ids": null,
+    "stream": false,
+    "temperature": 0.0,
+    "top_p": null,
+    "top_k": null,
+    "extra_args": {}
+}
+2026-06-14 15:42:24 - evalscope - INFO: Test connection successful.
+2026-06-14 15:42:24 - evalscope - INFO: Save the data base to: /home/hko/agent/evalscope-results/north-mini-code-speed/iq2_32k_q4_ngl40/speed/parallel_1_number_10/benchmark_data.db
+2026-06-14 15:43:16 - evalscope - INFO: {
+  "Time taken for tests (s)": 51.8741,
+  "Number of concurrency": 1,
+  "Request rate (req/s)": -1,
+  "Total requests": 10,
+  "Succeed requests": 10,
+  "Failed requests": 0,
+  "Output token throughput (tok/s)": 49.3502,
+  "Total token throughput (tok/s)": 73.6398,
+  "Request throughput (req/s)": 0.1928,
+  "Average latency (s)": 5.1872,
+  "Average time to first token (s)": 5.1872,
+  "Average time per output token (s)": 0.0,
+  "Average inter-token latency (s)": 0.0,
+  "Average input tokens per request": 126.0,
+  "Average output tokens per request": 256.0
+}
+2026-06-14 15:43:16 - evalscope - INFO: Processing[parallel_1_number_10] 100%| 10/10 [Elapsed: 00:51 < Remaining: 00:00,  5.19s/it]
+2026-06-14 15:43:16 - evalscope - INFO: 
+Benchmarking summary:
++-----------------------------------+----------+
+| Key                               |    Value |
++===================================+==========+
+| Time taken for tests (s)          |  51.8741 |
++-----------------------------------+----------+
+| Number of concurrency             |   1      |
++-----------------------------------+----------+
+| Request rate (req/s)              |  -1      |
++-----------------------------------+----------+
+| Total requests                    |  10      |
++-----------------------------------+----------+
+| Succeed requests                  |  10      |
++-----------------------------------+----------+
+| Failed requests                   |   0      |
++-----------------------------------+----------+
+| Output token throughput (tok/s)   |  49.3502 |
++-----------------------------------+----------+
+| Total token throughput (tok/s)    |  73.6398 |
++-----------------------------------+----------+
+| Request throughput (req/s)        |   0.1928 |
++-----------------------------------+----------+
+| Average latency (s)               |   5.1872 |
++-----------------------------------+----------+
+| Average time to first token (s)   |   5.1872 |
++-----------------------------------+----------+
+| Average time per output token (s) |   0      |
++-----------------------------------+----------+
+| Average inter-token latency (s)   |   0      |
++-----------------------------------+----------+
+| Average input tokens per request  | 126      |
++-----------------------------------+----------+
+| Average output tokens per request | 256      |
++-----------------------------------+----------+
+2026-06-14 15:43:16 - evalscope - INFO: 
+Percentile results:
++-------------+----------+---------+----------+-------------+--------------+---------------+----------------+---------------+
+| Percentiles | TTFT (s) | ITL (s) | TPOT (s) | Latency (s) | Input tokens | Output tokens | Output (tok/s) | Total (tok/s) |
++-------------+----------+---------+----------+-------------+--------------+---------------+----------------+---------------+
+|     10%     |  5.1409  |   nan   |   0.0    |   5.1409    |     126      |      256      |    48.7329     |    72.7186    |
+|     25%     |  5.1609  |   nan   |   0.0    |   5.1609    |     126      |      256      |    48.8093     |    72.8327    |
+|     50%     |  5.1819  |   nan   |   0.0    |   5.1819    |     126      |      256      |     49.489     |    73.8469    |
+|     66%     |  5.1871  |   nan   |   0.0    |   5.1871    |     126      |      256      |    49.5641     |    73.9589    |
+|     75%     |  5.2449  |   nan   |   0.0    |   5.2449    |     126      |      256      |    49.6041     |    74.0186    |
+|     80%     |  5.2531  |   nan   |   0.0    |   5.2531    |     126      |      256      |    49.7969     |    74.3062    |
+|     90%     |  5.293   |   nan   |   0.0    |    5.293    |     126      |      256      |    50.4672     |    75.3065    |
+|     95%     |  5.293   |   nan   |   0.0    |    5.293    |     126      |      256      |    50.4672     |    75.3065    |
+|     98%     |  5.293   |   nan   |   0.0    |    5.293    |     126      |      256      |    50.4672     |    75.3065    |
+|     99%     |  5.293   |   nan   |   0.0    |    5.293    |     126      |      256      |    50.4672     |    75.3065    |
++-------------+----------+---------+----------+-------------+--------------+---------------+----------------+---------------+
+2026-06-14 15:43:16 - evalscope - INFO: Save the summary to: /home/hko/agent/evalscope-results/north-mini-code-speed/iq2_32k_q4_ngl40/speed/parallel_1_number_10
+2026-06-14 15:43:16 - evalscope - INFO: Running[perf] 100%| 1/1 [Elapsed: 00:53 < Remaining: 00:00, 53.47s/it]
+2026-06-14 15:43:16 - evalscope - INFO: Performance summary saved to: /home/hko/agent/evalscope-results/north-mini-code-speed/iq2_32k_q4_ngl40/speed/performance_summary.txt
+2026-06-14 15:43:16 - evalscope - INFO: HTML report generated: /home/hko/agent/evalscope-results/north-mini-code-speed/iq2_32k_q4_ngl40/speed/perf_report.html

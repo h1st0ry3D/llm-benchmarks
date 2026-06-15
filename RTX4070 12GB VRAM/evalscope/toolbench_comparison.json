@@ -1,0 +1,29 @@
+{
+  "gemma4-12b-toolbench": {
+    "mean_Act.EM": 0.5111,
+    "mean_F1": 0.4822,
+    "mean_HalluRate": 0.0,
+    "mean_plan_em": 0.8445,
+    "mean_Easy_F1": 0.2667,
+    "mean_Hard_F1": 0.2155,
+    "mean_Rouge-L": 0.0884
+  },
+  "qwopus35b-toolbench": {
+    "mean_Act.EM": 0.4318,
+    "mean_F1": 0.3883,
+    "mean_HalluRate": 0.0,
+    "mean_plan_em": 0.8636,
+    "mean_Easy_F1": 0.2727,
+    "mean_Hard_F1": 0.1157,
+    "mean_Rouge-L": 0.0821
+  },
+  "qwopus9b-toolbench": {
+    "mean_Act.EM": 0.3409,
+    "mean_F1": 0.325,
+    "mean_HalluRate": 0.3181,
+    "mean_plan_em": 0.8182,
+    "mean_Easy_F1": 0.2045,
+    "mean_Hard_F1": 0.1205,
+    "mean_Rouge-L": 0.0155
+  }
+}

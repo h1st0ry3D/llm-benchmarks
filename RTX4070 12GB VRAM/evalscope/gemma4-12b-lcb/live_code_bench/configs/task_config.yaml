@@ -1,0 +1,139 @@
+analysis_report: false
+api_url: http://localhost:8080/v1
+chat_template: null
+dataset_args:
+  live_code_bench:
+    aggregation: mean_and_pass_at_k
+    data_statistics: null
+    dataset_id: AI-ModelScope/code_generation_lite
+    default_subset: default
+    description: '
+
+      ## Overview
+
+
+      LiveCodeBench is a contamination-free benchmark for evaluating code generation
+      models on real-world competitive programming problems. It continuously collects
+      new problems from coding platforms to ensure models haven''t seen the test data
+      during training.
+
+
+      ## Task Description
+
+
+      - **Task Type**: Competitive Programming / Code Generation
+
+      - **Input**: Programming problem description with input/output format
+
+      - **Output**: Complete solution code
+
+      - **Source**: Problems from LeetCode, Codeforces, and AtCoder
+
+
+      ## Key Features
+
+
+      - Continuously updated with new problems post model training cutoff
+
+      - Problems from major competitive programming platforms
+
+      - Multiple test cases per problem for thorough evaluation
+
+      - Date-based filtering to control for data contamination
+
+      - Supports both local and sandbox code execution
+
+
+      ## Evaluation Notes
+
+
+      - Default configuration uses **0-shot** evaluation
+
+      - **Security Warning**: By default, code is executed in the local environment.
+      We recommend using sandbox execution. See the [sandbox documentation](https://evalscope.readthedocs.io/en/latest/user_guides/sandbox.html)
+      for details.
+
+      - Use `start_date` and `end_date` parameters to filter problems by date
+
+      - Default timeout is 6 seconds per test case
+
+      - Supports `pass@k` metric calculation
+
+      '
+    eval_split: test
+    extra_params:
+      debug: false
+      end_date: null
+      start_date: null
+    few_shot_num: 0
+    few_shot_prompt_template: null
+    few_shot_random: false
+    filters: null
+    force_redownload: false
+    metric_list:
+    - acc
+    name: live_code_bench
+    output_types:
+    - generation
+    paper_url: null
+    pretty_name: Live-Code-Bench
+    prompt_template: '### Question:
+
+      {question_content}
+
+
+      {format_prompt} ### Answer: (use the provided format with backticks)
+
+
+      '
+    query_template: null
+    review_timeout: 6
+    sample_example: null
+    sandbox_config:
+      image: python:3.11-slim
+      tools_config:
+        python_executor: {}
+        shell_executor: {}
+    shuffle: false
+    shuffle_choices: false
+    subset_list:
+    - release_latest
+    system_prompt: null
+    tags:
+    - Coding
+    train_split: null
+dataset_dir: /home/hko/.cache/modelscope/hub/datasets
+dataset_hub: modelscope
+datasets:
+- live_code_bench
+debug: false
+enable_progress_tracker: true
+eval_backend: Native
+eval_batch_size: 1
+eval_config: null
+eval_type: openai_api
+evalscope_version: 1.5.2.post1
+generation_config:
+  batch_size: 1
+  max_tokens: 2048
+  temperature: 0.0
+ignore_errors: true
+judge_model_args: {}
+judge_strategy: auto
+judge_worker_num: null
+limit: 20
+model: Gemma-4-12B-Q4XL
+model_args: {}
+model_id: Gemma-4-12B-Q4XL
+model_task: text_generation
+no_timestamp: true
+repeats: 1
+rerun_review: false
+sandbox_manager_config: {}
+sandbox_type: docker
+seed: 42
+stream: null
+timeout: null
+use_cache: null
+use_sandbox: false
+work_dir: /home/hko/agent/evalscope-results/gemma4-12b-lcb/live_code_bench

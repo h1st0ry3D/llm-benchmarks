@@ -1,0 +1,25 @@
+{
+  "status": "completed",
+  "pipeline": "eval",
+  "total_count": 20,
+  "processed_count": 20,
+  "percent": 100.0,
+  "stage": {
+    "name": "Running",
+    "label": "eval",
+    "current": 1,
+    "total": 1,
+    "status": "completed",
+    "children": [
+      {
+        "name": "Evaluating",
+        "label": "bfcl_v4",
+        "current": 20,
+        "total": 20,
+        "status": "completed",
+        "children": []
+      }
+    ]
+  },
+  "updated_at": "2026-06-14T23:11:13.836481"
+}

@@ -1,0 +1,54 @@
+{
+  "iq2_16k_q4_ngl99": {
+    "status": "ok",
+    "model": "North-Mini-Code-1.0-UD-IQ2_M.gguf",
+    "ctx": 16384,
+    "cache": "q4_0",
+    "ngl": 99,
+    "vram": "11296",
+    "tps": 131.0035,
+    "ttft": 1.954,
+    "latency": 1.954,
+    "succeed": 10,
+    "total": 10
+  },
+  "iq2_32k_q4_ngl40": {
+    "status": "ok",
+    "model": "North-Mini-Code-1.0-UD-IQ2_M.gguf",
+    "ctx": 32768,
+    "cache": "q4_0",
+    "ngl": 40,
+    "vram": "9725",
+    "tps": 49.3502,
+    "ttft": 5.1872,
+    "latency": 5.1872,
+    "succeed": 10,
+    "total": 10
+  },
+  "iq2_64k_q4_ngl30": {
+    "status": "ok",
+    "model": "North-Mini-Code-1.0-UD-IQ2_M.gguf",
+    "ctx": 65536,
+    "cache": "q4_0",
+    "ngl": 30,
+    "vram": "8007",
+    "tps": 26.6689,
+    "ttft": 9.599,
+    "latency": 9.599,
+    "succeed": 10,
+    "total": 10
+  },
+  "iq2_128k_q4_ngl20": {
+    "status": "ok",
+    "model": "North-Mini-Code-1.0-UD-IQ2_M.gguf",
+    "ctx": 131072,
+    "cache": "q4_0",
+    "ngl": 20,
+    "vram": "6355",
+    "tps": 18.5916,
+    "ttft": 13.7695,
+    "latency": 13.7695,
+    "succeed": 10,
+    "total": 10
+  }
+}

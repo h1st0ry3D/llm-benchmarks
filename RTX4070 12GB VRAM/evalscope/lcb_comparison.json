@@ -1,0 +1,26 @@
+{
+  "gemma4-12b-lcb": {
+    "score": 0.85,
+    "metrics": {
+      "mean_acc": 0.85,
+      "mean_acc_pass@1": 0.85
+    },
+    "num": 20
+  },
+  "qwopus35b-lcb": {
+    "score": 0.15,
+    "metrics": {
+      "mean_acc": 0.15,
+      "mean_acc_pass@1": 0.15
+    },
+    "num": 20
+  },
+  "qwopus9b-lcb": {
+    "score": 0.1,
+    "metrics": {
+      "mean_acc": 0.1,
+      "mean_acc_pass@1": 0.1
+    },
+    "num": 20
+  }
+}

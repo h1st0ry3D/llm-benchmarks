@@ -1,0 +1,69 @@
+{
+  "iq3_8k_q8": {
+    "status": "server_failed",
+    "model": "North-Mini-Code-1.0-UD-IQ3_XXS.gguf",
+    "ctx": 8192,
+    "cache": "q8_0"
+  },
+  "iq3_16k_q8": {
+    "status": "server_failed",
+    "model": "North-Mini-Code-1.0-UD-IQ3_XXS.gguf",
+    "ctx": 16384,
+    "cache": "q8_0"
+  },
+  "iq3_32k_q4": {
+    "status": "server_failed",
+    "model": "North-Mini-Code-1.0-UD-IQ3_XXS.gguf",
+    "ctx": 32768,
+    "cache": "q4_0"
+  },
+  "iq3_64k_q4": {
+    "status": "server_failed",
+    "model": "North-Mini-Code-1.0-UD-IQ3_XXS.gguf",
+    "ctx": 65536,
+    "cache": "q4_0"
+  },
+  "iq3_128k_q4": {
+    "status": "server_failed",
+    "model": "North-Mini-Code-1.0-UD-IQ3_XXS.gguf",
+    "ctx": 131072,
+    "cache": "q4_0"
+  },
+  "iq2_8k_q8": {
+    "status": "ok",
+    "model": "North-Mini-Code-1.0-UD-IQ2_M.gguf",
+    "ctx": 8192,
+    "cache": "q8_0",
+    "vram": "11214",
+    "tps": 130.0877,
+    "ttft": 1.9677,
+    "latency": 1.9677,
+    "succeed": 10,
+    "total": 10,
+    "model_size_gb": 9.19
+  },
+  "iq2_16k_q8": {
+    "status": "server_failed",
+    "model": "North-Mini-Code-1.0-UD-IQ2_M.gguf",
+    "ctx": 16384,
+    "cache": "q8_0"
+  },
+  "iq2_32k_q8": {
+    "status": "server_failed",
+    "model": "North-Mini-Code-1.0-UD-IQ2_M.gguf",
+    "ctx": 32768,
+    "cache": "q8_0"
+  },
+  "iq2_64k_q4": {
+    "status": "server_failed",
+    "model": "North-Mini-Code-1.0-UD-IQ2_M.gguf",
+    "ctx": 65536,
+    "cache": "q4_0"
+  },
+  "iq2_128k_q4": {
+    "status": "server_failed",
+    "model": "North-Mini-Code-1.0-UD-IQ2_M.gguf",
+    "ctx": 131072,
+    "cache": "q4_0"
+  }
+}

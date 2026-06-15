@@ -1,0 +1,10 @@
+{
+  "category": "live_simple",
+  "limit": 20,
+  "results": {
+    "Gemma-4-12B": 1.0,
+    "Qwopus35B-A3B": 0.9,
+    "Qwopus9B-Coder": 0.9,
+    "North-Mini-Code-1.0": 0.9
+  }
+}

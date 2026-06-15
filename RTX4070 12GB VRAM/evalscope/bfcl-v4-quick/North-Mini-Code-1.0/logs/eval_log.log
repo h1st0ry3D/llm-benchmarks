@@ -1,0 +1,131 @@
+2026-06-14 23:12:17 - evalscope - INFO: Running with native backend
+2026-06-14 23:12:17 - evalscope - INFO: Dump task config to /home/hko/agent/evalscope-results/bfcl-v4-quick/North-Mini-Code-1.0/configs/task_config.yaml
+2026-06-14 23:12:17 - evalscope - INFO: {
+    "model": "North-Mini-Code-1.0",
+    "model_id": "North-Mini-Code-1.0",
+    "model_args": {},
+    "model_task": "text_generation",
+    "chat_template": null,
+    "datasets": [
+        "bfcl_v4"
+    ],
+    "dataset_args": {
+        "bfcl_v4": {
+            "name": "bfcl_v4",
+            "dataset_id": "https://github.com/ShishirPatil/gorilla/tree/main/berkeley-function-call-leaderboard",
+            "output_types": [
+                "generation"
+            ],
+            "subset_list": [
+                "live_simple"
+            ],
+            "default_subset": "default",
+            "few_shot_num": 0,
+            "few_shot_random": false,
+            "train_split": null,
+            "eval_split": "train",
+            "prompt_template": null,
+            "few_shot_prompt_template": null,
+            "system_prompt": null,
+            "query_template": null,
+            "pretty_name": "BFCL-v4",
+            "description": "\n## Overview\n\nBFCL-v4 (Berkeley Function-Calling Leaderboard V4) is a comprehensive benchmark for evaluating agentic function-calling capabilities of LLMs. It tests web search, memory operations, and format sensitivity as building blocks for agentic applications.\n\n## Task Description\n\n- **Task Type**: Agentic Function Calling Evaluation\n- **Input**: Scenarios requiring function calls for web search, memory, etc.\n- **Output**: Correct function calls with proper arguments\n- **Capabilities**: Web search, memory read/write, format handling\n\n## Key Features\n\n- Holistic agentic evaluation framework\n- Tests building blocks for LLM agents (search, memory, formatting)\n- Multiple scoring categories for detailed analysis\n- Supports both FC models and non-FC models\n- Optional web search with SerpAPI integration\n\n## Evaluation Notes\n\n- **Installation Required**: `pip install bfcl-eval==2025.10.27.1`\n- Primary metric: **Accuracy** per category\n- Configure `is_fc_model` based on model capabilities\n- Optional: Set `SERPAPI_API_KEY` for web search tasks\n- [Usage Example](https://evalscope.readthedocs.io/en/latest/third_party/bfcl_v4.html)\n",
+            "paper_url": null,
+            "data_statistics": null,
+            "sample_example": null,
+            "tags": [
+                "FunctionCalling",
+                "Agent"
+            ],
+            "filters": null,
+            "metric_list": [
+                "acc"
+            ],
+            "aggregation": "mean",
+            "shuffle": false,
+            "shuffle_choices": false,
+            "force_redownload": false,
+            "review_timeout": null,
+            "extra_params": {
+                "underscore_to_dot": true,
+                "is_fc_model": true,
+                "SERPAPI_API_KEY": null
+            },
+            "sandbox_config": {}
+        }
+    },
+    "dataset_dir": "/home/hko/.cache/modelscope/hub/datasets",
+    "dataset_hub": "modelscope",
+    "repeats": 1,
+    "generation_config": {
+        "batch_size": 1,
+        "max_tokens": 1024,
+        "temperature": 0.001
+    },
+    "eval_type": "openai_api",
+    "eval_backend": "Native",
+    "eval_config": null,
+    "limit": 20,
+    "eval_batch_size": 1,
+    "use_cache": null,
+    "rerun_review": false,
+    "work_dir": "/home/hko/agent/evalscope-results/bfcl-v4-quick/North-Mini-Code-1.0",
+    "no_timestamp": true,
+    "enable_progress_tracker": true,
+    "ignore_errors": true,
+    "debug": false,
+    "seed": 42,
+    "api_url": "http://localhost:8080/v1",
+    "timeout": null,
+    "stream": null,
+    "judge_strategy": "auto",
+    "judge_worker_num": null,
+    "judge_model_args": {},
+    "analysis_report": false,
+    "use_sandbox": false,
+    "sandbox_type": "docker",
+    "sandbox_manager_config": {},
+    "evalscope_version": "1.5.2.post1"
+}
+2026-06-14 23:12:17 - evalscope - INFO: Start loading benchmark dataset: bfcl_v4
+2026-06-14 23:12:17 - evalscope - INFO: Start evaluating 1 subsets of bfcl_v4: ['live_simple']
+2026-06-14 23:12:17 - evalscope - INFO: Unified pool: 20 items to process, 0 already fully cached (20 total across all subsets).
+2026-06-14 23:12:22 - evalscope - INFO: Loading model for prediction...
+2026-06-14 23:12:22 - evalscope - INFO: Creating model North-Mini-Code-1.0 with eval_type=openai_api base_url=http://localhost:8080/v1, config={'retries': 5, 'retry_interval': 10, 'batch_size': 1, 'max_tokens': 1024, 'temperature': 0.001}, model_args={}
+2026-06-14 23:12:22 - evalscope - INFO: Model loaded successfully.
+2026-06-14 23:13:17 - evalscope - INFO: Evaluating[bfcl_v4]  65%| 13/20 [Elapsed: 01:00 < Remaining: 00:26,  3.76s/it]
+2026-06-14 23:13:41 - evalscope - INFO: Evaluating[bfcl_v4] 100%| 20/20 [Elapsed: 01:24 < Remaining: 00:00,  4.30s/it]
+2026-06-14 23:13:41 - evalscope - INFO: Unified pool finished for bfcl_v4.
+2026-06-14 23:13:41 - evalscope - INFO: Aggregating scores for subset: live_simple
+2026-06-14 23:13:41 - evalscope - INFO: Generating report...
+2026-06-14 23:13:41 - evalscope - INFO: 
+bfcl_v4 report table:
++---------------------+-----------+----------+-------------+-------+---------+---------+
+| Model               | Dataset   | Metric   | Subset      |   Num |   Score | Cat.0   |
++=====================+===========+==========+=============+=======+=========+=========+
+| North-Mini-Code-1.0 | bfcl_v4   | acc      | live_simple |    20 |    0.9  | default |
++---------------------+-----------+----------+-------------+-------+---------+---------+
+| North-Mini-Code-1.0 | bfcl_v4   | acc      | LIVE        |    20 |    0.9  | -       |
++---------------------+-----------+----------+-------------+-------+---------+---------+
+| North-Mini-Code-1.0 | bfcl_v4   | acc      | OVERALL     |    20 |    0.09 | -       |
++---------------------+-----------+----------+-------------+-------+---------+---------+ 
+
+2026-06-14 23:13:41 - evalscope - INFO: Skipping report analysis (`analysis_report=False`).
+2026-06-14 23:13:41 - evalscope - INFO: Dump report to: /home/hko/agent/evalscope-results/bfcl-v4-quick/North-Mini-Code-1.0/reports/North-Mini-Code-1.0/bfcl_v4.json 
+
+2026-06-14 23:13:41 - evalscope - INFO: Benchmark bfcl_v4 evaluation finished.
+2026-06-14 23:13:41 - evalscope - INFO: Running[eval] 100%| 1/1 [Elapsed: 01:24 < Remaining: 00:00, 84.44s/benchmark]
+2026-06-14 23:13:41 - evalscope - INFO: Overall report table: 
++---------------------+-----------+----------+-------------+-------+---------+---------+
+| Model               | Dataset   | Metric   | Subset      |   Num |   Score | Cat.0   |
++=====================+===========+==========+=============+=======+=========+=========+
+| North-Mini-Code-1.0 | bfcl_v4   | acc      | live_simple |    20 |    0.9  | default |
++---------------------+-----------+----------+-------------+-------+---------+---------+
+| North-Mini-Code-1.0 | bfcl_v4   | acc      | LIVE        |    20 |    0.9  | -       |
++---------------------+-----------+----------+-------------+-------+---------+---------+
+| North-Mini-Code-1.0 | bfcl_v4   | acc      | OVERALL     |    20 |    0.09 | -       |
++---------------------+-----------+----------+-------------+-------+---------+---------+ 
+
+2026-06-14 23:13:42 - evalscope - INFO: HTML report generated: /home/hko/agent/evalscope-results/bfcl-v4-quick/North-Mini-Code-1.0/reports/report.html
+2026-06-14 23:13:42 - evalscope - INFO: Finished evaluation for North-Mini-Code-1.0 on ['bfcl_v4']
+2026-06-14 23:13:42 - evalscope - INFO: Output directory: /home/hko/agent/evalscope-results/bfcl-v4-quick/North-Mini-Code-1.0

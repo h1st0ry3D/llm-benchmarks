@@ -1,0 +1,25 @@
+{
+  "status": "completed",
+  "pipeline": "eval",
+  "total_count": 100,
+  "processed_count": 100,
+  "percent": 100.0,
+  "stage": {
+    "name": "Running",
+    "label": "eval",
+    "current": 1,
+    "total": 1,
+    "status": "completed",
+    "children": [
+      {
+        "name": "Evaluating",
+        "label": "tool_bench",
+        "current": 100,
+        "total": 100,
+        "status": "completed",
+        "children": []
+      }
+    ]
+  },
+  "updated_at": "2026-06-14T13:39:09.519442"
+}

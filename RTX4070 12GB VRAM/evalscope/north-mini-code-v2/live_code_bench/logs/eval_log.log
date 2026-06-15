@@ -1,0 +1,2645 @@
+2026-06-14 19:57:26 - evalscope - INFO: Running with native backend
+2026-06-14 19:57:26 - evalscope - INFO: Dump task config to /home/hko/agent/evalscope-results/north-mini-code-v2/live_code_bench/configs/task_config.yaml
+2026-06-14 19:57:26 - evalscope - INFO: {
+    "model": "North-Mini-Code-1.0-IQ1M",
+    "model_id": "North-Mini-Code-1.0-IQ1M",
+    "model_args": {},
+    "model_task": "text_generation",
+    "chat_template": null,
+    "datasets": [
+        "live_code_bench"
+    ],
+    "dataset_args": {
+        "live_code_bench": {
+            "name": "live_code_bench",
+            "dataset_id": "AI-ModelScope/code_generation_lite",
+            "output_types": [
+                "generation"
+            ],
+            "subset_list": [
+                "release_latest"
+            ],
+            "default_subset": "default",
+            "few_shot_num": 0,
+            "few_shot_random": false,
+            "train_split": null,
+            "eval_split": "test",
+            "prompt_template": "### Question:\n{question_content}\n\n{format_prompt} ### Answer: (use the provided format with backticks)\n\n",
+            "few_shot_prompt_template": null,
+            "system_prompt": null,
+            "query_template": null,
+            "pretty_name": "Live-Code-Bench",
+            "description": "\n## Overview\n\nLiveCodeBench is a contamination-free benchmark for evaluating code generation models on real-world competitive programming problems. It continuously collects new problems from coding platforms to ensure models haven't seen the test data during training.\n\n## Task Description\n\n- **Task Type**: Competitive Programming / Code Generation\n- **Input**: Programming problem description with input/output format\n- **Output**: Complete solution code\n- **Source**: Problems from LeetCode, Codeforces, and AtCoder\n\n## Key Features\n\n- Continuously updated with new problems post model training cutoff\n- Problems from major competitive programming platforms\n- Multiple test cases per problem for thorough evaluation\n- Date-based filtering to control for data contamination\n- Supports both local and sandbox code execution\n\n## Evaluation Notes\n\n- Default configuration uses **0-shot** evaluation\n- **Security Warning**: By default, code is executed in the local environment. We recommend using sandbox execution. See the [sandbox documentation](https://evalscope.readthedocs.io/en/latest/user_guides/sandbox.html) for details.\n- Use `start_date` and `end_date` parameters to filter problems by date\n- Default timeout is 6 seconds per test case\n- Supports `pass@k` metric calculation\n",
+            "paper_url": null,
+            "data_statistics": null,
+            "sample_example": null,
+            "tags": [
+                "Coding"
+            ],
+            "filters": null,
+            "metric_list": [
+                "acc"
+            ],
+            "aggregation": "mean_and_pass_at_k",
+            "shuffle": false,
+            "shuffle_choices": false,
+            "force_redownload": false,
+            "review_timeout": 6,
+            "extra_params": {
+                "start_date": null,
+                "end_date": null,
+                "debug": false
+            },
+            "sandbox_config": {
+                "image": "python:3.11-slim",
+                "tools_config": {
+                    "shell_executor": {},
+                    "python_executor": {}
+                }
+            }
+        }
+    },
+    "dataset_dir": "/home/hko/.cache/modelscope/hub/datasets",
+    "dataset_hub": "modelscope",
+    "repeats": 1,
+    "generation_config": {
+        "batch_size": 1,
+        "max_tokens": 8192,
+        "temperature": 0.0
+    },
+    "eval_type": "openai_api",
+    "eval_backend": "Native",
+    "eval_config": null,
+    "limit": 20,
+    "eval_batch_size": 1,
+    "use_cache": null,
+    "rerun_review": false,
+    "work_dir": "/home/hko/agent/evalscope-results/north-mini-code-v2/live_code_bench",
+    "no_timestamp": true,
+    "enable_progress_tracker": true,
+    "ignore_errors": true,
+    "debug": false,
+    "seed": 42,
+    "api_url": "http://localhost:8080/v1",
+    "timeout": null,
+    "stream": null,
+    "judge_strategy": "auto",
+    "judge_worker_num": null,
+    "judge_model_args": {},
+    "analysis_report": false,
+    "use_sandbox": false,
+    "sandbox_type": "docker",
+    "sandbox_manager_config": {},
+    "evalscope_version": "1.5.2.post1"
+}
+2026-06-14 19:57:26 - evalscope - INFO: Start loading benchmark dataset: live_code_bench
+2026-06-14 19:57:27 - evalscope - INFO: Start evaluating 1 subsets of live_code_bench: ['release_latest']
+2026-06-14 19:57:27 - evalscope - INFO: Unified pool: 20 items to process, 0 already fully cached (20 total across all subsets).
+2026-06-14 19:57:27 - evalscope - INFO: Loading model for prediction...
+2026-06-14 19:57:27 - evalscope - INFO: Creating model North-Mini-Code-1.0-IQ1M with eval_type=openai_api base_url=http://localhost:8080/v1, config={'retries': 5, 'retry_interval': 10, 'batch_size': 1, 'max_tokens': 8192, 'temperature': 0.0}, model_args={}
+2026-06-14 19:57:27 - evalscope - INFO: Model loaded successfully.
+2026-06-14 19:58:27 - evalscope - INFO: Evaluating[live_code_bench]   5%| 1/20 [Elapsed: 01:00 < Remaining: 12:32, 39.2026-06-2026-06-14 19:59:27 - evalscope - INFO: Evaluating[live_code_bench]   5%| 1/20 [Elapsed: 02:00 < Remaining: 122026-06-14 19:592026-06-14 20:00:27 - evalscope - INFO: Evaluating[live_code_bench]   5%| 1/20 [Elapsed: 03:00 < Remai2026-06-14 20:00:39 - ev2026-06-14 20:01:27 - evalscope - INFO: Evaluating[live_code_bench]   5%| 1/20 [Elapsed: 04:002026-06-14 20:01:39 - evalscope 2026-06-14 20:02:27 - evalscope - INFO: Evaluating[live_code_bench]   5%| 1/20 [Elapse2026-06-14 20:02:39 - evalscope - INFO: 2026-06-14 20:03:28 - evalscope - INFO: Evaluating[live_code_bench]  10%| 2/202026-06-14 20:03:39 - evalscope - INFO: Evaluating[2026-06-14 20:04:28 - evalscope - INFO: Evaluating[live_code_bench]2026-06-14 20:04:39 - evalscope - INFO: Evaluating[live_code_b2026-06-14 20:05:28 - evalscope - INFO: Evaluating[live_2026-06-14 20:05:39 - evalscope - INFO: Evaluating[live_code_bench]   0%|2026-06-14 20:06:28 - evalscope - INFO: Evalu2026-06-14 20:06:39 - evalscope - INFO: Evaluating[live_code_bench]   0%| 0/20 [Elap2026-06-14 20:07:28 - evalscope - 2026-06-14 20:07:39 - evalscope - INFO: Evaluating[live_code_bench]   0%| 0/20 [Elapsed: 11:00 2026-06-14 20:08:28 - e2026-06-14 20:08:39 - evalscope - INFO: Evaluating[live_code_bench]   0%| 0/20 [Elapsed: 12:00 < Remaining2026-06-14 22026-06-14 20:09:39 - evalscope - INFO: Evaluating[live_code_bench]   0%| 0/20 [Elapsed: 13:00 < Remaining: ?, ?it/s]22026-06-14 20:10:39 - evalscope - INFO: Evaluating[live_code_bench]   0%| 0/20 [Elapsed: 14:00 < Remaining: ?, ?it/s]
+2026-06-14 20:11:39 - evalscope - INFO: Evaluating[live_code_bench]   0%| 0/20 [Elapsed: 15:00 < Remaining: ?, ?it/s]
+2026-06-14 20:12:39 - evalscope - INFO: Evaluating[live_code_bench]   0%| 0/20 [Elapsed: 16:00 < Remaining: ?, ?it/s]
+2026-06-14 20:13:39 - evalscope - INFO: Evaluating[live_code_bench]   0%| 0/20 [Elapsed: 17:00 < Remaining: ?, ?it/s]
+2026-06-14 20:14:39 - evalscope - INFO: Evaluating[live_code_bench]   0%| 0/20 [Elapsed: 18:00 < Remaining: ?, ?it/s]
+2026-06-14 20:15:39 - evalscope - INFO: Evaluating[live_code_bench]   0%| 0/20 [Elapsed: 19:00 < Remaining: ?, ?it/s]
+2026-06-14 20:16:39 - evalscope - INFO: Evaluating[live_code_bench]   0%| 0/20 [Elapsed: 20:00 < Remaining: ?, ?it/s]
+2026-06-14 20:17:39 - evalscope - INFO: Evaluating[live_code_bench]   0%| 0/20 [Elapsed: 21:00 < Remaining: ?, ?it/s]
+2026-06-14 20:18:39 - evalscope - INFO: Evaluating[live_code_bench]   0%| 0/20 [Elapsed: 22:00 < Remaining: ?, ?it/s]
+2026-06-14 20:19:39 - evalscope - INFO: Evaluating[live_code_bench]   0%| 0/20 [Elapsed: 23:00 < Remaining: ?, ?it/s]
+2026-06-14 20:20:39 - evalscope - INFO: Evaluating[live_code_bench]   0%| 0/20 [Elapsed: 24:00 < Remaining: ?, ?it/s]
+2026-06-14 20:21:39 - evalscope - INFO: Evaluating[live_code_bench]   0%| 0/20 [Elapsed: 25:00 < Remaining: ?, ?it/s]
+2026-06-14 20:22:39 - evalscope - INFO: Evaluating[live_code_bench]   0%| 0/20 [Elapsed: 26:00 < Remaining: ?, ?it/s]
+2026-06-14 20:23:39 - evalscope - INFO: Evaluating[live_code_bench]   0%| 0/20 [Elapsed: 27:00 < Remaining: ?, ?it/s]
+2026-06-14 20:24:39 - evalscope - INFO: Evaluating[live_code_bench]   0%| 0/20 [Elapsed: 28:00 < Remaining: ?, ?it/s]
+2026-06-14 20:25:39 - evalscope - INFO: Evaluating[live_code_bench]   0%| 0/20 [Elapsed: 29:00 < Remaining: ?, ?it/s]
+2026-06-14 20:26:39 - evalscope - INFO: Evaluating[live_code_bench]   0%| 0/20 [Elapsed: 30:00 < Remaining: ?, ?it/s]
+2026-06-14 20:27:39 - evalscope - INFO: Evaluating[live_code_bench]   0%| 0/20 [Elapsed: 31:00 < Remaining: ?, ?it/s]
+2026-06-14 20:28:39 - evalscope - INFO: Evaluating[live_code_bench]   0%| 0/20 [Elapsed: 32:00 < Remaining: ?, ?it/s]
+2026-06-14 20:29:39 - evalscope - INFO: Evaluating[live_code_bench]   0%| 0/20 [Elapsed: 33:00 < Remaining: ?, ?it/s]
+2026-06-14 20:30:39 - evalscope - INFO: Evaluating[live_code_bench]   0%| 0/20 [Elapsed: 34:00 < Remaining: ?, ?it/s]
+2026-06-14 20:31:39 - evalscope - INFO: Evaluating[live_code_bench]   0%| 0/20 [Elapsed: 35:00 < Remaining: ?, ?it/s]
+2026-06-14 20:32:39 - evalscope - INFO: Evaluating[live_code_bench]   0%| 0/20 [Elapsed: 36:00 < Remaining: ?, ?it/s]
+2026-06-14 20:33:39 - evalscope - INFO: Evaluating[live_code_bench]   0%| 0/20 [Elapsed: 37:00 < Remaining: ?, ?it/s]
+2026-06-14 20:34:39 - evalscope - INFO: Evaluating[live_code_bench]   0%| 0/20 [Elapsed: 38:00 < Remaining: ?, ?it/s]
+2026-06-14 20:35:39 - evalscope - INFO: Evaluating[live_code_bench]   0%| 0/20 [Elapsed: 39:00 < Remaining: ?, ?it/s]
+2026-06-14 20:36:39 - evalscope - INFO: Evaluating[live_code_bench]   0%| 0/20 [Elapsed: 40:00 < Remaining: ?, ?it/s]
+2026-06-14 20:37:39 - evalscope - INFO: Evaluating[live_code_bench]   0%| 0/20 [Elapsed: 41:00 < Remaining: ?, ?it/s]
+2026-06-14 20:38:39 - evalscope - INFO: Evaluating[live_code_bench]   0%| 0/20 [Elapsed: 42:00 < Remaining: ?, ?it/s]
+2026-06-14 20:39:39 - evalscope - INFO: Evaluating[live_code_bench]   0%| 0/20 [Elapsed: 43:00 < Remaining: ?, ?it/s]
+2026-06-14 20:40:39 - evalscope - INFO: Evaluating[live_code_bench]   0%| 0/20 [Elapsed: 44:00 < Remaining: ?, ?it/s]
+2026-06-14 20:41:39 - evalscope - INFO: Evaluating[live_code_bench]   0%| 0/20 [Elapsed: 45:00 < Remaining: ?, ?it/s]
+2026-06-14 20:42:39 - evalscope - INFO: Evaluating[live_code_bench]   0%| 0/20 [Elapsed: 46:00 < Remaining: ?, ?it/s]
+2026-06-14 20:43:39 - evalscope - INFO: Evaluating[live_code_bench]   0%| 0/20 [Elapsed: 47:00 < Remaining: ?, ?it/s]
+2026-06-14 20:44:39 - evalscope - INFO: Evaluating[live_code_bench]   0%| 0/20 [Elapsed: 48:00 < Remaining: ?, ?it/s]
+2026-06-14 20:45:39 - evalscope - INFO: Evaluating[live_code_bench]   0%| 0/20 [Elapsed: 49:00 < Remaining: ?, ?it/s]
+2026-06-14 20:46:39 - evalscope - INFO: Evaluating[live_code_bench]   0%| 0/20 [Elapsed: 50:00 < Remaining: ?, ?it/s]
+2026-06-14 20:47:39 - evalscope - INFO: Evaluating[live_code_bench]   0%| 0/20 [Elapsed: 51:00 < Remaining: ?, ?it/s]
+2026-06-14 20:48:39 - evalscope - INFO: Evaluating[live_code_bench]   0%| 0/20 [Elapsed: 52:00 < Remaining: ?, ?it/s]
+2026-06-14 20:49:39 - evalscope - INFO: Evaluating[live_code_bench]   0%| 0/20 [Elapsed: 53:00 < Remaining: ?, ?it/s]
+2026-06-14 20:50:39 - evalscope - INFO: Evaluating[live_code_bench]   0%| 0/20 [Elapsed: 54:00 < Remaining: ?, ?it/s]
+2026-06-14 20:51:39 - evalscope - INFO: Evaluating[live_code_bench]   0%| 0/20 [Elapsed: 55:00 < Remaining: ?, ?it/s]
+2026-06-14 20:52:39 - evalscope - INFO: Evaluating[live_code_bench]   0%| 0/20 [Elapsed: 56:00 < Remaining: ?, ?it/s]
+2026-06-14 20:53:39 - evalscope - INFO: Evaluating[live_code_bench]   0%| 0/20 [Elapsed: 57:00 < Remaining: ?, ?it/s]
+2026-06-14 20:54:39 - evalscope - INFO: Evaluating[live_code_bench]   0%| 0/20 [Elapsed: 58:00 < Remaining: ?, ?it/s]
+2026-06-14 20:55:39 - evalscope - INFO: Evaluating[live_code_bench]   0%| 0/20 [Elapsed: 59:00 < Remaining: ?, ?it/s]
+2026-06-14 20:56:39 - evalscope - INFO: Evaluating[live_code_bench]   0%| 0/20 [Elapsed: 1:00:00 < Remaining: ?, ?it/s]
+2026-06-14 20:57:40 - evalscope - INFO: Evaluating[live_code_bench]   0%| 0/20 [Elapsed: 1:01:00 < Remaining: ?, ?it/s]
+2026-06-14 20:58:40 - evalscope - INFO: Evaluating[live_code_bench]   0%| 0/20 [Elapsed: 1:02:00 < Remaining: ?, ?it/s]
+2026-06-14 20:59:40 - evalscope - INFO: Evaluating[live_code_bench]   0%| 0/20 [Elapsed: 1:03:00 < Remaining: ?, ?it/s]
+2026-06-14 21:00:40 - evalscope - INFO: Evaluating[live_code_bench]   0%| 0/20 [Elapsed: 1:04:00 < Remaining: ?, ?it/s]
+2026-06-14 21:01:40 - evalscope - INFO: Evaluating[live_code_bench]   0%| 0/20 [Elapsed: 1:05:00 < Remaining: ?, ?it/s]
+2026-06-14 21:02:40 - evalscope - INFO: Evaluating[live_code_bench]   0%| 0/20 [Elapsed: 1:06:00 < Remaining: ?, ?it/s]
+2026-06-14 21:03:40 - evalscope - INFO: Evaluating[live_code_bench]   0%| 0/20 [Elapsed: 1:07:00 < Remaining: ?, ?it/s]
+2026-06-14 21:04:40 - evalscope - INFO: Evaluating[live_code_bench]   0%| 0/20 [Elapsed: 1:08:00 < Remaining: ?, ?it/s]
+2026-06-14 21:05:40 - evalscope - INFO: Evaluating[live_code_bench]   0%| 0/20 [Elapsed: 1:09:00 < Remaining: ?, ?it/s]
+2026-06-14 21:06:40 - evalscope - INFO: Evaluating[live_code_bench]   0%| 0/20 [Elapsed: 1:10:00 < Remaining: ?, ?it/s]
+2026-06-14 21:07:40 - evalscope - INFO: Evaluating[live_code_bench]   0%| 0/20 [Elapsed: 1:11:00 < Remaining: ?, ?it/s]
+2026-06-14 21:08:40 - evalscope - INFO: Evaluating[live_code_bench]   0%| 0/20 [Elapsed: 1:12:00 < Remaining: ?, ?it/s]
+2026-06-14 21:09:40 - evalscope - INFO: Evaluating[live_code_bench]   0%| 0/20 [Elapsed: 1:13:00 < Remaining: ?, ?it/s]
+2026-06-14 21:10:40 - evalscope - INFO: Evaluating[live_code_bench]   0%| 0/20 [Elapsed: 1:14:00 < Remaining: ?, ?it/s]
+2026-06-14 21:11:40 - evalscope - INFO: Evaluating[live_code_bench]   0%| 0/20 [Elapsed: 1:15:00 < Remaining: ?, ?it/s]
+2026-06-14 21:12:40 - evalscope - INFO: Evaluating[live_code_bench]   0%| 0/20 [Elapsed: 1:16:00 < Remaining: ?, ?it/s]
+2026-06-14 21:13:40 - evalscope - INFO: Evaluating[live_code_bench]   0%| 0/20 [Elapsed: 1:17:00 < Remaining: ?, ?it/s]
+2026-06-14 21:14:40 - evalscope - INFO: Evaluating[live_code_bench]   0%| 0/20 [Elapsed: 1:18:00 < Remaining: ?, ?it/s]
+2026-06-14 21:15:40 - evalscope - INFO: Evaluating[live_code_bench]   0%| 0/20 [Elapsed: 1:19:00 < Remaining: ?, ?it/s]
+2026-06-14 21:16:40 - evalscope - INFO: Evaluating[live_code_bench]   0%| 0/20 [Elapsed: 1:20:00 < Remaining: ?, ?it/s]
+2026-06-14 21:17:40 - evalscope - INFO: Evaluating[live_code_bench]   0%| 0/20 [Elapsed: 1:21:00 < Remaining: ?, ?it/s]
+2026-06-14 21:18:00 - evalscope - WARNING: Attempt 1 / 5 failed: Connection error.. Retrying...
+2026-06-14 21:18:11 - evalscope - WARNING: Attempt 2 / 5 failed: Connection error.. Retrying...
+2026-06-14 21:18:22 - evalscope - WARNING: Attempt 3 / 5 failed: Connection error.. Retrying...
+2026-06-14 21:18:34 - evalscope - WARNING: Attempt 4 / 5 failed: Connection error.. Retrying...
+2026-06-14 21:18:40 - evalscope - INFO: Evaluating[live_code_bench]   5%| 1/20 [Elapsed: 1:22:01 < Remaining: 25:45:08, 4879.40s/it]
+2026-06-14 21:18:45 - evalscope - ERROR: Processing item in subset='release_latest' failed: Connection error.
+Traceback:
+Traceback (most recent call last):
+  File "/home/hko/evalscope-env/lib/python3.14/site-packages/httpx/_transports/default.py", line 101, in map_httpcore_exceptions
+    yield
+  File "/home/hko/evalscope-env/lib/python3.14/site-packages/httpx/_transports/default.py", line 250, in handle_request
+    resp = self._pool.handle_request(req)
+  File "/home/hko/evalscope-env/lib/python3.14/site-packages/httpcore/_sync/connection_pool.py", line 256, in handle_request
+    raise exc from None
+  File "/home/hko/evalscope-env/lib/python3.14/site-packages/httpcore/_sync/connection_pool.py", line 236, in handle_request
+    response = connection.handle_request(
+        pool_request.request
+    )
+  File "/home/hko/evalscope-env/lib/python3.14/site-packages/httpcore/_sync/connection.py", line 101, in handle_request
+    raise exc
+  File "/home/hko/evalscope-env/lib/python3.14/site-packages/httpcore/_sync/connection.py", line 78, in handle_request
+    stream = self._connect(request)
+  File "/home/hko/evalscope-env/lib/python3.14/site-packages/httpcore/_sync/connection.py", line 124, in _connect
+    stream = self._network_backend.connect_tcp(**kwargs)
+  File "/home/hko/evalscope-env/lib/python3.14/site-packages/httpcore/_backends/sync.py", line 207, in connect_tcp
+    with map_exceptions(exc_map):
+         ~~~~~~~~~~~~~~^^^^^^^^^
+  File "/usr/lib/python3.14/contextlib.py", line 162, in __exit__
+    self.gen.throw(value)
+    ~~~~~~~~~~~~~~^^^^^^^
+  File "/home/hko/evalscope-env/lib/python3.14/site-packages/httpcore/_exceptions.py", line 14, in map_exceptions
+    raise to_exc(exc) from exc
+httpcore.ConnectError: [Errno 111] Connection refused
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/home/hko/evalscope-env/lib/python3.14/site-packages/openai/_base_client.py", line 1005, in request
+    response = self._client.send(
+        request,
+        stream=stream or self._should_stream_response_body(request=request),
+        **kwargs,
+    )
+  File "/home/hko/evalscope-env/lib/python3.14/site-packages/httpx/_client.py", line 914, in send
+    response = self._send_handling_auth(
+        request,
+    ...<2 lines>...
+        history=[],
+    )
+  File "/home/hko/evalscope-env/lib/python3.14/site-packages/httpx/_client.py", line 942, in _send_handling_auth
+    response = self._send_handling_redirects(
+        request,
+        follow_redirects=follow_redirects,
+        history=history,
+    )
+  File "/home/hko/evalscope-env/lib/python3.14/site-packages/httpx/_client.py", line 979, in _send_handling_redirects
+    response = self._send_single_request(request)
+  File "/home/hko/evalscope-env/lib/python3.14/site-packages/httpx/_client.py", line 1014, in _send_single_request
+    response = transport.handle_request(request)
+  File "/home/hko/evalscope-env/lib/python3.14/site-packages/httpx/_transports/default.py", line 249, in handle_request
+    with map_httpcore_exceptions():
+         ~~~~~~~~~~~~~~~~~~~~~~~^^
+  File "/usr/lib/python3.14/contextlib.py", line 162, in __exit__
+    self.gen.throw(value)
+    ~~~~~~~~~~~~~~^^^^^^^
+  File "/home/hko/evalscope-env/lib/python3.14/site-packages/httpx/_transports/default.py", line 118, in map_httpcore_exceptions
+    raise mapped_exc(message) from exc
+httpx.ConnectError: [Errno 111] Connection refused
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/home/hko/evalscope-env/lib/python3.14/site-packages/evalscope/utils/function_utils.py", line 277, in run_in_threads_with_progress
+    result = fut.result()
+  File "/usr/lib/python3.14/concurrent/futures/_base.py", line 443, in result
+    return self.__get_result()
+           ~~~~~~~~~~~~~~~~~^^
+  File "/usr/lib/python3.14/concurrent/futures/_base.py", line 395, in __get_result
+    raise self._exception
+  File "/usr/lib/python3.14/concurrent/futures/thread.py", line 86, in run
+    result = ctx.run(self.task)
+  File "/usr/lib/python3.14/concurrent/futures/thread.py", line 73, in run
+    return fn(*args, **kwargs)
+  File "/home/hko/evalscope-env/lib/python3.14/site-packages/evalscope/evaluator/evaluator.py", line 288, in worker
+    return self._process_work_item(item, context.model_prediction_dir)
+           ~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/hko/evalscope-env/lib/python3.14/site-packages/evalscope/evaluator/evaluator.py", line 332, in _process_work_item
+    self._predict_sample(item.sample, model_prediction_dir) if item.needs_predict else item.task_state
+    ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/hko/evalscope-env/lib/python3.14/site-packages/evalscope/evaluator/evaluator.py", line 431, in _predict_sample
+    task_state = self.benchmark.run_inference(model=self.model, sample=sample, output_dir=model_prediction_dir)
+  File "/home/hko/evalscope-env/lib/python3.14/site-packages/evalscope/api/benchmark/adapters/default_data_adapter.py", line 453, in run_inference
+    model_output = self._on_inference(model, sample)
+  File "/home/hko/evalscope-env/lib/python3.14/site-packages/evalscope/api/benchmark/adapters/default_data_adapter.py", line 404, in _on_inference
+    model_output = model.generate(input=sample.input, tools=sample.tools)
+  File "/home/hko/evalscope-env/lib/python3.14/site-packages/evalscope/api/model/model.py", line 198, in generate
+    output = self.api.generate(
+        input=processed_input,
+    ...<2 lines>...
+        config=processed_config,
+    )
+  File "/home/hko/evalscope-env/lib/python3.14/site-packages/evalscope/models/openai_compatible.py", line 93, in generate
+    completion = retry_call(
+        self.client.chat.completions.create,
+    ...<2 lines>...
+        **request
+    )
+  File "/home/hko/evalscope-env/lib/python3.14/site-packages/evalscope/utils/function_utils.py", line 106, in retry_call
+    return func(*args, **kwargs)
+  File "/home/hko/evalscope-env/lib/python3.14/site-packages/openai/_utils/_utils.py", line 286, in wrapper
+    return func(*args, **kwargs)
+  File "/home/hko/evalscope-env/lib/python3.14/site-packages/openai/resources/chat/completions/completions.py", line 1211, in create
+    return self._post(
+           ~~~~~~~~~~^
+        "/chat/completions",
+        ^^^^^^^^^^^^^^^^^^^^
+    ...<47 lines>...
+        stream_cls=Stream[ChatCompletionChunk],
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "/home/hko/evalscope-env/lib/python3.14/site-packages/openai/_base_client.py", line 1297, in post
+    return cast(ResponseT, self.request(cast_to, opts, stream=stream, stream_cls=stream_cls))
+                           ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/hko/evalscope-env/lib/python3.14/site-packages/openai/_base_client.py", line 1037, in request
+    raise APIConnectionError(request=request) from err
+openai.APIConnectionError: Connection error.
+
+2026-06-14 21:18:45 - evalscope - WARNING: Error ignored, continuing with next sample.
+2026-06-14 21:18:47 - evalscope - WARNING: Attempt 1 / 5 failed: Connection error.. Retrying...
+2026-06-14 21:18:58 - evalscope - WARNING: Attempt 2 / 5 failed: Connection error.. Retrying...
+2026-06-14 21:19:09 - evalscope - WARNING: Attempt 3 / 5 failed: Connection error.. Retrying...
+2026-06-14 21:19:21 - evalscope - WARNING: Attempt 4 / 5 failed: Connection error.. Retrying...
+2026-06-14 21:19:32 - evalscope - ERROR: Processing item in subset='release_latest' failed: Connection error.
+Traceback:
+Traceback (most recent call last):
+  File "/home/hko/evalscope-env/lib/python3.14/site-packages/httpx/_transports/default.py", line 101, in map_httpcore_exceptions
+    yield
+  File "/home/hko/evalscope-env/lib/python3.14/site-packages/httpx/_transports/default.py", line 250, in handle_request
+    resp = self._pool.handle_request(req)
+  File "/home/hko/evalscope-env/lib/python3.14/site-packages/httpcore/_sync/connection_pool.py", line 256, in handle_request
+    raise exc from None
+  File "/home/hko/evalscope-env/lib/python3.14/site-packages/httpcore/_sync/connection_pool.py", line 236, in handle_request
+    response = connection.handle_request(
+        pool_request.request
+    )
+  File "/home/hko/evalscope-env/lib/python3.14/site-packages/httpcore/_sync/connection.py", line 101, in handle_request
+    raise exc
+  File "/home/hko/evalscope-env/lib/python3.14/site-packages/httpcore/_sync/connection.py", line 78, in handle_request
+    stream = self._connect(request)
+  File "/home/hko/evalscope-env/lib/python3.14/site-packages/httpcore/_sync/connection.py", line 124, in _connect
+    stream = self._network_backend.connect_tcp(**kwargs)
+  File "/home/hko/evalscope-env/lib/python3.14/site-packages/httpcore/_backends/sync.py", line 207, in connect_tcp
+    with map_exceptions(exc_map):
+         ~~~~~~~~~~~~~~^^^^^^^^^
+  File "/usr/lib/python3.14/contextlib.py", line 162, in __exit__
+    self.gen.throw(value)
+    ~~~~~~~~~~~~~~^^^^^^^
+  File "/home/hko/evalscope-env/lib/python3.14/site-packages/httpcore/_exceptions.py", line 14, in map_exceptions
+    raise to_exc(exc) from exc
+httpcore.ConnectError: [Errno 111] Connection refused
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/home/hko/evalscope-env/lib/python3.14/site-packages/openai/_base_client.py", line 1005, in request
+    response = self._client.send(
+        request,
+        stream=stream or self._should_stream_response_body(request=request),
+        **kwargs,
+    )
+  File "/home/hko/evalscope-env/lib/python3.14/site-packages/httpx/_client.py", line 914, in send
+    response = self._send_handling_auth(
+        request,
+    ...<2 lines>...
+        history=[],
+    )
+  File "/home/hko/evalscope-env/lib/python3.14/site-packages/httpx/_client.py", line 942, in _send_handling_auth
+    response = self._send_handling_redirects(
+        request,
+        follow_redirects=follow_redirects,
+        history=history,
+    )
+  File "/home/hko/evalscope-env/lib/python3.14/site-packages/httpx/_client.py", line 979, in _send_handling_redirects
+    response = self._send_single_request(request)
+  File "/home/hko/evalscope-env/lib/python3.14/site-packages/httpx/_client.py", line 1014, in _send_single_request
+    response = transport.handle_request(request)
+  File "/home/hko/evalscope-env/lib/python3.14/site-packages/httpx/_transports/default.py", line 249, in handle_request
+    with map_httpcore_exceptions():
+         ~~~~~~~~~~~~~~~~~~~~~~~^^
+  File "/usr/lib/python3.14/contextlib.py", line 162, in __exit__
+    self.gen.throw(value)
+    ~~~~~~~~~~~~~~^^^^^^^
+  File "/home/hko/evalscope-env/lib/python3.14/site-packages/httpx/_transports/default.py", line 118, in map_httpcore_exceptions
+    raise mapped_exc(message) from exc
+httpx.ConnectError: [Errno 111] Connection refused
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/home/hko/evalscope-env/lib/python3.14/site-packages/evalscope/utils/function_utils.py", line 277, in run_in_threads_with_progress
+    result = fut.result()
+  File "/usr/lib/python3.14/concurrent/futures/_base.py", line 443, in result
+    return self.__get_result()
+           ~~~~~~~~~~~~~~~~~^^
+  File "/usr/lib/python3.14/concurrent/futures/_base.py", line 395, in __get_result
+    raise self._exception
+  File "/usr/lib/python3.14/concurrent/futures/thread.py", line 86, in run
+    result = ctx.run(self.task)
+  File "/usr/lib/python3.14/concurrent/futures/thread.py", line 73, in run
+    return fn(*args, **kwargs)
+  File "/home/hko/evalscope-env/lib/python3.14/site-packages/evalscope/evaluator/evaluator.py", line 288, in worker
+    return self._process_work_item(item, context.model_prediction_dir)
+           ~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/hko/evalscope-env/lib/python3.14/site-packages/evalscope/evaluator/evaluator.py", line 332, in _process_work_item
+    self._predict_sample(item.sample, model_prediction_dir) if item.needs_predict else item.task_state
+    ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/hko/evalscope-env/lib/python3.14/site-packages/evalscope/evaluator/evaluator.py", line 431, in _predict_sample
+    task_state = self.benchmark.run_inference(model=self.model, sample=sample, output_dir=model_prediction_dir)
+  File "/home/hko/evalscope-env/lib/python3.14/site-packages/evalscope/api/benchmark/adapters/default_data_adapter.py", line 453, in run_inference
+    model_output = self._on_inference(model, sample)
+  File "/home/hko/evalscope-env/lib/python3.14/site-packages/evalscope/api/benchmark/adapters/default_data_adapter.py", line 404, in _on_inference
+    model_output = model.generate(input=sample.input, tools=sample.tools)
+  File "/home/hko/evalscope-env/lib/python3.14/site-packages/evalscope/api/model/model.py", line 198, in generate
+    output = self.api.generate(
+        input=processed_input,
+    ...<2 lines>...
+        config=processed_config,
+    )
+  File "/home/hko/evalscope-env/lib/python3.14/site-packages/evalscope/models/openai_compatible.py", line 93, in generate
+    completion = retry_call(
+        self.client.chat.completions.create,
+    ...<2 lines>...
+        **request
+    )
+  File "/home/hko/evalscope-env/lib/python3.14/site-packages/evalscope/utils/function_utils.py", line 106, in retry_call
+    return func(*args, **kwargs)
+  File "/home/hko/evalscope-env/lib/python3.14/site-packages/openai/_utils/_utils.py", line 286, in wrapper
+    return func(*args, **kwargs)
+  File "/home/hko/evalscope-env/lib/python3.14/site-packages/openai/resources/chat/completions/completions.py", line 1211, in create
+    return self._post(
+           ~~~~~~~~~~^
+        "/chat/completions",
+        ^^^^^^^^^^^^^^^^^^^^
+    ...<47 lines>...
+        stream_cls=Stream[ChatCompletionChunk],
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "/home/hko/evalscope-env/lib/python3.14/site-packages/openai/_base_client.py", line 1297, in post
+    return cast(ResponseT, self.request(cast_to, opts, stream=stream, stream_cls=stream_cls))
+                           ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/hko/evalscope-env/lib/python3.14/site-packages/openai/_base_client.py", line 1037, in request
+    raise APIConnectionError(request=request) from err
+openai.APIConnectionError: Connection error.
+
+2026-06-14 21:19:32 - evalscope - WARNING: Error ignored, continuing with next sample.
+2026-06-14 21:19:33 - evalscope - WARNING: Attempt 1 / 5 failed: Connection error.. Retrying...
+2026-06-14 21:19:41 - evalscope - INFO: Evaluating[live_code_bench]  15%| 3/20 [Elapsed: 1:23:02 < Remaining: 5:19:37, 1128.11s/it]
+2026-06-14 21:19:45 - evalscope - WARNING: Attempt 2 / 5 failed: Connection error.. Retrying...
+2026-06-14 21:19:56 - evalscope - WARNING: Attempt 3 / 5 failed: Connection error.. Retrying...
+2026-06-14 21:20:07 - evalscope - WARNING: Attempt 4 / 5 failed: Connection error.. Retrying...
+2026-06-14 21:20:19 - evalscope - ERROR: Processing item in subset='release_latest' failed: Connection error.
+Traceback:
+Traceback (most recent call last):
+  File "/home/hko/evalscope-env/lib/python3.14/site-packages/httpx/_transports/default.py", line 101, in map_httpcore_exceptions
+    yield
+  File "/home/hko/evalscope-env/lib/python3.14/site-packages/httpx/_transports/default.py", line 250, in handle_request
+    resp = self._pool.handle_request(req)
+  File "/home/hko/evalscope-env/lib/python3.14/site-packages/httpcore/_sync/connection_pool.py", line 256, in handle_request
+    raise exc from None
+  File "/home/hko/evalscope-env/lib/python3.14/site-packages/httpcore/_sync/connection_pool.py", line 236, in handle_request
+    response = connection.handle_request(
+        pool_request.request
+    )
+  File "/home/hko/evalscope-env/lib/python3.14/site-packages/httpcore/_sync/connection.py", line 101, in handle_request
+    raise exc
+  File "/home/hko/evalscope-env/lib/python3.14/site-packages/httpcore/_sync/connection.py", line 78, in handle_request
+    stream = self._connect(request)
+  File "/home/hko/evalscope-env/lib/python3.14/site-packages/httpcore/_sync/connection.py", line 124, in _connect
+    stream = self._network_backend.connect_tcp(**kwargs)
+  File "/home/hko/evalscope-env/lib/python3.14/site-packages/httpcore/_backends/sync.py", line 207, in connect_tcp
+    with map_exceptions(exc_map):
+         ~~~~~~~~~~~~~~^^^^^^^^^
+  File "/usr/lib/python3.14/contextlib.py", line 162, in __exit__
+    self.gen.throw(value)
+    ~~~~~~~~~~~~~~^^^^^^^
+  File "/home/hko/evalscope-env/lib/python3.14/site-packages/httpcore/_exceptions.py", line 14, in map_exceptions
+    raise to_exc(exc) from exc
+httpcore.ConnectError: [Errno 111] Connection refused
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/home/hko/evalscope-env/lib/python3.14/site-packages/openai/_base_client.py", line 1005, in request
+    response = self._client.send(
+        request,
+        stream=stream or self._should_stream_response_body(request=request),
+        **kwargs,
+    )
+  File "/home/hko/evalscope-env/lib/python3.14/site-packages/httpx/_client.py", line 914, in send
+    response = self._send_handling_auth(
+        request,
+    ...<2 lines>...
+        history=[],
+    )
+  File "/home/hko/evalscope-env/lib/python3.14/site-packages/httpx/_client.py", line 942, in _send_handling_auth
+    response = self._send_handling_redirects(
+        request,
+        follow_redirects=follow_redirects,
+        history=history,
+    )
+  File "/home/hko/evalscope-env/lib/python3.14/site-packages/httpx/_client.py", line 979, in _send_handling_redirects
+    response = self._send_single_request(request)
+  File "/home/hko/evalscope-env/lib/python3.14/site-packages/httpx/_client.py", line 1014, in _send_single_request
+    response = transport.handle_request(request)
+  File "/home/hko/evalscope-env/lib/python3.14/site-packages/httpx/_transports/default.py", line 249, in handle_request
+    with map_httpcore_exceptions():
+         ~~~~~~~~~~~~~~~~~~~~~~~^^
+  File "/usr/lib/python3.14/contextlib.py", line 162, in __exit__
+    self.gen.throw(value)
+    ~~~~~~~~~~~~~~^^^^^^^
+  File "/home/hko/evalscope-env/lib/python3.14/site-packages/httpx/_transports/default.py", line 118, in map_httpcore_exceptions
+    raise mapped_exc(message) from exc
+httpx.ConnectError: [Errno 111] Connection refused
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/home/hko/evalscope-env/lib/python3.14/site-packages/evalscope/utils/function_utils.py", line 277, in run_in_threads_with_progress
+    result = fut.result()
+  File "/usr/lib/python3.14/concurrent/futures/_base.py", line 443, in result
+    return self.__get_result()
+           ~~~~~~~~~~~~~~~~~^^
+  File "/usr/lib/python3.14/concurrent/futures/_base.py", line 395, in __get_result
+    raise self._exception
+  File "/usr/lib/python3.14/concurrent/futures/thread.py", line 86, in run
+    result = ctx.run(self.task)
+  File "/usr/lib/python3.14/concurrent/futures/thread.py", line 73, in run
+    return fn(*args, **kwargs)
+  File "/home/hko/evalscope-env/lib/python3.14/site-packages/evalscope/evaluator/evaluator.py", line 288, in worker
+    return self._process_work_item(item, context.model_prediction_dir)
+           ~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/hko/evalscope-env/lib/python3.14/site-packages/evalscope/evaluator/evaluator.py", line 332, in _process_work_item
+    self._predict_sample(item.sample, model_prediction_dir) if item.needs_predict else item.task_state
+    ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/hko/evalscope-env/lib/python3.14/site-packages/evalscope/evaluator/evaluator.py", line 431, in _predict_sample
+    task_state = self.benchmark.run_inference(model=self.model, sample=sample, output_dir=model_prediction_dir)
+  File "/home/hko/evalscope-env/lib/python3.14/site-packages/evalscope/api/benchmark/adapters/default_data_adapter.py", line 453, in run_inference
+    model_output = self._on_inference(model, sample)
+  File "/home/hko/evalscope-env/lib/python3.14/site-packages/evalscope/api/benchmark/adapters/default_data_adapter.py", line 404, in _on_inference
+    model_output = model.generate(input=sample.input, tools=sample.tools)
+  File "/home/hko/evalscope-env/lib/python3.14/site-packages/evalscope/api/model/model.py", line 198, in generate
+    output = self.api.generate(
+        input=processed_input,
+    ...<2 lines>...
+        config=processed_config,
+    )
+  File "/home/hko/evalscope-env/lib/python3.14/site-packages/evalscope/models/openai_compatible.py", line 93, in generate
+    completion = retry_call(
+        self.client.chat.completions.create,
+    ...<2 lines>...
+        **request
+    )
+  File "/home/hko/evalscope-env/lib/python3.14/site-packages/evalscope/utils/function_utils.py", line 106, in retry_call
+    return func(*args, **kwargs)
+  File "/home/hko/evalscope-env/lib/python3.14/site-packages/openai/_utils/_utils.py", line 286, in wrapper
+    return func(*args, **kwargs)
+  File "/home/hko/evalscope-env/lib/python3.14/site-packages/openai/resources/chat/completions/completions.py", line 1211, in create
+    return self._post(
+           ~~~~~~~~~~^
+        "/chat/completions",
+        ^^^^^^^^^^^^^^^^^^^^
+    ...<47 lines>...
+        stream_cls=Stream[ChatCompletionChunk],
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "/home/hko/evalscope-env/lib/python3.14/site-packages/openai/_base_client.py", line 1297, in post
+    return cast(ResponseT, self.request(cast_to, opts, stream=stream, stream_cls=stream_cls))
+                           ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/hko/evalscope-env/lib/python3.14/site-packages/openai/_base_client.py", line 1037, in request
+    raise APIConnectionError(request=request) from err
+openai.APIConnectionError: Connection error.
+
+2026-06-14 21:20:19 - evalscope - WARNING: Error ignored, continuing with next sample.
+2026-06-14 21:20:20 - evalscope - WARNING: Attempt 1 / 5 failed: Connection error.. Retrying...
+2026-06-14 21:20:31 - evalscope - WARNING: Attempt 2 / 5 failed: Connection error.. Retrying...
+2026-06-14 21:20:42 - evalscope - INFO: Evaluating[live_code_bench]  20%| 4/20 [Elapsed: 1:24:02 < Remaining: 3:06:58, 701.17s/it]
+2026-06-14 21:20:42 - evalscope - WARNING: Attempt 3 / 5 failed: Connection error.. Retrying...
+2026-06-14 21:20:54 - evalscope - WARNING: Attempt 4 / 5 failed: Connection error.. Retrying...
+2026-06-14 21:21:05 - evalscope - ERROR: Processing item in subset='release_latest' failed: Connection error.
+Traceback:
+Traceback (most recent call last):
+  File "/home/hko/evalscope-env/lib/python3.14/site-packages/httpx/_transports/default.py", line 101, in map_httpcore_exceptions
+    yield
+  File "/home/hko/evalscope-env/lib/python3.14/site-packages/httpx/_transports/default.py", line 250, in handle_request
+    resp = self._pool.handle_request(req)
+  File "/home/hko/evalscope-env/lib/python3.14/site-packages/httpcore/_sync/connection_pool.py", line 256, in handle_request
+    raise exc from None
+  File "/home/hko/evalscope-env/lib/python3.14/site-packages/httpcore/_sync/connection_pool.py", line 236, in handle_request
+    response = connection.handle_request(
+        pool_request.request
+    )
+  File "/home/hko/evalscope-env/lib/python3.14/site-packages/httpcore/_sync/connection.py", line 101, in handle_request
+    raise exc
+  File "/home/hko/evalscope-env/lib/python3.14/site-packages/httpcore/_sync/connection.py", line 78, in handle_request
+    stream = self._connect(request)
+  File "/home/hko/evalscope-env/lib/python3.14/site-packages/httpcore/_sync/connection.py", line 124, in _connect
+    stream = self._network_backend.connect_tcp(**kwargs)
+  File "/home/hko/evalscope-env/lib/python3.14/site-packages/httpcore/_backends/sync.py", line 207, in connect_tcp
+    with map_exceptions(exc_map):
+         ~~~~~~~~~~~~~~^^^^^^^^^
+  File "/usr/lib/python3.14/contextlib.py", line 162, in __exit__
+    self.gen.throw(value)
+    ~~~~~~~~~~~~~~^^^^^^^
+  File "/home/hko/evalscope-env/lib/python3.14/site-packages/httpcore/_exceptions.py", line 14, in map_exceptions
+    raise to_exc(exc) from exc
+httpcore.ConnectError: [Errno 111] Connection refused
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/home/hko/evalscope-env/lib/python3.14/site-packages/openai/_base_client.py", line 1005, in request
+    response = self._client.send(
+        request,
+        stream=stream or self._should_stream_response_body(request=request),
+        **kwargs,
+    )
+  File "/home/hko/evalscope-env/lib/python3.14/site-packages/httpx/_client.py", line 914, in send
+    response = self._send_handling_auth(
+        request,
+    ...<2 lines>...
+        history=[],
+    )
+  File "/home/hko/evalscope-env/lib/python3.14/site-packages/httpx/_client.py", line 942, in _send_handling_auth
+    response = self._send_handling_redirects(
+        request,
+        follow_redirects=follow_redirects,
+        history=history,
+    )
+  File "/home/hko/evalscope-env/lib/python3.14/site-packages/httpx/_client.py", line 979, in _send_handling_redirects
+    response = self._send_single_request(request)
+  File "/home/hko/evalscope-env/lib/python3.14/site-packages/httpx/_client.py", line 1014, in _send_single_request
+    response = transport.handle_request(request)
+  File "/home/hko/evalscope-env/lib/python3.14/site-packages/httpx/_transports/default.py", line 249, in handle_request
+    with map_httpcore_exceptions():
+         ~~~~~~~~~~~~~~~~~~~~~~~^^
+  File "/usr/lib/python3.14/contextlib.py", line 162, in __exit__
+    self.gen.throw(value)
+    ~~~~~~~~~~~~~~^^^^^^^
+  File "/home/hko/evalscope-env/lib/python3.14/site-packages/httpx/_transports/default.py", line 118, in map_httpcore_exceptions
+    raise mapped_exc(message) from exc
+httpx.ConnectError: [Errno 111] Connection refused
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/home/hko/evalscope-env/lib/python3.14/site-packages/evalscope/utils/function_utils.py", line 277, in run_in_threads_with_progress
+    result = fut.result()
+  File "/usr/lib/python3.14/concurrent/futures/_base.py", line 443, in result
+    return self.__get_result()
+           ~~~~~~~~~~~~~~~~~^^
+  File "/usr/lib/python3.14/concurrent/futures/_base.py", line 395, in __get_result
+    raise self._exception
+  File "/usr/lib/python3.14/concurrent/futures/thread.py", line 86, in run
+    result = ctx.run(self.task)
+  File "/usr/lib/python3.14/concurrent/futures/thread.py", line 73, in run
+    return fn(*args, **kwargs)
+  File "/home/hko/evalscope-env/lib/python3.14/site-packages/evalscope/evaluator/evaluator.py", line 288, in worker
+    return self._process_work_item(item, context.model_prediction_dir)
+           ~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/hko/evalscope-env/lib/python3.14/site-packages/evalscope/evaluator/evaluator.py", line 332, in _process_work_item
+    self._predict_sample(item.sample, model_prediction_dir) if item.needs_predict else item.task_state
+    ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/hko/evalscope-env/lib/python3.14/site-packages/evalscope/evaluator/evaluator.py", line 431, in _predict_sample
+    task_state = self.benchmark.run_inference(model=self.model, sample=sample, output_dir=model_prediction_dir)
+  File "/home/hko/evalscope-env/lib/python3.14/site-packages/evalscope/api/benchmark/adapters/default_data_adapter.py", line 453, in run_inference
+    model_output = self._on_inference(model, sample)
+  File "/home/hko/evalscope-env/lib/python3.14/site-packages/evalscope/api/benchmark/adapters/default_data_adapter.py", line 404, in _on_inference
+    model_output = model.generate(input=sample.input, tools=sample.tools)
+  File "/home/hko/evalscope-env/lib/python3.14/site-packages/evalscope/api/model/model.py", line 198, in generate
+    output = self.api.generate(
+        input=processed_input,
+    ...<2 lines>...
+        config=processed_config,
+    )
+  File "/home/hko/evalscope-env/lib/python3.14/site-packages/evalscope/models/openai_compatible.py", line 93, in generate
+    completion = retry_call(
+        self.client.chat.completions.create,
+    ...<2 lines>...
+        **request
+    )
+  File "/home/hko/evalscope-env/lib/python3.14/site-packages/evalscope/utils/function_utils.py", line 106, in retry_call
+    return func(*args, **kwargs)
+  File "/home/hko/evalscope-env/lib/python3.14/site-packages/openai/_utils/_utils.py", line 286, in wrapper
+    return func(*args, **kwargs)
+  File "/home/hko/evalscope-env/lib/python3.14/site-packages/openai/resources/chat/completions/completions.py", line 1211, in create
+    return self._post(
+           ~~~~~~~~~~^
+        "/chat/completions",
+        ^^^^^^^^^^^^^^^^^^^^
+    ...<47 lines>...
+        stream_cls=Stream[ChatCompletionChunk],
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "/home/hko/evalscope-env/lib/python3.14/site-packages/openai/_base_client.py", line 1297, in post
+    return cast(ResponseT, self.request(cast_to, opts, stream=stream, stream_cls=stream_cls))
+                           ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/hko/evalscope-env/lib/python3.14/site-packages/openai/_base_client.py", line 1037, in request
+    raise APIConnectionError(request=request) from err
+openai.APIConnectionError: Connection error.
+
+2026-06-14 21:21:05 - evalscope - WARNING: Error ignored, continuing with next sample.
+2026-06-14 21:21:06 - evalscope - WARNING: Attempt 1 / 5 failed: Connection error.. Retrying...
+2026-06-14 21:21:18 - evalscope - WARNING: Attempt 2 / 5 failed: Connection error.. Retrying...
+2026-06-14 21:21:29 - evalscope - WARNING: Attempt 3 / 5 failed: Connection error.. Retrying...
+2026-06-14 21:21:41 - evalscope - WARNING: Attempt 4 / 5 failed: Connection error.. Retrying...
+2026-06-14 21:21:42 - evalscope - INFO: Evaluating[live_code_bench]  25%| 5/20 [Elapsed: 1:25:03 < Remaining: 1:56:14, 465.00s/it]
+2026-06-14 21:21:52 - evalscope - ERROR: Processing item in subset='release_latest' failed: Connection error.
+Traceback:
+Traceback (most recent call last):
+  File "/home/hko/evalscope-env/lib/python3.14/site-packages/httpx/_transports/default.py", line 101, in map_httpcore_exceptions
+    yield
+  File "/home/hko/evalscope-env/lib/python3.14/site-packages/httpx/_transports/default.py", line 250, in handle_request
+    resp = self._pool.handle_request(req)
+  File "/home/hko/evalscope-env/lib/python3.14/site-packages/httpcore/_sync/connection_pool.py", line 256, in handle_request
+    raise exc from None
+  File "/home/hko/evalscope-env/lib/python3.14/site-packages/httpcore/_sync/connection_pool.py", line 236, in handle_request
+    response = connection.handle_request(
+        pool_request.request
+    )
+  File "/home/hko/evalscope-env/lib/python3.14/site-packages/httpcore/_sync/connection.py", line 101, in handle_request
+    raise exc
+  File "/home/hko/evalscope-env/lib/python3.14/site-packages/httpcore/_sync/connection.py", line 78, in handle_request
+    stream = self._connect(request)
+  File "/home/hko/evalscope-env/lib/python3.14/site-packages/httpcore/_sync/connection.py", line 124, in _connect
+    stream = self._network_backend.connect_tcp(**kwargs)
+  File "/home/hko/evalscope-env/lib/python3.14/site-packages/httpcore/_backends/sync.py", line 207, in connect_tcp
+    with map_exceptions(exc_map):
+         ~~~~~~~~~~~~~~^^^^^^^^^
+  File "/usr/lib/python3.14/contextlib.py", line 162, in __exit__
+    self.gen.throw(value)
+    ~~~~~~~~~~~~~~^^^^^^^
+  File "/home/hko/evalscope-env/lib/python3.14/site-packages/httpcore/_exceptions.py", line 14, in map_exceptions
+    raise to_exc(exc) from exc
+httpcore.ConnectError: [Errno 111] Connection refused
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/home/hko/evalscope-env/lib/python3.14/site-packages/openai/_base_client.py", line 1005, in request
+    response = self._client.send(
+        request,
+        stream=stream or self._should_stream_response_body(request=request),
+        **kwargs,
+    )
+  File "/home/hko/evalscope-env/lib/python3.14/site-packages/httpx/_client.py", line 914, in send
+    response = self._send_handling_auth(
+        request,
+    ...<2 lines>...
+        history=[],
+    )
+  File "/home/hko/evalscope-env/lib/python3.14/site-packages/httpx/_client.py", line 942, in _send_handling_auth
+    response = self._send_handling_redirects(
+        request,
+        follow_redirects=follow_redirects,
+        history=history,
+    )
+  File "/home/hko/evalscope-env/lib/python3.14/site-packages/httpx/_client.py", line 979, in _send_handling_redirects
+    response = self._send_single_request(request)
+  File "/home/hko/evalscope-env/lib/python3.14/site-packages/httpx/_client.py", line 1014, in _send_single_request
+    response = transport.handle_request(request)
+  File "/home/hko/evalscope-env/lib/python3.14/site-packages/httpx/_transports/default.py", line 249, in handle_request
+    with map_httpcore_exceptions():
+         ~~~~~~~~~~~~~~~~~~~~~~~^^
+  File "/usr/lib/python3.14/contextlib.py", line 162, in __exit__
+    self.gen.throw(value)
+    ~~~~~~~~~~~~~~^^^^^^^
+  File "/home/hko/evalscope-env/lib/python3.14/site-packages/httpx/_transports/default.py", line 118, in map_httpcore_exceptions
+    raise mapped_exc(message) from exc
+httpx.ConnectError: [Errno 111] Connection refused
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/home/hko/evalscope-env/lib/python3.14/site-packages/evalscope/utils/function_utils.py", line 277, in run_in_threads_with_progress
+    result = fut.result()
+  File "/usr/lib/python3.14/concurrent/futures/_base.py", line 443, in result
+    return self.__get_result()
+           ~~~~~~~~~~~~~~~~~^^
+  File "/usr/lib/python3.14/concurrent/futures/_base.py", line 395, in __get_result
+    raise self._exception
+  File "/usr/lib/python3.14/concurrent/futures/thread.py", line 86, in run
+    result = ctx.run(self.task)
+  File "/usr/lib/python3.14/concurrent/futures/thread.py", line 73, in run
+    return fn(*args, **kwargs)
+  File "/home/hko/evalscope-env/lib/python3.14/site-packages/evalscope/evaluator/evaluator.py", line 288, in worker
+    return self._process_work_item(item, context.model_prediction_dir)
+           ~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/hko/evalscope-env/lib/python3.14/site-packages/evalscope/evaluator/evaluator.py", line 332, in _process_work_item
+    self._predict_sample(item.sample, model_prediction_dir) if item.needs_predict else item.task_state
+    ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/hko/evalscope-env/lib/python3.14/site-packages/evalscope/evaluator/evaluator.py", line 431, in _predict_sample
+    task_state = self.benchmark.run_inference(model=self.model, sample=sample, output_dir=model_prediction_dir)
+  File "/home/hko/evalscope-env/lib/python3.14/site-packages/evalscope/api/benchmark/adapters/default_data_adapter.py", line 453, in run_inference
+    model_output = self._on_inference(model, sample)
+  File "/home/hko/evalscope-env/lib/python3.14/site-packages/evalscope/api/benchmark/adapters/default_data_adapter.py", line 404, in _on_inference
+    model_output = model.generate(input=sample.input, tools=sample.tools)
+  File "/home/hko/evalscope-env/lib/python3.14/site-packages/evalscope/api/model/model.py", line 198, in generate
+    output = self.api.generate(
+        input=processed_input,
+    ...<2 lines>...
+        config=processed_config,
+    )
+  File "/home/hko/evalscope-env/lib/python3.14/site-packages/evalscope/models/openai_compatible.py", line 93, in generate
+    completion = retry_call(
+        self.client.chat.completions.create,
+    ...<2 lines>...
+        **request
+    )
+  File "/home/hko/evalscope-env/lib/python3.14/site-packages/evalscope/utils/function_utils.py", line 106, in retry_call
+    return func(*args, **kwargs)
+  File "/home/hko/evalscope-env/lib/python3.14/site-packages/openai/_utils/_utils.py", line 286, in wrapper
+    return func(*args, **kwargs)
+  File "/home/hko/evalscope-env/lib/python3.14/site-packages/openai/resources/chat/completions/completions.py", line 1211, in create
+    return self._post(
+           ~~~~~~~~~~^
+        "/chat/completions",
+        ^^^^^^^^^^^^^^^^^^^^
+    ...<47 lines>...
+        stream_cls=Stream[ChatCompletionChunk],
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "/home/hko/evalscope-env/lib/python3.14/site-packages/openai/_base_client.py", line 1297, in post
+    return cast(ResponseT, self.request(cast_to, opts, stream=stream, stream_cls=stream_cls))
+                           ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/hko/evalscope-env/lib/python3.14/site-packages/openai/_base_client.py", line 1037, in request
+    raise APIConnectionError(request=request) from err
+openai.APIConnectionError: Connection error.
+
+2026-06-14 21:21:52 - evalscope - WARNING: Error ignored, continuing with next sample.
+2026-06-14 21:21:53 - evalscope - WARNING: Attempt 1 / 5 failed: Connection error.. Retrying...
+2026-06-14 21:22:05 - evalscope - WARNING: Attempt 2 / 5 failed: Connection error.. Retrying...
+2026-06-14 21:22:16 - evalscope - WARNING: Attempt 3 / 5 failed: Connection error.. Retrying...
+2026-06-14 21:22:27 - evalscope - WARNING: Attempt 4 / 5 failed: Connection error.. Retrying...
+2026-06-14 21:22:39 - evalscope - ERROR: Processing item in subset='release_latest' failed: Connection error.
+Traceback:
+Traceback (most recent call last):
+  File "/home/hko/evalscope-env/lib/python3.14/site-packages/httpx/_transports/default.py", line 101, in map_httpcore_exceptions
+    yield
+  File "/home/hko/evalscope-env/lib/python3.14/site-packages/httpx/_transports/default.py", line 250, in handle_request
+    resp = self._pool.handle_request(req)
+  File "/home/hko/evalscope-env/lib/python3.14/site-packages/httpcore/_sync/connection_pool.py", line 256, in handle_request
+    raise exc from None
+  File "/home/hko/evalscope-env/lib/python3.14/site-packages/httpcore/_sync/connection_pool.py", line 236, in handle_request
+    response = connection.handle_request(
+        pool_request.request
+    )
+  File "/home/hko/evalscope-env/lib/python3.14/site-packages/httpcore/_sync/connection.py", line 101, in handle_request
+    raise exc
+  File "/home/hko/evalscope-env/lib/python3.14/site-packages/httpcore/_sync/connection.py", line 78, in handle_request
+    stream = self._connect(request)
+  File "/home/hko/evalscope-env/lib/python3.14/site-packages/httpcore/_sync/connection.py", line 124, in _connect
+    stream = self._network_backend.connect_tcp(**kwargs)
+  File "/home/hko/evalscope-env/lib/python3.14/site-packages/httpcore/_backends/sync.py", line 207, in connect_tcp
+    with map_exceptions(exc_map):
+         ~~~~~~~~~~~~~~^^^^^^^^^
+  File "/usr/lib/python3.14/contextlib.py", line 162, in __exit__
+    self.gen.throw(value)
+    ~~~~~~~~~~~~~~^^^^^^^
+  File "/home/hko/evalscope-env/lib/python3.14/site-packages/httpcore/_exceptions.py", line 14, in map_exceptions
+    raise to_exc(exc) from exc
+httpcore.ConnectError: [Errno 111] Connection refused
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/home/hko/evalscope-env/lib/python3.14/site-packages/openai/_base_client.py", line 1005, in request
+    response = self._client.send(
+        request,
+        stream=stream or self._should_stream_response_body(request=request),
+        **kwargs,
+    )
+  File "/home/hko/evalscope-env/lib/python3.14/site-packages/httpx/_client.py", line 914, in send
+    response = self._send_handling_auth(
+        request,
+    ...<2 lines>...
+        history=[],
+    )
+  File "/home/hko/evalscope-env/lib/python3.14/site-packages/httpx/_client.py", line 942, in _send_handling_auth
+    response = self._send_handling_redirects(
+        request,
+        follow_redirects=follow_redirects,
+        history=history,
+    )
+  File "/home/hko/evalscope-env/lib/python3.14/site-packages/httpx/_client.py", line 979, in _send_handling_redirects
+    response = self._send_single_request(request)
+  File "/home/hko/evalscope-env/lib/python3.14/site-packages/httpx/_client.py", line 1014, in _send_single_request
+    response = transport.handle_request(request)
+  File "/home/hko/evalscope-env/lib/python3.14/site-packages/httpx/_transports/default.py", line 249, in handle_request
+    with map_httpcore_exceptions():
+         ~~~~~~~~~~~~~~~~~~~~~~~^^
+  File "/usr/lib/python3.14/contextlib.py", line 162, in __exit__
+    self.gen.throw(value)
+    ~~~~~~~~~~~~~~^^^^^^^
+  File "/home/hko/evalscope-env/lib/python3.14/site-packages/httpx/_transports/default.py", line 118, in map_httpcore_exceptions
+    raise mapped_exc(message) from exc
+httpx.ConnectError: [Errno 111] Connection refused
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/home/hko/evalscope-env/lib/python3.14/site-packages/evalscope/utils/function_utils.py", line 277, in run_in_threads_with_progress
+    result = fut.result()
+  File "/usr/lib/python3.14/concurrent/futures/_base.py", line 443, in result
+    return self.__get_result()
+           ~~~~~~~~~~~~~~~~~^^
+  File "/usr/lib/python3.14/concurrent/futures/_base.py", line 395, in __get_result
+    raise self._exception
+  File "/usr/lib/python3.14/concurrent/futures/thread.py", line 86, in run
+    result = ctx.run(self.task)
+  File "/usr/lib/python3.14/concurrent/futures/thread.py", line 73, in run
+    return fn(*args, **kwargs)
+  File "/home/hko/evalscope-env/lib/python3.14/site-packages/evalscope/evaluator/evaluator.py", line 288, in worker
+    return self._process_work_item(item, context.model_prediction_dir)
+           ~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/hko/evalscope-env/lib/python3.14/site-packages/evalscope/evaluator/evaluator.py", line 332, in _process_work_item
+    self._predict_sample(item.sample, model_prediction_dir) if item.needs_predict else item.task_state
+    ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/hko/evalscope-env/lib/python3.14/site-packages/evalscope/evaluator/evaluator.py", line 431, in _predict_sample
+    task_state = self.benchmark.run_inference(model=self.model, sample=sample, output_dir=model_prediction_dir)
+  File "/home/hko/evalscope-env/lib/python3.14/site-packages/evalscope/api/benchmark/adapters/default_data_adapter.py", line 453, in run_inference
+    model_output = self._on_inference(model, sample)
+  File "/home/hko/evalscope-env/lib/python3.14/site-packages/evalscope/api/benchmark/adapters/default_data_adapter.py", line 404, in _on_inference
+    model_output = model.generate(input=sample.input, tools=sample.tools)
+  File "/home/hko/evalscope-env/lib/python3.14/site-packages/evalscope/api/model/model.py", line 198, in generate
+    output = self.api.generate(
+        input=processed_input,
+    ...<2 lines>...
+        config=processed_config,
+    )
+  File "/home/hko/evalscope-env/lib/python3.14/site-packages/evalscope/models/openai_compatible.py", line 93, in generate
+    completion = retry_call(
+        self.client.chat.completions.create,
+    ...<2 lines>...
+        **request
+    )
+  File "/home/hko/evalscope-env/lib/python3.14/site-packages/evalscope/utils/function_utils.py", line 106, in retry_call
+    return func(*args, **kwargs)
+  File "/home/hko/evalscope-env/lib/python3.14/site-packages/openai/_utils/_utils.py", line 286, in wrapper
+    return func(*args, **kwargs)
+  File "/home/hko/evalscope-env/lib/python3.14/site-packages/openai/resources/chat/completions/completions.py", line 1211, in create
+    return self._post(
+           ~~~~~~~~~~^
+        "/chat/completions",
+        ^^^^^^^^^^^^^^^^^^^^
+    ...<47 lines>...
+        stream_cls=Stream[ChatCompletionChunk],
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "/home/hko/evalscope-env/lib/python3.14/site-packages/openai/_base_client.py", line 1297, in post
+    return cast(ResponseT, self.request(cast_to, opts, stream=stream, stream_cls=stream_cls))
+                           ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/hko/evalscope-env/lib/python3.14/site-packages/openai/_base_client.py", line 1037, in request
+    raise APIConnectionError(request=request) from err
+openai.APIConnectionError: Connection error.
+
+2026-06-14 21:22:39 - evalscope - WARNING: Error ignored, continuing with next sample.
+2026-06-14 21:22:40 - evalscope - WARNING: Attempt 1 / 5 failed: Connection error.. Retrying...
+2026-06-14 21:22:43 - evalscope - INFO: Evaluating[live_code_bench]  35%| 7/20 [Elapsed: 1:26:03 < Remaining: 50:23, 232.56s/it]
+2026-06-14 21:22:51 - evalscope - WARNING: Attempt 2 / 5 failed: Connection error.. Retrying...
+2026-06-14 21:23:02 - evalscope - WARNING: Attempt 3 / 5 failed: Connection error.. Retrying...
+2026-06-14 21:23:14 - evalscope - WARNING: Attempt 4 / 5 failed: Connection error.. Retrying...
+2026-06-14 21:23:25 - evalscope - ERROR: Processing item in subset='release_latest' failed: Connection error.
+Traceback:
+Traceback (most recent call last):
+  File "/home/hko/evalscope-env/lib/python3.14/site-packages/httpx/_transports/default.py", line 101, in map_httpcore_exceptions
+    yield
+  File "/home/hko/evalscope-env/lib/python3.14/site-packages/httpx/_transports/default.py", line 250, in handle_request
+    resp = self._pool.handle_request(req)
+  File "/home/hko/evalscope-env/lib/python3.14/site-packages/httpcore/_sync/connection_pool.py", line 256, in handle_request
+    raise exc from None
+  File "/home/hko/evalscope-env/lib/python3.14/site-packages/httpcore/_sync/connection_pool.py", line 236, in handle_request
+    response = connection.handle_request(
+        pool_request.request
+    )
+  File "/home/hko/evalscope-env/lib/python3.14/site-packages/httpcore/_sync/connection.py", line 101, in handle_request
+    raise exc
+  File "/home/hko/evalscope-env/lib/python3.14/site-packages/httpcore/_sync/connection.py", line 78, in handle_request
+    stream = self._connect(request)
+  File "/home/hko/evalscope-env/lib/python3.14/site-packages/httpcore/_sync/connection.py", line 124, in _connect
+    stream = self._network_backend.connect_tcp(**kwargs)
+  File "/home/hko/evalscope-env/lib/python3.14/site-packages/httpcore/_backends/sync.py", line 207, in connect_tcp
+    with map_exceptions(exc_map):
+         ~~~~~~~~~~~~~~^^^^^^^^^
+  File "/usr/lib/python3.14/contextlib.py", line 162, in __exit__
+    self.gen.throw(value)
+    ~~~~~~~~~~~~~~^^^^^^^
+  File "/home/hko/evalscope-env/lib/python3.14/site-packages/httpcore/_exceptions.py", line 14, in map_exceptions
+    raise to_exc(exc) from exc
+httpcore.ConnectError: [Errno 111] Connection refused
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/home/hko/evalscope-env/lib/python3.14/site-packages/openai/_base_client.py", line 1005, in request
+    response = self._client.send(
+        request,
+        stream=stream or self._should_stream_response_body(request=request),
+        **kwargs,
+    )
+  File "/home/hko/evalscope-env/lib/python3.14/site-packages/httpx/_client.py", line 914, in send
+    response = self._send_handling_auth(
+        request,
+    ...<2 lines>...
+        history=[],
+    )
+  File "/home/hko/evalscope-env/lib/python3.14/site-packages/httpx/_client.py", line 942, in _send_handling_auth
+    response = self._send_handling_redirects(
+        request,
+        follow_redirects=follow_redirects,
+        history=history,
+    )
+  File "/home/hko/evalscope-env/lib/python3.14/site-packages/httpx/_client.py", line 979, in _send_handling_redirects
+    response = self._send_single_request(request)
+  File "/home/hko/evalscope-env/lib/python3.14/site-packages/httpx/_client.py", line 1014, in _send_single_request
+    response = transport.handle_request(request)
+  File "/home/hko/evalscope-env/lib/python3.14/site-packages/httpx/_transports/default.py", line 249, in handle_request
+    with map_httpcore_exceptions():
+         ~~~~~~~~~~~~~~~~~~~~~~~^^
+  File "/usr/lib/python3.14/contextlib.py", line 162, in __exit__
+    self.gen.throw(value)
+    ~~~~~~~~~~~~~~^^^^^^^
+  File "/home/hko/evalscope-env/lib/python3.14/site-packages/httpx/_transports/default.py", line 118, in map_httpcore_exceptions
+    raise mapped_exc(message) from exc
+httpx.ConnectError: [Errno 111] Connection refused
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/home/hko/evalscope-env/lib/python3.14/site-packages/evalscope/utils/function_utils.py", line 277, in run_in_threads_with_progress
+    result = fut.result()
+  File "/usr/lib/python3.14/concurrent/futures/_base.py", line 443, in result
+    return self.__get_result()
+           ~~~~~~~~~~~~~~~~~^^
+  File "/usr/lib/python3.14/concurrent/futures/_base.py", line 395, in __get_result
+    raise self._exception
+  File "/usr/lib/python3.14/concurrent/futures/thread.py", line 86, in run
+    result = ctx.run(self.task)
+  File "/usr/lib/python3.14/concurrent/futures/thread.py", line 73, in run
+    return fn(*args, **kwargs)
+  File "/home/hko/evalscope-env/lib/python3.14/site-packages/evalscope/evaluator/evaluator.py", line 288, in worker
+    return self._process_work_item(item, context.model_prediction_dir)
+           ~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/hko/evalscope-env/lib/python3.14/site-packages/evalscope/evaluator/evaluator.py", line 332, in _process_work_item
+    self._predict_sample(item.sample, model_prediction_dir) if item.needs_predict else item.task_state
+    ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/hko/evalscope-env/lib/python3.14/site-packages/evalscope/evaluator/evaluator.py", line 431, in _predict_sample
+    task_state = self.benchmark.run_inference(model=self.model, sample=sample, output_dir=model_prediction_dir)
+  File "/home/hko/evalscope-env/lib/python3.14/site-packages/evalscope/api/benchmark/adapters/default_data_adapter.py", line 453, in run_inference
+    model_output = self._on_inference(model, sample)
+  File "/home/hko/evalscope-env/lib/python3.14/site-packages/evalscope/api/benchmark/adapters/default_data_adapter.py", line 404, in _on_inference
+    model_output = model.generate(input=sample.input, tools=sample.tools)
+  File "/home/hko/evalscope-env/lib/python3.14/site-packages/evalscope/api/model/model.py", line 198, in generate
+    output = self.api.generate(
+        input=processed_input,
+    ...<2 lines>...
+        config=processed_config,
+    )
+  File "/home/hko/evalscope-env/lib/python3.14/site-packages/evalscope/models/openai_compatible.py", line 93, in generate
+    completion = retry_call(
+        self.client.chat.completions.create,
+    ...<2 lines>...
+        **request
+    )
+  File "/home/hko/evalscope-env/lib/python3.14/site-packages/evalscope/utils/function_utils.py", line 106, in retry_call
+    return func(*args, **kwargs)
+  File "/home/hko/evalscope-env/lib/python3.14/site-packages/openai/_utils/_utils.py", line 286, in wrapper
+    return func(*args, **kwargs)
+  File "/home/hko/evalscope-env/lib/python3.14/site-packages/openai/resources/chat/completions/completions.py", line 1211, in create
+    return self._post(
+           ~~~~~~~~~~^
+        "/chat/completions",
+        ^^^^^^^^^^^^^^^^^^^^
+    ...<47 lines>...
+        stream_cls=Stream[ChatCompletionChunk],
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "/home/hko/evalscope-env/lib/python3.14/site-packages/openai/_base_client.py", line 1297, in post
+    return cast(ResponseT, self.request(cast_to, opts, stream=stream, stream_cls=stream_cls))
+                           ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/hko/evalscope-env/lib/python3.14/site-packages/openai/_base_client.py", line 1037, in request
+    raise APIConnectionError(request=request) from err
+openai.APIConnectionError: Connection error.
+
+2026-06-14 21:23:25 - evalscope - WARNING: Error ignored, continuing with next sample.
+2026-06-14 21:23:26 - evalscope - WARNING: Attempt 1 / 5 failed: Connection error.. Retrying...
+2026-06-14 21:23:38 - evalscope - WARNING: Attempt 2 / 5 failed: Connection error.. Retrying...
+2026-06-14 21:23:43 - evalscope - INFO: Evaluating[live_code_bench]  40%| 8/20 [Elapsed: 1:27:04 < Remaining: 34:40, 173.34s/it]
+2026-06-14 21:23:49 - evalscope - WARNING: Attempt 3 / 5 failed: Connection error.. Retrying...
+2026-06-14 21:24:00 - evalscope - WARNING: Attempt 4 / 5 failed: Connection error.. Retrying...
+2026-06-14 21:24:12 - evalscope - ERROR: Processing item in subset='release_latest' failed: Connection error.
+Traceback:
+Traceback (most recent call last):
+  File "/home/hko/evalscope-env/lib/python3.14/site-packages/httpx/_transports/default.py", line 101, in map_httpcore_exceptions
+    yield
+  File "/home/hko/evalscope-env/lib/python3.14/site-packages/httpx/_transports/default.py", line 250, in handle_request
+    resp = self._pool.handle_request(req)
+  File "/home/hko/evalscope-env/lib/python3.14/site-packages/httpcore/_sync/connection_pool.py", line 256, in handle_request
+    raise exc from None
+  File "/home/hko/evalscope-env/lib/python3.14/site-packages/httpcore/_sync/connection_pool.py", line 236, in handle_request
+    response = connection.handle_request(
+        pool_request.request
+    )
+  File "/home/hko/evalscope-env/lib/python3.14/site-packages/httpcore/_sync/connection.py", line 101, in handle_request
+    raise exc
+  File "/home/hko/evalscope-env/lib/python3.14/site-packages/httpcore/_sync/connection.py", line 78, in handle_request
+    stream = self._connect(request)
+  File "/home/hko/evalscope-env/lib/python3.14/site-packages/httpcore/_sync/connection.py", line 124, in _connect
+    stream = self._network_backend.connect_tcp(**kwargs)
+  File "/home/hko/evalscope-env/lib/python3.14/site-packages/httpcore/_backends/sync.py", line 207, in connect_tcp
+    with map_exceptions(exc_map):
+         ~~~~~~~~~~~~~~^^^^^^^^^
+  File "/usr/lib/python3.14/contextlib.py", line 162, in __exit__
+    self.gen.throw(value)
+    ~~~~~~~~~~~~~~^^^^^^^
+  File "/home/hko/evalscope-env/lib/python3.14/site-packages/httpcore/_exceptions.py", line 14, in map_exceptions
+    raise to_exc(exc) from exc
+httpcore.ConnectError: [Errno 111] Connection refused
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/home/hko/evalscope-env/lib/python3.14/site-packages/openai/_base_client.py", line 1005, in request
+    response = self._client.send(
+        request,
+        stream=stream or self._should_stream_response_body(request=request),
+        **kwargs,
+    )
+  File "/home/hko/evalscope-env/lib/python3.14/site-packages/httpx/_client.py", line 914, in send
+    response = self._send_handling_auth(
+        request,
+    ...<2 lines>...
+        history=[],
+    )
+  File "/home/hko/evalscope-env/lib/python3.14/site-packages/httpx/_client.py", line 942, in _send_handling_auth
+    response = self._send_handling_redirects(
+        request,
+        follow_redirects=follow_redirects,
+        history=history,
+    )
+  File "/home/hko/evalscope-env/lib/python3.14/site-packages/httpx/_client.py", line 979, in _send_handling_redirects
+    response = self._send_single_request(request)
+  File "/home/hko/evalscope-env/lib/python3.14/site-packages/httpx/_client.py", line 1014, in _send_single_request
+    response = transport.handle_request(request)
+  File "/home/hko/evalscope-env/lib/python3.14/site-packages/httpx/_transports/default.py", line 249, in handle_request
+    with map_httpcore_exceptions():
+         ~~~~~~~~~~~~~~~~~~~~~~~^^
+  File "/usr/lib/python3.14/contextlib.py", line 162, in __exit__
+    self.gen.throw(value)
+    ~~~~~~~~~~~~~~^^^^^^^
+  File "/home/hko/evalscope-env/lib/python3.14/site-packages/httpx/_transports/default.py", line 118, in map_httpcore_exceptions
+    raise mapped_exc(message) from exc
+httpx.ConnectError: [Errno 111] Connection refused
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/home/hko/evalscope-env/lib/python3.14/site-packages/evalscope/utils/function_utils.py", line 277, in run_in_threads_with_progress
+    result = fut.result()
+  File "/usr/lib/python3.14/concurrent/futures/_base.py", line 443, in result
+    return self.__get_result()
+           ~~~~~~~~~~~~~~~~~^^
+  File "/usr/lib/python3.14/concurrent/futures/_base.py", line 395, in __get_result
+    raise self._exception
+  File "/usr/lib/python3.14/concurrent/futures/thread.py", line 86, in run
+    result = ctx.run(self.task)
+  File "/usr/lib/python3.14/concurrent/futures/thread.py", line 73, in run
+    return fn(*args, **kwargs)
+  File "/home/hko/evalscope-env/lib/python3.14/site-packages/evalscope/evaluator/evaluator.py", line 288, in worker
+    return self._process_work_item(item, context.model_prediction_dir)
+           ~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/hko/evalscope-env/lib/python3.14/site-packages/evalscope/evaluator/evaluator.py", line 332, in _process_work_item
+    self._predict_sample(item.sample, model_prediction_dir) if item.needs_predict else item.task_state
+    ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/hko/evalscope-env/lib/python3.14/site-packages/evalscope/evaluator/evaluator.py", line 431, in _predict_sample
+    task_state = self.benchmark.run_inference(model=self.model, sample=sample, output_dir=model_prediction_dir)
+  File "/home/hko/evalscope-env/lib/python3.14/site-packages/evalscope/api/benchmark/adapters/default_data_adapter.py", line 453, in run_inference
+    model_output = self._on_inference(model, sample)
+  File "/home/hko/evalscope-env/lib/python3.14/site-packages/evalscope/api/benchmark/adapters/default_data_adapter.py", line 404, in _on_inference
+    model_output = model.generate(input=sample.input, tools=sample.tools)
+  File "/home/hko/evalscope-env/lib/python3.14/site-packages/evalscope/api/model/model.py", line 198, in generate
+    output = self.api.generate(
+        input=processed_input,
+    ...<2 lines>...
+        config=processed_config,
+    )
+  File "/home/hko/evalscope-env/lib/python3.14/site-packages/evalscope/models/openai_compatible.py", line 93, in generate
+    completion = retry_call(
+        self.client.chat.completions.create,
+    ...<2 lines>...
+        **request
+    )
+  File "/home/hko/evalscope-env/lib/python3.14/site-packages/evalscope/utils/function_utils.py", line 106, in retry_call
+    return func(*args, **kwargs)
+  File "/home/hko/evalscope-env/lib/python3.14/site-packages/openai/_utils/_utils.py", line 286, in wrapper
+    return func(*args, **kwargs)
+  File "/home/hko/evalscope-env/lib/python3.14/site-packages/openai/resources/chat/completions/completions.py", line 1211, in create
+    return self._post(
+           ~~~~~~~~~~^
+        "/chat/completions",
+        ^^^^^^^^^^^^^^^^^^^^
+    ...<47 lines>...
+        stream_cls=Stream[ChatCompletionChunk],
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "/home/hko/evalscope-env/lib/python3.14/site-packages/openai/_base_client.py", line 1297, in post
+    return cast(ResponseT, self.request(cast_to, opts, stream=stream, stream_cls=stream_cls))
+                           ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/hko/evalscope-env/lib/python3.14/site-packages/openai/_base_client.py", line 1037, in request
+    raise APIConnectionError(request=request) from err
+openai.APIConnectionError: Connection error.
+
+2026-06-14 21:24:12 - evalscope - WARNING: Error ignored, continuing with next sample.
+2026-06-14 21:24:13 - evalscope - WARNING: Attempt 1 / 5 failed: Connection error.. Retrying...
+2026-06-14 21:24:24 - evalscope - WARNING: Attempt 2 / 5 failed: Connection error.. Retrying...
+2026-06-14 21:24:36 - evalscope - WARNING: Attempt 3 / 5 failed: Connection error.. Retrying...
+2026-06-14 21:24:44 - evalscope - INFO: Evaluating[live_code_bench]  45%| 9/20 [Elapsed: 1:28:04 < Remaining: 24:30, 133.71s/it]
+2026-06-14 21:24:47 - evalscope - WARNING: Attempt 4 / 5 failed: Connection error.. Retrying...
+2026-06-14 21:24:58 - evalscope - ERROR: Processing item in subset='release_latest' failed: Connection error.
+Traceback:
+Traceback (most recent call last):
+  File "/home/hko/evalscope-env/lib/python3.14/site-packages/httpx/_transports/default.py", line 101, in map_httpcore_exceptions
+    yield
+  File "/home/hko/evalscope-env/lib/python3.14/site-packages/httpx/_transports/default.py", line 250, in handle_request
+    resp = self._pool.handle_request(req)
+  File "/home/hko/evalscope-env/lib/python3.14/site-packages/httpcore/_sync/connection_pool.py", line 256, in handle_request
+    raise exc from None
+  File "/home/hko/evalscope-env/lib/python3.14/site-packages/httpcore/_sync/connection_pool.py", line 236, in handle_request
+    response = connection.handle_request(
+        pool_request.request
+    )
+  File "/home/hko/evalscope-env/lib/python3.14/site-packages/httpcore/_sync/connection.py", line 101, in handle_request
+    raise exc
+  File "/home/hko/evalscope-env/lib/python3.14/site-packages/httpcore/_sync/connection.py", line 78, in handle_request
+    stream = self._connect(request)
+  File "/home/hko/evalscope-env/lib/python3.14/site-packages/httpcore/_sync/connection.py", line 124, in _connect
+    stream = self._network_backend.connect_tcp(**kwargs)
+  File "/home/hko/evalscope-env/lib/python3.14/site-packages/httpcore/_backends/sync.py", line 207, in connect_tcp
+    with map_exceptions(exc_map):
+         ~~~~~~~~~~~~~~^^^^^^^^^
+  File "/usr/lib/python3.14/contextlib.py", line 162, in __exit__
+    self.gen.throw(value)
+    ~~~~~~~~~~~~~~^^^^^^^
+  File "/home/hko/evalscope-env/lib/python3.14/site-packages/httpcore/_exceptions.py", line 14, in map_exceptions
+    raise to_exc(exc) from exc
+httpcore.ConnectError: [Errno 111] Connection refused
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/home/hko/evalscope-env/lib/python3.14/site-packages/openai/_base_client.py", line 1005, in request
+    response = self._client.send(
+        request,
+        stream=stream or self._should_stream_response_body(request=request),
+        **kwargs,
+    )
+  File "/home/hko/evalscope-env/lib/python3.14/site-packages/httpx/_client.py", line 914, in send
+    response = self._send_handling_auth(
+        request,
+    ...<2 lines>...
+        history=[],
+    )
+  File "/home/hko/evalscope-env/lib/python3.14/site-packages/httpx/_client.py", line 942, in _send_handling_auth
+    response = self._send_handling_redirects(
+        request,
+        follow_redirects=follow_redirects,
+        history=history,
+    )
+  File "/home/hko/evalscope-env/lib/python3.14/site-packages/httpx/_client.py", line 979, in _send_handling_redirects
+    response = self._send_single_request(request)
+  File "/home/hko/evalscope-env/lib/python3.14/site-packages/httpx/_client.py", line 1014, in _send_single_request
+    response = transport.handle_request(request)
+  File "/home/hko/evalscope-env/lib/python3.14/site-packages/httpx/_transports/default.py", line 249, in handle_request
+    with map_httpcore_exceptions():
+         ~~~~~~~~~~~~~~~~~~~~~~~^^
+  File "/usr/lib/python3.14/contextlib.py", line 162, in __exit__
+    self.gen.throw(value)
+    ~~~~~~~~~~~~~~^^^^^^^
+  File "/home/hko/evalscope-env/lib/python3.14/site-packages/httpx/_transports/default.py", line 118, in map_httpcore_exceptions
+    raise mapped_exc(message) from exc
+httpx.ConnectError: [Errno 111] Connection refused
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/home/hko/evalscope-env/lib/python3.14/site-packages/evalscope/utils/function_utils.py", line 277, in run_in_threads_with_progress
+    result = fut.result()
+  File "/usr/lib/python3.14/concurrent/futures/_base.py", line 443, in result
+    return self.__get_result()
+           ~~~~~~~~~~~~~~~~~^^
+  File "/usr/lib/python3.14/concurrent/futures/_base.py", line 395, in __get_result
+    raise self._exception
+  File "/usr/lib/python3.14/concurrent/futures/thread.py", line 86, in run
+    result = ctx.run(self.task)
+  File "/usr/lib/python3.14/concurrent/futures/thread.py", line 73, in run
+    return fn(*args, **kwargs)
+  File "/home/hko/evalscope-env/lib/python3.14/site-packages/evalscope/evaluator/evaluator.py", line 288, in worker
+    return self._process_work_item(item, context.model_prediction_dir)
+           ~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/hko/evalscope-env/lib/python3.14/site-packages/evalscope/evaluator/evaluator.py", line 332, in _process_work_item
+    self._predict_sample(item.sample, model_prediction_dir) if item.needs_predict else item.task_state
+    ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/hko/evalscope-env/lib/python3.14/site-packages/evalscope/evaluator/evaluator.py", line 431, in _predict_sample
+    task_state = self.benchmark.run_inference(model=self.model, sample=sample, output_dir=model_prediction_dir)
+  File "/home/hko/evalscope-env/lib/python3.14/site-packages/evalscope/api/benchmark/adapters/default_data_adapter.py", line 453, in run_inference
+    model_output = self._on_inference(model, sample)
+  File "/home/hko/evalscope-env/lib/python3.14/site-packages/evalscope/api/benchmark/adapters/default_data_adapter.py", line 404, in _on_inference
+    model_output = model.generate(input=sample.input, tools=sample.tools)
+  File "/home/hko/evalscope-env/lib/python3.14/site-packages/evalscope/api/model/model.py", line 198, in generate
+    output = self.api.generate(
+        input=processed_input,
+    ...<2 lines>...
+        config=processed_config,
+    )
+  File "/home/hko/evalscope-env/lib/python3.14/site-packages/evalscope/models/openai_compatible.py", line 93, in generate
+    completion = retry_call(
+        self.client.chat.completions.create,
+    ...<2 lines>...
+        **request
+    )
+  File "/home/hko/evalscope-env/lib/python3.14/site-packages/evalscope/utils/function_utils.py", line 106, in retry_call
+    return func(*args, **kwargs)
+  File "/home/hko/evalscope-env/lib/python3.14/site-packages/openai/_utils/_utils.py", line 286, in wrapper
+    return func(*args, **kwargs)
+  File "/home/hko/evalscope-env/lib/python3.14/site-packages/openai/resources/chat/completions/completions.py", line 1211, in create
+    return self._post(
+           ~~~~~~~~~~^
+        "/chat/completions",
+        ^^^^^^^^^^^^^^^^^^^^
+    ...<47 lines>...
+        stream_cls=Stream[ChatCompletionChunk],
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "/home/hko/evalscope-env/lib/python3.14/site-packages/openai/_base_client.py", line 1297, in post
+    return cast(ResponseT, self.request(cast_to, opts, stream=stream, stream_cls=stream_cls))
+                           ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/hko/evalscope-env/lib/python3.14/site-packages/openai/_base_client.py", line 1037, in request
+    raise APIConnectionError(request=request) from err
+openai.APIConnectionError: Connection error.
+
+2026-06-14 21:24:58 - evalscope - WARNING: Error ignored, continuing with next sample.
+2026-06-14 21:25:00 - evalscope - WARNING: Attempt 1 / 5 failed: Connection error.. Retrying...
+2026-06-14 21:25:11 - evalscope - WARNING: Attempt 2 / 5 failed: Connection error.. Retrying...
+2026-06-14 21:25:22 - evalscope - WARNING: Attempt 3 / 5 failed: Connection error.. Retrying...
+2026-06-14 21:25:34 - evalscope - WARNING: Attempt 4 / 5 failed: Connection error.. Retrying...
+2026-06-14 21:25:44 - evalscope - INFO: Evaluating[live_code_bench]  50%| 10/20 [Elapsed: 1:29:05 < Remaining: 17:48, 106.85s/it]
+2026-06-14 21:25:45 - evalscope - ERROR: Processing item in subset='release_latest' failed: Connection error.
+Traceback:
+Traceback (most recent call last):
+  File "/home/hko/evalscope-env/lib/python3.14/site-packages/httpx/_transports/default.py", line 101, in map_httpcore_exceptions
+    yield
+  File "/home/hko/evalscope-env/lib/python3.14/site-packages/httpx/_transports/default.py", line 250, in handle_request
+    resp = self._pool.handle_request(req)
+  File "/home/hko/evalscope-env/lib/python3.14/site-packages/httpcore/_sync/connection_pool.py", line 256, in handle_request
+    raise exc from None
+  File "/home/hko/evalscope-env/lib/python3.14/site-packages/httpcore/_sync/connection_pool.py", line 236, in handle_request
+    response = connection.handle_request(
+        pool_request.request
+    )
+  File "/home/hko/evalscope-env/lib/python3.14/site-packages/httpcore/_sync/connection.py", line 101, in handle_request
+    raise exc
+  File "/home/hko/evalscope-env/lib/python3.14/site-packages/httpcore/_sync/connection.py", line 78, in handle_request
+    stream = self._connect(request)
+  File "/home/hko/evalscope-env/lib/python3.14/site-packages/httpcore/_sync/connection.py", line 124, in _connect
+    stream = self._network_backend.connect_tcp(**kwargs)
+  File "/home/hko/evalscope-env/lib/python3.14/site-packages/httpcore/_backends/sync.py", line 207, in connect_tcp
+    with map_exceptions(exc_map):
+         ~~~~~~~~~~~~~~^^^^^^^^^
+  File "/usr/lib/python3.14/contextlib.py", line 162, in __exit__
+    self.gen.throw(value)
+    ~~~~~~~~~~~~~~^^^^^^^
+  File "/home/hko/evalscope-env/lib/python3.14/site-packages/httpcore/_exceptions.py", line 14, in map_exceptions
+    raise to_exc(exc) from exc
+httpcore.ConnectError: [Errno 111] Connection refused
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/home/hko/evalscope-env/lib/python3.14/site-packages/openai/_base_client.py", line 1005, in request
+    response = self._client.send(
+        request,
+        stream=stream or self._should_stream_response_body(request=request),
+        **kwargs,
+    )
+  File "/home/hko/evalscope-env/lib/python3.14/site-packages/httpx/_client.py", line 914, in send
+    response = self._send_handling_auth(
+        request,
+    ...<2 lines>...
+        history=[],
+    )
+  File "/home/hko/evalscope-env/lib/python3.14/site-packages/httpx/_client.py", line 942, in _send_handling_auth
+    response = self._send_handling_redirects(
+        request,
+        follow_redirects=follow_redirects,
+        history=history,
+    )
+  File "/home/hko/evalscope-env/lib/python3.14/site-packages/httpx/_client.py", line 979, in _send_handling_redirects
+    response = self._send_single_request(request)
+  File "/home/hko/evalscope-env/lib/python3.14/site-packages/httpx/_client.py", line 1014, in _send_single_request
+    response = transport.handle_request(request)
+  File "/home/hko/evalscope-env/lib/python3.14/site-packages/httpx/_transports/default.py", line 249, in handle_request
+    with map_httpcore_exceptions():
+         ~~~~~~~~~~~~~~~~~~~~~~~^^
+  File "/usr/lib/python3.14/contextlib.py", line 162, in __exit__
+    self.gen.throw(value)
+    ~~~~~~~~~~~~~~^^^^^^^
+  File "/home/hko/evalscope-env/lib/python3.14/site-packages/httpx/_transports/default.py", line 118, in map_httpcore_exceptions
+    raise mapped_exc(message) from exc
+httpx.ConnectError: [Errno 111] Connection refused
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/home/hko/evalscope-env/lib/python3.14/site-packages/evalscope/utils/function_utils.py", line 277, in run_in_threads_with_progress
+    result = fut.result()
+  File "/usr/lib/python3.14/concurrent/futures/_base.py", line 443, in result
+    return self.__get_result()
+           ~~~~~~~~~~~~~~~~~^^
+  File "/usr/lib/python3.14/concurrent/futures/_base.py", line 395, in __get_result
+    raise self._exception
+  File "/usr/lib/python3.14/concurrent/futures/thread.py", line 86, in run
+    result = ctx.run(self.task)
+  File "/usr/lib/python3.14/concurrent/futures/thread.py", line 73, in run
+    return fn(*args, **kwargs)
+  File "/home/hko/evalscope-env/lib/python3.14/site-packages/evalscope/evaluator/evaluator.py", line 288, in worker
+    return self._process_work_item(item, context.model_prediction_dir)
+           ~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/hko/evalscope-env/lib/python3.14/site-packages/evalscope/evaluator/evaluator.py", line 332, in _process_work_item
+    self._predict_sample(item.sample, model_prediction_dir) if item.needs_predict else item.task_state
+    ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/hko/evalscope-env/lib/python3.14/site-packages/evalscope/evaluator/evaluator.py", line 431, in _predict_sample
+    task_state = self.benchmark.run_inference(model=self.model, sample=sample, output_dir=model_prediction_dir)
+  File "/home/hko/evalscope-env/lib/python3.14/site-packages/evalscope/api/benchmark/adapters/default_data_adapter.py", line 453, in run_inference
+    model_output = self._on_inference(model, sample)
+  File "/home/hko/evalscope-env/lib/python3.14/site-packages/evalscope/api/benchmark/adapters/default_data_adapter.py", line 404, in _on_inference
+    model_output = model.generate(input=sample.input, tools=sample.tools)
+  File "/home/hko/evalscope-env/lib/python3.14/site-packages/evalscope/api/model/model.py", line 198, in generate
+    output = self.api.generate(
+        input=processed_input,
+    ...<2 lines>...
+        config=processed_config,
+    )
+  File "/home/hko/evalscope-env/lib/python3.14/site-packages/evalscope/models/openai_compatible.py", line 93, in generate
+    completion = retry_call(
+        self.client.chat.completions.create,
+    ...<2 lines>...
+        **request
+    )
+  File "/home/hko/evalscope-env/lib/python3.14/site-packages/evalscope/utils/function_utils.py", line 106, in retry_call
+    return func(*args, **kwargs)
+  File "/home/hko/evalscope-env/lib/python3.14/site-packages/openai/_utils/_utils.py", line 286, in wrapper
+    return func(*args, **kwargs)
+  File "/home/hko/evalscope-env/lib/python3.14/site-packages/openai/resources/chat/completions/completions.py", line 1211, in create
+    return self._post(
+           ~~~~~~~~~~^
+        "/chat/completions",
+        ^^^^^^^^^^^^^^^^^^^^
+    ...<47 lines>...
+        stream_cls=Stream[ChatCompletionChunk],
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "/home/hko/evalscope-env/lib/python3.14/site-packages/openai/_base_client.py", line 1297, in post
+    return cast(ResponseT, self.request(cast_to, opts, stream=stream, stream_cls=stream_cls))
+                           ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/hko/evalscope-env/lib/python3.14/site-packages/openai/_base_client.py", line 1037, in request
+    raise APIConnectionError(request=request) from err
+openai.APIConnectionError: Connection error.
+
+2026-06-14 21:25:45 - evalscope - WARNING: Error ignored, continuing with next sample.
+2026-06-14 21:25:46 - evalscope - WARNING: Attempt 1 / 5 failed: Connection error.. Retrying...
+2026-06-14 21:25:57 - evalscope - WARNING: Attempt 2 / 5 failed: Connection error.. Retrying...
+2026-06-14 21:26:09 - evalscope - WARNING: Attempt 3 / 5 failed: Connection error.. Retrying...
+2026-06-14 21:26:20 - evalscope - WARNING: Attempt 4 / 5 failed: Connection error.. Retrying...
+2026-06-14 21:26:31 - evalscope - ERROR: Processing item in subset='release_latest' failed: Connection error.
+Traceback:
+Traceback (most recent call last):
+  File "/home/hko/evalscope-env/lib/python3.14/site-packages/httpx/_transports/default.py", line 101, in map_httpcore_exceptions
+    yield
+  File "/home/hko/evalscope-env/lib/python3.14/site-packages/httpx/_transports/default.py", line 250, in handle_request
+    resp = self._pool.handle_request(req)
+  File "/home/hko/evalscope-env/lib/python3.14/site-packages/httpcore/_sync/connection_pool.py", line 256, in handle_request
+    raise exc from None
+  File "/home/hko/evalscope-env/lib/python3.14/site-packages/httpcore/_sync/connection_pool.py", line 236, in handle_request
+    response = connection.handle_request(
+        pool_request.request
+    )
+  File "/home/hko/evalscope-env/lib/python3.14/site-packages/httpcore/_sync/connection.py", line 101, in handle_request
+    raise exc
+  File "/home/hko/evalscope-env/lib/python3.14/site-packages/httpcore/_sync/connection.py", line 78, in handle_request
+    stream = self._connect(request)
+  File "/home/hko/evalscope-env/lib/python3.14/site-packages/httpcore/_sync/connection.py", line 124, in _connect
+    stream = self._network_backend.connect_tcp(**kwargs)
+  File "/home/hko/evalscope-env/lib/python3.14/site-packages/httpcore/_backends/sync.py", line 207, in connect_tcp
+    with map_exceptions(exc_map):
+         ~~~~~~~~~~~~~~^^^^^^^^^
+  File "/usr/lib/python3.14/contextlib.py", line 162, in __exit__
+    self.gen.throw(value)
+    ~~~~~~~~~~~~~~^^^^^^^
+  File "/home/hko/evalscope-env/lib/python3.14/site-packages/httpcore/_exceptions.py", line 14, in map_exceptions
+    raise to_exc(exc) from exc
+httpcore.ConnectError: [Errno 111] Connection refused
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/home/hko/evalscope-env/lib/python3.14/site-packages/openai/_base_client.py", line 1005, in request
+    response = self._client.send(
+        request,
+        stream=stream or self._should_stream_response_body(request=request),
+        **kwargs,
+    )
+  File "/home/hko/evalscope-env/lib/python3.14/site-packages/httpx/_client.py", line 914, in send
+    response = self._send_handling_auth(
+        request,
+    ...<2 lines>...
+        history=[],
+    )
+  File "/home/hko/evalscope-env/lib/python3.14/site-packages/httpx/_client.py", line 942, in _send_handling_auth
+    response = self._send_handling_redirects(
+        request,
+        follow_redirects=follow_redirects,
+        history=history,
+    )
+  File "/home/hko/evalscope-env/lib/python3.14/site-packages/httpx/_client.py", line 979, in _send_handling_redirects
+    response = self._send_single_request(request)
+  File "/home/hko/evalscope-env/lib/python3.14/site-packages/httpx/_client.py", line 1014, in _send_single_request
+    response = transport.handle_request(request)
+  File "/home/hko/evalscope-env/lib/python3.14/site-packages/httpx/_transports/default.py", line 249, in handle_request
+    with map_httpcore_exceptions():
+         ~~~~~~~~~~~~~~~~~~~~~~~^^
+  File "/usr/lib/python3.14/contextlib.py", line 162, in __exit__
+    self.gen.throw(value)
+    ~~~~~~~~~~~~~~^^^^^^^
+  File "/home/hko/evalscope-env/lib/python3.14/site-packages/httpx/_transports/default.py", line 118, in map_httpcore_exceptions
+    raise mapped_exc(message) from exc
+httpx.ConnectError: [Errno 111] Connection refused
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/home/hko/evalscope-env/lib/python3.14/site-packages/evalscope/utils/function_utils.py", line 277, in run_in_threads_with_progress
+    result = fut.result()
+  File "/usr/lib/python3.14/concurrent/futures/_base.py", line 443, in result
+    return self.__get_result()
+           ~~~~~~~~~~~~~~~~~^^
+  File "/usr/lib/python3.14/concurrent/futures/_base.py", line 395, in __get_result
+    raise self._exception
+  File "/usr/lib/python3.14/concurrent/futures/thread.py", line 86, in run
+    result = ctx.run(self.task)
+  File "/usr/lib/python3.14/concurrent/futures/thread.py", line 73, in run
+    return fn(*args, **kwargs)
+  File "/home/hko/evalscope-env/lib/python3.14/site-packages/evalscope/evaluator/evaluator.py", line 288, in worker
+    return self._process_work_item(item, context.model_prediction_dir)
+           ~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/hko/evalscope-env/lib/python3.14/site-packages/evalscope/evaluator/evaluator.py", line 332, in _process_work_item
+    self._predict_sample(item.sample, model_prediction_dir) if item.needs_predict else item.task_state
+    ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/hko/evalscope-env/lib/python3.14/site-packages/evalscope/evaluator/evaluator.py", line 431, in _predict_sample
+    task_state = self.benchmark.run_inference(model=self.model, sample=sample, output_dir=model_prediction_dir)
+  File "/home/hko/evalscope-env/lib/python3.14/site-packages/evalscope/api/benchmark/adapters/default_data_adapter.py", line 453, in run_inference
+    model_output = self._on_inference(model, sample)
+  File "/home/hko/evalscope-env/lib/python3.14/site-packages/evalscope/api/benchmark/adapters/default_data_adapter.py", line 404, in _on_inference
+    model_output = model.generate(input=sample.input, tools=sample.tools)
+  File "/home/hko/evalscope-env/lib/python3.14/site-packages/evalscope/api/model/model.py", line 198, in generate
+    output = self.api.generate(
+        input=processed_input,
+    ...<2 lines>...
+        config=processed_config,
+    )
+  File "/home/hko/evalscope-env/lib/python3.14/site-packages/evalscope/models/openai_compatible.py", line 93, in generate
+    completion = retry_call(
+        self.client.chat.completions.create,
+    ...<2 lines>...
+        **request
+    )
+  File "/home/hko/evalscope-env/lib/python3.14/site-packages/evalscope/utils/function_utils.py", line 106, in retry_call
+    return func(*args, **kwargs)
+  File "/home/hko/evalscope-env/lib/python3.14/site-packages/openai/_utils/_utils.py", line 286, in wrapper
+    return func(*args, **kwargs)
+  File "/home/hko/evalscope-env/lib/python3.14/site-packages/openai/resources/chat/completions/completions.py", line 1211, in create
+    return self._post(
+           ~~~~~~~~~~^
+        "/chat/completions",
+        ^^^^^^^^^^^^^^^^^^^^
+    ...<47 lines>...
+        stream_cls=Stream[ChatCompletionChunk],
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "/home/hko/evalscope-env/lib/python3.14/site-packages/openai/_base_client.py", line 1297, in post
+    return cast(ResponseT, self.request(cast_to, opts, stream=stream, stream_cls=stream_cls))
+                           ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/hko/evalscope-env/lib/python3.14/site-packages/openai/_base_client.py", line 1037, in request
+    raise APIConnectionError(request=request) from err
+openai.APIConnectionError: Connection error.
+
+2026-06-14 21:26:31 - evalscope - WARNING: Error ignored, continuing with next sample.
+2026-06-14 21:26:33 - evalscope - WARNING: Attempt 1 / 5 failed: Connection error.. Retrying...
+2026-06-14 21:26:44 - evalscope - WARNING: Attempt 2 / 5 failed: Connection error.. Retrying...
+2026-06-14 21:26:45 - evalscope - INFO: Evaluating[live_code_bench]  60%| 12/20 [Elapsed: 1:30:06 < Remaining: 10:05, 75.63s/it]
+2026-06-14 21:26:55 - evalscope - WARNING: Attempt 3 / 5 failed: Connection error.. Retrying...
+2026-06-14 21:27:07 - evalscope - WARNING: Attempt 4 / 5 failed: Connection error.. Retrying...
+2026-06-14 21:27:18 - evalscope - ERROR: Processing item in subset='release_latest' failed: Connection error.
+Traceback:
+Traceback (most recent call last):
+  File "/home/hko/evalscope-env/lib/python3.14/site-packages/httpx/_transports/default.py", line 101, in map_httpcore_exceptions
+    yield
+  File "/home/hko/evalscope-env/lib/python3.14/site-packages/httpx/_transports/default.py", line 250, in handle_request
+    resp = self._pool.handle_request(req)
+  File "/home/hko/evalscope-env/lib/python3.14/site-packages/httpcore/_sync/connection_pool.py", line 256, in handle_request
+    raise exc from None
+  File "/home/hko/evalscope-env/lib/python3.14/site-packages/httpcore/_sync/connection_pool.py", line 236, in handle_request
+    response = connection.handle_request(
+        pool_request.request
+    )
+  File "/home/hko/evalscope-env/lib/python3.14/site-packages/httpcore/_sync/connection.py", line 101, in handle_request
+    raise exc
+  File "/home/hko/evalscope-env/lib/python3.14/site-packages/httpcore/_sync/connection.py", line 78, in handle_request
+    stream = self._connect(request)
+  File "/home/hko/evalscope-env/lib/python3.14/site-packages/httpcore/_sync/connection.py", line 124, in _connect
+    stream = self._network_backend.connect_tcp(**kwargs)
+  File "/home/hko/evalscope-env/lib/python3.14/site-packages/httpcore/_backends/sync.py", line 207, in connect_tcp
+    with map_exceptions(exc_map):
+         ~~~~~~~~~~~~~~^^^^^^^^^
+  File "/usr/lib/python3.14/contextlib.py", line 162, in __exit__
+    self.gen.throw(value)
+    ~~~~~~~~~~~~~~^^^^^^^
+  File "/home/hko/evalscope-env/lib/python3.14/site-packages/httpcore/_exceptions.py", line 14, in map_exceptions
+    raise to_exc(exc) from exc
+httpcore.ConnectError: [Errno 111] Connection refused
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/home/hko/evalscope-env/lib/python3.14/site-packages/openai/_base_client.py", line 1005, in request
+    response = self._client.send(
+        request,
+        stream=stream or self._should_stream_response_body(request=request),
+        **kwargs,
+    )
+  File "/home/hko/evalscope-env/lib/python3.14/site-packages/httpx/_client.py", line 914, in send
+    response = self._send_handling_auth(
+        request,
+    ...<2 lines>...
+        history=[],
+    )
+  File "/home/hko/evalscope-env/lib/python3.14/site-packages/httpx/_client.py", line 942, in _send_handling_auth
+    response = self._send_handling_redirects(
+        request,
+        follow_redirects=follow_redirects,
+        history=history,
+    )
+  File "/home/hko/evalscope-env/lib/python3.14/site-packages/httpx/_client.py", line 979, in _send_handling_redirects
+    response = self._send_single_request(request)
+  File "/home/hko/evalscope-env/lib/python3.14/site-packages/httpx/_client.py", line 1014, in _send_single_request
+    response = transport.handle_request(request)
+  File "/home/hko/evalscope-env/lib/python3.14/site-packages/httpx/_transports/default.py", line 249, in handle_request
+    with map_httpcore_exceptions():
+         ~~~~~~~~~~~~~~~~~~~~~~~^^
+  File "/usr/lib/python3.14/contextlib.py", line 162, in __exit__
+    self.gen.throw(value)
+    ~~~~~~~~~~~~~~^^^^^^^
+  File "/home/hko/evalscope-env/lib/python3.14/site-packages/httpx/_transports/default.py", line 118, in map_httpcore_exceptions
+    raise mapped_exc(message) from exc
+httpx.ConnectError: [Errno 111] Connection refused
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/home/hko/evalscope-env/lib/python3.14/site-packages/evalscope/utils/function_utils.py", line 277, in run_in_threads_with_progress
+    result = fut.result()
+  File "/usr/lib/python3.14/concurrent/futures/_base.py", line 443, in result
+    return self.__get_result()
+           ~~~~~~~~~~~~~~~~~^^
+  File "/usr/lib/python3.14/concurrent/futures/_base.py", line 395, in __get_result
+    raise self._exception
+  File "/usr/lib/python3.14/concurrent/futures/thread.py", line 86, in run
+    result = ctx.run(self.task)
+  File "/usr/lib/python3.14/concurrent/futures/thread.py", line 73, in run
+    return fn(*args, **kwargs)
+  File "/home/hko/evalscope-env/lib/python3.14/site-packages/evalscope/evaluator/evaluator.py", line 288, in worker
+    return self._process_work_item(item, context.model_prediction_dir)
+           ~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/hko/evalscope-env/lib/python3.14/site-packages/evalscope/evaluator/evaluator.py", line 332, in _process_work_item
+    self._predict_sample(item.sample, model_prediction_dir) if item.needs_predict else item.task_state
+    ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/hko/evalscope-env/lib/python3.14/site-packages/evalscope/evaluator/evaluator.py", line 431, in _predict_sample
+    task_state = self.benchmark.run_inference(model=self.model, sample=sample, output_dir=model_prediction_dir)
+  File "/home/hko/evalscope-env/lib/python3.14/site-packages/evalscope/api/benchmark/adapters/default_data_adapter.py", line 453, in run_inference
+    model_output = self._on_inference(model, sample)
+  File "/home/hko/evalscope-env/lib/python3.14/site-packages/evalscope/api/benchmark/adapters/default_data_adapter.py", line 404, in _on_inference
+    model_output = model.generate(input=sample.input, tools=sample.tools)
+  File "/home/hko/evalscope-env/lib/python3.14/site-packages/evalscope/api/model/model.py", line 198, in generate
+    output = self.api.generate(
+        input=processed_input,
+    ...<2 lines>...
+        config=processed_config,
+    )
+  File "/home/hko/evalscope-env/lib/python3.14/site-packages/evalscope/models/openai_compatible.py", line 93, in generate
+    completion = retry_call(
+        self.client.chat.completions.create,
+    ...<2 lines>...
+        **request
+    )
+  File "/home/hko/evalscope-env/lib/python3.14/site-packages/evalscope/utils/function_utils.py", line 106, in retry_call
+    return func(*args, **kwargs)
+  File "/home/hko/evalscope-env/lib/python3.14/site-packages/openai/_utils/_utils.py", line 286, in wrapper
+    return func(*args, **kwargs)
+  File "/home/hko/evalscope-env/lib/python3.14/site-packages/openai/resources/chat/completions/completions.py", line 1211, in create
+    return self._post(
+           ~~~~~~~~~~^
+        "/chat/completions",
+        ^^^^^^^^^^^^^^^^^^^^
+    ...<47 lines>...
+        stream_cls=Stream[ChatCompletionChunk],
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "/home/hko/evalscope-env/lib/python3.14/site-packages/openai/_base_client.py", line 1297, in post
+    return cast(ResponseT, self.request(cast_to, opts, stream=stream, stream_cls=stream_cls))
+                           ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/hko/evalscope-env/lib/python3.14/site-packages/openai/_base_client.py", line 1037, in request
+    raise APIConnectionError(request=request) from err
+openai.APIConnectionError: Connection error.
+
+2026-06-14 21:27:18 - evalscope - WARNING: Error ignored, continuing with next sample.
+2026-06-14 21:27:19 - evalscope - WARNING: Attempt 1 / 5 failed: Connection error.. Retrying...
+2026-06-14 21:27:30 - evalscope - WARNING: Attempt 2 / 5 failed: Connection error.. Retrying...
+2026-06-14 21:27:42 - evalscope - WARNING: Attempt 3 / 5 failed: Connection error.. Retrying...
+2026-06-14 21:27:46 - evalscope - INFO: Evaluating[live_code_bench]  65%| 13/20 [Elapsed: 1:31:07 < Remaining: 07:47, 66.84s/it]
+2026-06-14 21:27:53 - evalscope - WARNING: Attempt 4 / 5 failed: Connection error.. Retrying...
+2026-06-14 21:28:04 - evalscope - ERROR: Processing item in subset='release_latest' failed: Connection error.
+Traceback:
+Traceback (most recent call last):
+  File "/home/hko/evalscope-env/lib/python3.14/site-packages/httpx/_transports/default.py", line 101, in map_httpcore_exceptions
+    yield
+  File "/home/hko/evalscope-env/lib/python3.14/site-packages/httpx/_transports/default.py", line 250, in handle_request
+    resp = self._pool.handle_request(req)
+  File "/home/hko/evalscope-env/lib/python3.14/site-packages/httpcore/_sync/connection_pool.py", line 256, in handle_request
+    raise exc from None
+  File "/home/hko/evalscope-env/lib/python3.14/site-packages/httpcore/_sync/connection_pool.py", line 236, in handle_request
+    response = connection.handle_request(
+        pool_request.request
+    )
+  File "/home/hko/evalscope-env/lib/python3.14/site-packages/httpcore/_sync/connection.py", line 101, in handle_request
+    raise exc
+  File "/home/hko/evalscope-env/lib/python3.14/site-packages/httpcore/_sync/connection.py", line 78, in handle_request
+    stream = self._connect(request)
+  File "/home/hko/evalscope-env/lib/python3.14/site-packages/httpcore/_sync/connection.py", line 124, in _connect
+    stream = self._network_backend.connect_tcp(**kwargs)
+  File "/home/hko/evalscope-env/lib/python3.14/site-packages/httpcore/_backends/sync.py", line 207, in connect_tcp
+    with map_exceptions(exc_map):
+         ~~~~~~~~~~~~~~^^^^^^^^^
+  File "/usr/lib/python3.14/contextlib.py", line 162, in __exit__
+    self.gen.throw(value)
+    ~~~~~~~~~~~~~~^^^^^^^
+  File "/home/hko/evalscope-env/lib/python3.14/site-packages/httpcore/_exceptions.py", line 14, in map_exceptions
+    raise to_exc(exc) from exc
+httpcore.ConnectError: [Errno 111] Connection refused
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/home/hko/evalscope-env/lib/python3.14/site-packages/openai/_base_client.py", line 1005, in request
+    response = self._client.send(
+        request,
+        stream=stream or self._should_stream_response_body(request=request),
+        **kwargs,
+    )
+  File "/home/hko/evalscope-env/lib/python3.14/site-packages/httpx/_client.py", line 914, in send
+    response = self._send_handling_auth(
+        request,
+    ...<2 lines>...
+        history=[],
+    )
+  File "/home/hko/evalscope-env/lib/python3.14/site-packages/httpx/_client.py", line 942, in _send_handling_auth
+    response = self._send_handling_redirects(
+        request,
+        follow_redirects=follow_redirects,
+        history=history,
+    )
+  File "/home/hko/evalscope-env/lib/python3.14/site-packages/httpx/_client.py", line 979, in _send_handling_redirects
+    response = self._send_single_request(request)
+  File "/home/hko/evalscope-env/lib/python3.14/site-packages/httpx/_client.py", line 1014, in _send_single_request
+    response = transport.handle_request(request)
+  File "/home/hko/evalscope-env/lib/python3.14/site-packages/httpx/_transports/default.py", line 249, in handle_request
+    with map_httpcore_exceptions():
+         ~~~~~~~~~~~~~~~~~~~~~~~^^
+  File "/usr/lib/python3.14/contextlib.py", line 162, in __exit__
+    self.gen.throw(value)
+    ~~~~~~~~~~~~~~^^^^^^^
+  File "/home/hko/evalscope-env/lib/python3.14/site-packages/httpx/_transports/default.py", line 118, in map_httpcore_exceptions
+    raise mapped_exc(message) from exc
+httpx.ConnectError: [Errno 111] Connection refused
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/home/hko/evalscope-env/lib/python3.14/site-packages/evalscope/utils/function_utils.py", line 277, in run_in_threads_with_progress
+    result = fut.result()
+  File "/usr/lib/python3.14/concurrent/futures/_base.py", line 443, in result
+    return self.__get_result()
+           ~~~~~~~~~~~~~~~~~^^
+  File "/usr/lib/python3.14/concurrent/futures/_base.py", line 395, in __get_result
+    raise self._exception
+  File "/usr/lib/python3.14/concurrent/futures/thread.py", line 86, in run
+    result = ctx.run(self.task)
+  File "/usr/lib/python3.14/concurrent/futures/thread.py", line 73, in run
+    return fn(*args, **kwargs)
+  File "/home/hko/evalscope-env/lib/python3.14/site-packages/evalscope/evaluator/evaluator.py", line 288, in worker
+    return self._process_work_item(item, context.model_prediction_dir)
+           ~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/hko/evalscope-env/lib/python3.14/site-packages/evalscope/evaluator/evaluator.py", line 332, in _process_work_item
+    self._predict_sample(item.sample, model_prediction_dir) if item.needs_predict else item.task_state
+    ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/hko/evalscope-env/lib/python3.14/site-packages/evalscope/evaluator/evaluator.py", line 431, in _predict_sample
+    task_state = self.benchmark.run_inference(model=self.model, sample=sample, output_dir=model_prediction_dir)
+  File "/home/hko/evalscope-env/lib/python3.14/site-packages/evalscope/api/benchmark/adapters/default_data_adapter.py", line 453, in run_inference
+    model_output = self._on_inference(model, sample)
+  File "/home/hko/evalscope-env/lib/python3.14/site-packages/evalscope/api/benchmark/adapters/default_data_adapter.py", line 404, in _on_inference
+    model_output = model.generate(input=sample.input, tools=sample.tools)
+  File "/home/hko/evalscope-env/lib/python3.14/site-packages/evalscope/api/model/model.py", line 198, in generate
+    output = self.api.generate(
+        input=processed_input,
+    ...<2 lines>...
+        config=processed_config,
+    )
+  File "/home/hko/evalscope-env/lib/python3.14/site-packages/evalscope/models/openai_compatible.py", line 93, in generate
+    completion = retry_call(
+        self.client.chat.completions.create,
+    ...<2 lines>...
+        **request
+    )
+  File "/home/hko/evalscope-env/lib/python3.14/site-packages/evalscope/utils/function_utils.py", line 106, in retry_call
+    return func(*args, **kwargs)
+  File "/home/hko/evalscope-env/lib/python3.14/site-packages/openai/_utils/_utils.py", line 286, in wrapper
+    return func(*args, **kwargs)
+  File "/home/hko/evalscope-env/lib/python3.14/site-packages/openai/resources/chat/completions/completions.py", line 1211, in create
+    return self._post(
+           ~~~~~~~~~~^
+        "/chat/completions",
+        ^^^^^^^^^^^^^^^^^^^^
+    ...<47 lines>...
+        stream_cls=Stream[ChatCompletionChunk],
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "/home/hko/evalscope-env/lib/python3.14/site-packages/openai/_base_client.py", line 1297, in post
+    return cast(ResponseT, self.request(cast_to, opts, stream=stream, stream_cls=stream_cls))
+                           ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/hko/evalscope-env/lib/python3.14/site-packages/openai/_base_client.py", line 1037, in request
+    raise APIConnectionError(request=request) from err
+openai.APIConnectionError: Connection error.
+
+2026-06-14 21:28:04 - evalscope - WARNING: Error ignored, continuing with next sample.
+2026-06-14 21:28:06 - evalscope - WARNING: Attempt 1 / 5 failed: Connection error.. Retrying...
+2026-06-14 21:28:17 - evalscope - WARNING: Attempt 2 / 5 failed: Connection error.. Retrying...
+2026-06-14 21:28:28 - evalscope - WARNING: Attempt 3 / 5 failed: Connection error.. Retrying...
+2026-06-14 21:28:40 - evalscope - WARNING: Attempt 4 / 5 failed: Connection error.. Retrying...
+2026-06-14 21:28:46 - evalscope - INFO: Evaluating[live_code_bench]  70%| 14/20 [Elapsed: 1:32:07 < Remaining: 06:04, 60.67s/it]
+2026-06-14 21:28:51 - evalscope - ERROR: Processing item in subset='release_latest' failed: Connection error.
+Traceback:
+Traceback (most recent call last):
+  File "/home/hko/evalscope-env/lib/python3.14/site-packages/httpx/_transports/default.py", line 101, in map_httpcore_exceptions
+    yield
+  File "/home/hko/evalscope-env/lib/python3.14/site-packages/httpx/_transports/default.py", line 250, in handle_request
+    resp = self._pool.handle_request(req)
+  File "/home/hko/evalscope-env/lib/python3.14/site-packages/httpcore/_sync/connection_pool.py", line 256, in handle_request
+    raise exc from None
+  File "/home/hko/evalscope-env/lib/python3.14/site-packages/httpcore/_sync/connection_pool.py", line 236, in handle_request
+    response = connection.handle_request(
+        pool_request.request
+    )
+  File "/home/hko/evalscope-env/lib/python3.14/site-packages/httpcore/_sync/connection.py", line 101, in handle_request
+    raise exc
+  File "/home/hko/evalscope-env/lib/python3.14/site-packages/httpcore/_sync/connection.py", line 78, in handle_request
+    stream = self._connect(request)
+  File "/home/hko/evalscope-env/lib/python3.14/site-packages/httpcore/_sync/connection.py", line 124, in _connect
+    stream = self._network_backend.connect_tcp(**kwargs)
+  File "/home/hko/evalscope-env/lib/python3.14/site-packages/httpcore/_backends/sync.py", line 207, in connect_tcp
+    with map_exceptions(exc_map):
+         ~~~~~~~~~~~~~~^^^^^^^^^
+  File "/usr/lib/python3.14/contextlib.py", line 162, in __exit__
+    self.gen.throw(value)
+    ~~~~~~~~~~~~~~^^^^^^^
+  File "/home/hko/evalscope-env/lib/python3.14/site-packages/httpcore/_exceptions.py", line 14, in map_exceptions
+    raise to_exc(exc) from exc
+httpcore.ConnectError: [Errno 111] Connection refused
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/home/hko/evalscope-env/lib/python3.14/site-packages/openai/_base_client.py", line 1005, in request
+    response = self._client.send(
+        request,
+        stream=stream or self._should_stream_response_body(request=request),
+        **kwargs,
+    )
+  File "/home/hko/evalscope-env/lib/python3.14/site-packages/httpx/_client.py", line 914, in send
+    response = self._send_handling_auth(
+        request,
+    ...<2 lines>...
+        history=[],
+    )
+  File "/home/hko/evalscope-env/lib/python3.14/site-packages/httpx/_client.py", line 942, in _send_handling_auth
+    response = self._send_handling_redirects(
+        request,
+        follow_redirects=follow_redirects,
+        history=history,
+    )
+  File "/home/hko/evalscope-env/lib/python3.14/site-packages/httpx/_client.py", line 979, in _send_handling_redirects
+    response = self._send_single_request(request)
+  File "/home/hko/evalscope-env/lib/python3.14/site-packages/httpx/_client.py", line 1014, in _send_single_request
+    response = transport.handle_request(request)
+  File "/home/hko/evalscope-env/lib/python3.14/site-packages/httpx/_transports/default.py", line 249, in handle_request
+    with map_httpcore_exceptions():
+         ~~~~~~~~~~~~~~~~~~~~~~~^^
+  File "/usr/lib/python3.14/contextlib.py", line 162, in __exit__
+    self.gen.throw(value)
+    ~~~~~~~~~~~~~~^^^^^^^
+  File "/home/hko/evalscope-env/lib/python3.14/site-packages/httpx/_transports/default.py", line 118, in map_httpcore_exceptions
+    raise mapped_exc(message) from exc
+httpx.ConnectError: [Errno 111] Connection refused
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/home/hko/evalscope-env/lib/python3.14/site-packages/evalscope/utils/function_utils.py", line 277, in run_in_threads_with_progress
+    result = fut.result()
+  File "/usr/lib/python3.14/concurrent/futures/_base.py", line 443, in result
+    return self.__get_result()
+           ~~~~~~~~~~~~~~~~~^^
+  File "/usr/lib/python3.14/concurrent/futures/_base.py", line 395, in __get_result
+    raise self._exception
+  File "/usr/lib/python3.14/concurrent/futures/thread.py", line 86, in run
+    result = ctx.run(self.task)
+  File "/usr/lib/python3.14/concurrent/futures/thread.py", line 73, in run
+    return fn(*args, **kwargs)
+  File "/home/hko/evalscope-env/lib/python3.14/site-packages/evalscope/evaluator/evaluator.py", line 288, in worker
+    return self._process_work_item(item, context.model_prediction_dir)
+           ~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/hko/evalscope-env/lib/python3.14/site-packages/evalscope/evaluator/evaluator.py", line 332, in _process_work_item
+    self._predict_sample(item.sample, model_prediction_dir) if item.needs_predict else item.task_state
+    ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/hko/evalscope-env/lib/python3.14/site-packages/evalscope/evaluator/evaluator.py", line 431, in _predict_sample
+    task_state = self.benchmark.run_inference(model=self.model, sample=sample, output_dir=model_prediction_dir)
+  File "/home/hko/evalscope-env/lib/python3.14/site-packages/evalscope/api/benchmark/adapters/default_data_adapter.py", line 453, in run_inference
+    model_output = self._on_inference(model, sample)
+  File "/home/hko/evalscope-env/lib/python3.14/site-packages/evalscope/api/benchmark/adapters/default_data_adapter.py", line 404, in _on_inference
+    model_output = model.generate(input=sample.input, tools=sample.tools)
+  File "/home/hko/evalscope-env/lib/python3.14/site-packages/evalscope/api/model/model.py", line 198, in generate
+    output = self.api.generate(
+        input=processed_input,
+    ...<2 lines>...
+        config=processed_config,
+    )
+  File "/home/hko/evalscope-env/lib/python3.14/site-packages/evalscope/models/openai_compatible.py", line 93, in generate
+    completion = retry_call(
+        self.client.chat.completions.create,
+    ...<2 lines>...
+        **request
+    )
+  File "/home/hko/evalscope-env/lib/python3.14/site-packages/evalscope/utils/function_utils.py", line 106, in retry_call
+    return func(*args, **kwargs)
+  File "/home/hko/evalscope-env/lib/python3.14/site-packages/openai/_utils/_utils.py", line 286, in wrapper
+    return func(*args, **kwargs)
+  File "/home/hko/evalscope-env/lib/python3.14/site-packages/openai/resources/chat/completions/completions.py", line 1211, in create
+    return self._post(
+           ~~~~~~~~~~^
+        "/chat/completions",
+        ^^^^^^^^^^^^^^^^^^^^
+    ...<47 lines>...
+        stream_cls=Stream[ChatCompletionChunk],
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "/home/hko/evalscope-env/lib/python3.14/site-packages/openai/_base_client.py", line 1297, in post
+    return cast(ResponseT, self.request(cast_to, opts, stream=stream, stream_cls=stream_cls))
+                           ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/hko/evalscope-env/lib/python3.14/site-packages/openai/_base_client.py", line 1037, in request
+    raise APIConnectionError(request=request) from err
+openai.APIConnectionError: Connection error.
+
+2026-06-14 21:28:51 - evalscope - WARNING: Error ignored, continuing with next sample.
+2026-06-14 21:28:52 - evalscope - WARNING: Attempt 1 / 5 failed: Connection error.. Retrying...
+2026-06-14 21:29:04 - evalscope - WARNING: Attempt 2 / 5 failed: Connection error.. Retrying...
+2026-06-14 21:29:15 - evalscope - WARNING: Attempt 3 / 5 failed: Connection error.. Retrying...
+2026-06-14 21:29:26 - evalscope - WARNING: Attempt 4 / 5 failed: Connection error.. Retrying...
+2026-06-14 21:29:38 - evalscope - ERROR: Processing item in subset='release_latest' failed: Connection error.
+Traceback:
+Traceback (most recent call last):
+  File "/home/hko/evalscope-env/lib/python3.14/site-packages/httpx/_transports/default.py", line 101, in map_httpcore_exceptions
+    yield
+  File "/home/hko/evalscope-env/lib/python3.14/site-packages/httpx/_transports/default.py", line 250, in handle_request
+    resp = self._pool.handle_request(req)
+  File "/home/hko/evalscope-env/lib/python3.14/site-packages/httpcore/_sync/connection_pool.py", line 256, in handle_request
+    raise exc from None
+  File "/home/hko/evalscope-env/lib/python3.14/site-packages/httpcore/_sync/connection_pool.py", line 236, in handle_request
+    response = connection.handle_request(
+        pool_request.request
+    )
+  File "/home/hko/evalscope-env/lib/python3.14/site-packages/httpcore/_sync/connection.py", line 101, in handle_request
+    raise exc
+  File "/home/hko/evalscope-env/lib/python3.14/site-packages/httpcore/_sync/connection.py", line 78, in handle_request
+    stream = self._connect(request)
+  File "/home/hko/evalscope-env/lib/python3.14/site-packages/httpcore/_sync/connection.py", line 124, in _connect
+    stream = self._network_backend.connect_tcp(**kwargs)
+  File "/home/hko/evalscope-env/lib/python3.14/site-packages/httpcore/_backends/sync.py", line 207, in connect_tcp
+    with map_exceptions(exc_map):
+         ~~~~~~~~~~~~~~^^^^^^^^^
+  File "/usr/lib/python3.14/contextlib.py", line 162, in __exit__
+    self.gen.throw(value)
+    ~~~~~~~~~~~~~~^^^^^^^
+  File "/home/hko/evalscope-env/lib/python3.14/site-packages/httpcore/_exceptions.py", line 14, in map_exceptions
+    raise to_exc(exc) from exc
+httpcore.ConnectError: [Errno 111] Connection refused
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/home/hko/evalscope-env/lib/python3.14/site-packages/openai/_base_client.py", line 1005, in request
+    response = self._client.send(
+        request,
+        stream=stream or self._should_stream_response_body(request=request),
+        **kwargs,
+    )
+  File "/home/hko/evalscope-env/lib/python3.14/site-packages/httpx/_client.py", line 914, in send
+    response = self._send_handling_auth(
+        request,
+    ...<2 lines>...
+        history=[],
+    )
+  File "/home/hko/evalscope-env/lib/python3.14/site-packages/httpx/_client.py", line 942, in _send_handling_auth
+    response = self._send_handling_redirects(
+        request,
+        follow_redirects=follow_redirects,
+        history=history,
+    )
+  File "/home/hko/evalscope-env/lib/python3.14/site-packages/httpx/_client.py", line 979, in _send_handling_redirects
+    response = self._send_single_request(request)
+  File "/home/hko/evalscope-env/lib/python3.14/site-packages/httpx/_client.py", line 1014, in _send_single_request
+    response = transport.handle_request(request)
+  File "/home/hko/evalscope-env/lib/python3.14/site-packages/httpx/_transports/default.py", line 249, in handle_request
+    with map_httpcore_exceptions():
+         ~~~~~~~~~~~~~~~~~~~~~~~^^
+  File "/usr/lib/python3.14/contextlib.py", line 162, in __exit__
+    self.gen.throw(value)
+    ~~~~~~~~~~~~~~^^^^^^^
+  File "/home/hko/evalscope-env/lib/python3.14/site-packages/httpx/_transports/default.py", line 118, in map_httpcore_exceptions
+    raise mapped_exc(message) from exc
+httpx.ConnectError: [Errno 111] Connection refused
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/home/hko/evalscope-env/lib/python3.14/site-packages/evalscope/utils/function_utils.py", line 277, in run_in_threads_with_progress
+    result = fut.result()
+  File "/usr/lib/python3.14/concurrent/futures/_base.py", line 443, in result
+    return self.__get_result()
+           ~~~~~~~~~~~~~~~~~^^
+  File "/usr/lib/python3.14/concurrent/futures/_base.py", line 395, in __get_result
+    raise self._exception
+  File "/usr/lib/python3.14/concurrent/futures/thread.py", line 86, in run
+    result = ctx.run(self.task)
+  File "/usr/lib/python3.14/concurrent/futures/thread.py", line 73, in run
+    return fn(*args, **kwargs)
+  File "/home/hko/evalscope-env/lib/python3.14/site-packages/evalscope/evaluator/evaluator.py", line 288, in worker
+    return self._process_work_item(item, context.model_prediction_dir)
+           ~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/hko/evalscope-env/lib/python3.14/site-packages/evalscope/evaluator/evaluator.py", line 332, in _process_work_item
+    self._predict_sample(item.sample, model_prediction_dir) if item.needs_predict else item.task_state
+    ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/hko/evalscope-env/lib/python3.14/site-packages/evalscope/evaluator/evaluator.py", line 431, in _predict_sample
+    task_state = self.benchmark.run_inference(model=self.model, sample=sample, output_dir=model_prediction_dir)
+  File "/home/hko/evalscope-env/lib/python3.14/site-packages/evalscope/api/benchmark/adapters/default_data_adapter.py", line 453, in run_inference
+    model_output = self._on_inference(model, sample)
+  File "/home/hko/evalscope-env/lib/python3.14/site-packages/evalscope/api/benchmark/adapters/default_data_adapter.py", line 404, in _on_inference
+    model_output = model.generate(input=sample.input, tools=sample.tools)
+  File "/home/hko/evalscope-env/lib/python3.14/site-packages/evalscope/api/model/model.py", line 198, in generate
+    output = self.api.generate(
+        input=processed_input,
+    ...<2 lines>...
+        config=processed_config,
+    )
+  File "/home/hko/evalscope-env/lib/python3.14/site-packages/evalscope/models/openai_compatible.py", line 93, in generate
+    completion = retry_call(
+        self.client.chat.completions.create,
+    ...<2 lines>...
+        **request
+    )
+  File "/home/hko/evalscope-env/lib/python3.14/site-packages/evalscope/utils/function_utils.py", line 106, in retry_call
+    return func(*args, **kwargs)
+  File "/home/hko/evalscope-env/lib/python3.14/site-packages/openai/_utils/_utils.py", line 286, in wrapper
+    return func(*args, **kwargs)
+  File "/home/hko/evalscope-env/lib/python3.14/site-packages/openai/resources/chat/completions/completions.py", line 1211, in create
+    return self._post(
+           ~~~~~~~~~~^
+        "/chat/completions",
+        ^^^^^^^^^^^^^^^^^^^^
+    ...<47 lines>...
+        stream_cls=Stream[ChatCompletionChunk],
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "/home/hko/evalscope-env/lib/python3.14/site-packages/openai/_base_client.py", line 1297, in post
+    return cast(ResponseT, self.request(cast_to, opts, stream=stream, stream_cls=stream_cls))
+                           ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/hko/evalscope-env/lib/python3.14/site-packages/openai/_base_client.py", line 1037, in request
+    raise APIConnectionError(request=request) from err
+openai.APIConnectionError: Connection error.
+
+2026-06-14 21:29:38 - evalscope - WARNING: Error ignored, continuing with next sample.
+2026-06-14 21:29:39 - evalscope - WARNING: Attempt 1 / 5 failed: Connection error.. Retrying...
+2026-06-14 21:29:47 - evalscope - INFO: Evaluating[live_code_bench]  80%| 16/20 [Elapsed: 1:33:07 < Remaining: 03:33, 53.49s/it]
+2026-06-14 21:29:50 - evalscope - WARNING: Attempt 2 / 5 failed: Connection error.. Retrying...
+2026-06-14 21:30:02 - evalscope - WARNING: Attempt 3 / 5 failed: Connection error.. Retrying...
+2026-06-14 21:30:13 - evalscope - WARNING: Attempt 4 / 5 failed: Connection error.. Retrying...
+2026-06-14 21:30:24 - evalscope - ERROR: Processing item in subset='release_latest' failed: Connection error.
+Traceback:
+Traceback (most recent call last):
+  File "/home/hko/evalscope-env/lib/python3.14/site-packages/httpx/_transports/default.py", line 101, in map_httpcore_exceptions
+    yield
+  File "/home/hko/evalscope-env/lib/python3.14/site-packages/httpx/_transports/default.py", line 250, in handle_request
+    resp = self._pool.handle_request(req)
+  File "/home/hko/evalscope-env/lib/python3.14/site-packages/httpcore/_sync/connection_pool.py", line 256, in handle_request
+    raise exc from None
+  File "/home/hko/evalscope-env/lib/python3.14/site-packages/httpcore/_sync/connection_pool.py", line 236, in handle_request
+    response = connection.handle_request(
+        pool_request.request
+    )
+  File "/home/hko/evalscope-env/lib/python3.14/site-packages/httpcore/_sync/connection.py", line 101, in handle_request
+    raise exc
+  File "/home/hko/evalscope-env/lib/python3.14/site-packages/httpcore/_sync/connection.py", line 78, in handle_request
+    stream = self._connect(request)
+  File "/home/hko/evalscope-env/lib/python3.14/site-packages/httpcore/_sync/connection.py", line 124, in _connect
+    stream = self._network_backend.connect_tcp(**kwargs)
+  File "/home/hko/evalscope-env/lib/python3.14/site-packages/httpcore/_backends/sync.py", line 207, in connect_tcp
+    with map_exceptions(exc_map):
+         ~~~~~~~~~~~~~~^^^^^^^^^
+  File "/usr/lib/python3.14/contextlib.py", line 162, in __exit__
+    self.gen.throw(value)
+    ~~~~~~~~~~~~~~^^^^^^^
+  File "/home/hko/evalscope-env/lib/python3.14/site-packages/httpcore/_exceptions.py", line 14, in map_exceptions
+    raise to_exc(exc) from exc
+httpcore.ConnectError: [Errno 111] Connection refused
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/home/hko/evalscope-env/lib/python3.14/site-packages/openai/_base_client.py", line 1005, in request
+    response = self._client.send(
+        request,
+        stream=stream or self._should_stream_response_body(request=request),
+        **kwargs,
+    )
+  File "/home/hko/evalscope-env/lib/python3.14/site-packages/httpx/_client.py", line 914, in send
+    response = self._send_handling_auth(
+        request,
+    ...<2 lines>...
+        history=[],
+    )
+  File "/home/hko/evalscope-env/lib/python3.14/site-packages/httpx/_client.py", line 942, in _send_handling_auth
+    response = self._send_handling_redirects(
+        request,
+        follow_redirects=follow_redirects,
+        history=history,
+    )
+  File "/home/hko/evalscope-env/lib/python3.14/site-packages/httpx/_client.py", line 979, in _send_handling_redirects
+    response = self._send_single_request(request)
+  File "/home/hko/evalscope-env/lib/python3.14/site-packages/httpx/_client.py", line 1014, in _send_single_request
+    response = transport.handle_request(request)
+  File "/home/hko/evalscope-env/lib/python3.14/site-packages/httpx/_transports/default.py", line 249, in handle_request
+    with map_httpcore_exceptions():
+         ~~~~~~~~~~~~~~~~~~~~~~~^^
+  File "/usr/lib/python3.14/contextlib.py", line 162, in __exit__
+    self.gen.throw(value)
+    ~~~~~~~~~~~~~~^^^^^^^
+  File "/home/hko/evalscope-env/lib/python3.14/site-packages/httpx/_transports/default.py", line 118, in map_httpcore_exceptions
+    raise mapped_exc(message) from exc
+httpx.ConnectError: [Errno 111] Connection refused
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/home/hko/evalscope-env/lib/python3.14/site-packages/evalscope/utils/function_utils.py", line 277, in run_in_threads_with_progress
+    result = fut.result()
+  File "/usr/lib/python3.14/concurrent/futures/_base.py", line 443, in result
+    return self.__get_result()
+           ~~~~~~~~~~~~~~~~~^^
+  File "/usr/lib/python3.14/concurrent/futures/_base.py", line 395, in __get_result
+    raise self._exception
+  File "/usr/lib/python3.14/concurrent/futures/thread.py", line 86, in run
+    result = ctx.run(self.task)
+  File "/usr/lib/python3.14/concurrent/futures/thread.py", line 73, in run
+    return fn(*args, **kwargs)
+  File "/home/hko/evalscope-env/lib/python3.14/site-packages/evalscope/evaluator/evaluator.py", line 288, in worker
+    return self._process_work_item(item, context.model_prediction_dir)
+           ~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/hko/evalscope-env/lib/python3.14/site-packages/evalscope/evaluator/evaluator.py", line 332, in _process_work_item
+    self._predict_sample(item.sample, model_prediction_dir) if item.needs_predict else item.task_state
+    ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/hko/evalscope-env/lib/python3.14/site-packages/evalscope/evaluator/evaluator.py", line 431, in _predict_sample
+    task_state = self.benchmark.run_inference(model=self.model, sample=sample, output_dir=model_prediction_dir)
+  File "/home/hko/evalscope-env/lib/python3.14/site-packages/evalscope/api/benchmark/adapters/default_data_adapter.py", line 453, in run_inference
+    model_output = self._on_inference(model, sample)
+  File "/home/hko/evalscope-env/lib/python3.14/site-packages/evalscope/api/benchmark/adapters/default_data_adapter.py", line 404, in _on_inference
+    model_output = model.generate(input=sample.input, tools=sample.tools)
+  File "/home/hko/evalscope-env/lib/python3.14/site-packages/evalscope/api/model/model.py", line 198, in generate
+    output = self.api.generate(
+        input=processed_input,
+    ...<2 lines>...
+        config=processed_config,
+    )
+  File "/home/hko/evalscope-env/lib/python3.14/site-packages/evalscope/models/openai_compatible.py", line 93, in generate
+    completion = retry_call(
+        self.client.chat.completions.create,
+    ...<2 lines>...
+        **request
+    )
+  File "/home/hko/evalscope-env/lib/python3.14/site-packages/evalscope/utils/function_utils.py", line 106, in retry_call
+    return func(*args, **kwargs)
+  File "/home/hko/evalscope-env/lib/python3.14/site-packages/openai/_utils/_utils.py", line 286, in wrapper
+    return func(*args, **kwargs)
+  File "/home/hko/evalscope-env/lib/python3.14/site-packages/openai/resources/chat/completions/completions.py", line 1211, in create
+    return self._post(
+           ~~~~~~~~~~^
+        "/chat/completions",
+        ^^^^^^^^^^^^^^^^^^^^
+    ...<47 lines>...
+        stream_cls=Stream[ChatCompletionChunk],
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "/home/hko/evalscope-env/lib/python3.14/site-packages/openai/_base_client.py", line 1297, in post
+    return cast(ResponseT, self.request(cast_to, opts, stream=stream, stream_cls=stream_cls))
+                           ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/hko/evalscope-env/lib/python3.14/site-packages/openai/_base_client.py", line 1037, in request
+    raise APIConnectionError(request=request) from err
+openai.APIConnectionError: Connection error.
+
+2026-06-14 21:30:24 - evalscope - WARNING: Error ignored, continuing with next sample.
+2026-06-14 21:30:26 - evalscope - WARNING: Attempt 1 / 5 failed: Connection error.. Retrying...
+2026-06-14 21:30:37 - evalscope - WARNING: Attempt 2 / 5 failed: Connection error.. Retrying...
+2026-06-14 21:30:47 - evalscope - INFO: Evaluating[live_code_bench]  85%| 17/20 [Elapsed: 1:34:08 < Remaining: 02:34, 51.45s/it]
+2026-06-14 21:30:48 - evalscope - WARNING: Attempt 3 / 5 failed: Connection error.. Retrying...
+2026-06-14 21:31:00 - evalscope - WARNING: Attempt 4 / 5 failed: Connection error.. Retrying...
+2026-06-14 21:31:11 - evalscope - ERROR: Processing item in subset='release_latest' failed: Connection error.
+Traceback:
+Traceback (most recent call last):
+  File "/home/hko/evalscope-env/lib/python3.14/site-packages/httpx/_transports/default.py", line 101, in map_httpcore_exceptions
+    yield
+  File "/home/hko/evalscope-env/lib/python3.14/site-packages/httpx/_transports/default.py", line 250, in handle_request
+    resp = self._pool.handle_request(req)
+  File "/home/hko/evalscope-env/lib/python3.14/site-packages/httpcore/_sync/connection_pool.py", line 256, in handle_request
+    raise exc from None
+  File "/home/hko/evalscope-env/lib/python3.14/site-packages/httpcore/_sync/connection_pool.py", line 236, in handle_request
+    response = connection.handle_request(
+        pool_request.request
+    )
+  File "/home/hko/evalscope-env/lib/python3.14/site-packages/httpcore/_sync/connection.py", line 101, in handle_request
+    raise exc
+  File "/home/hko/evalscope-env/lib/python3.14/site-packages/httpcore/_sync/connection.py", line 78, in handle_request
+    stream = self._connect(request)
+  File "/home/hko/evalscope-env/lib/python3.14/site-packages/httpcore/_sync/connection.py", line 124, in _connect
+    stream = self._network_backend.connect_tcp(**kwargs)
+  File "/home/hko/evalscope-env/lib/python3.14/site-packages/httpcore/_backends/sync.py", line 207, in connect_tcp
+    with map_exceptions(exc_map):
+         ~~~~~~~~~~~~~~^^^^^^^^^
+  File "/usr/lib/python3.14/contextlib.py", line 162, in __exit__
+    self.gen.throw(value)
+    ~~~~~~~~~~~~~~^^^^^^^
+  File "/home/hko/evalscope-env/lib/python3.14/site-packages/httpcore/_exceptions.py", line 14, in map_exceptions
+    raise to_exc(exc) from exc
+httpcore.ConnectError: [Errno 111] Connection refused
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/home/hko/evalscope-env/lib/python3.14/site-packages/openai/_base_client.py", line 1005, in request
+    response = self._client.send(
+        request,
+        stream=stream or self._should_stream_response_body(request=request),
+        **kwargs,
+    )
+  File "/home/hko/evalscope-env/lib/python3.14/site-packages/httpx/_client.py", line 914, in send
+    response = self._send_handling_auth(
+        request,
+    ...<2 lines>...
+        history=[],
+    )
+  File "/home/hko/evalscope-env/lib/python3.14/site-packages/httpx/_client.py", line 942, in _send_handling_auth
+    response = self._send_handling_redirects(
+        request,
+        follow_redirects=follow_redirects,
+        history=history,
+    )
+  File "/home/hko/evalscope-env/lib/python3.14/site-packages/httpx/_client.py", line 979, in _send_handling_redirects
+    response = self._send_single_request(request)
+  File "/home/hko/evalscope-env/lib/python3.14/site-packages/httpx/_client.py", line 1014, in _send_single_request
+    response = transport.handle_request(request)
+  File "/home/hko/evalscope-env/lib/python3.14/site-packages/httpx/_transports/default.py", line 249, in handle_request
+    with map_httpcore_exceptions():
+         ~~~~~~~~~~~~~~~~~~~~~~~^^
+  File "/usr/lib/python3.14/contextlib.py", line 162, in __exit__
+    self.gen.throw(value)
+    ~~~~~~~~~~~~~~^^^^^^^
+  File "/home/hko/evalscope-env/lib/python3.14/site-packages/httpx/_transports/default.py", line 118, in map_httpcore_exceptions
+    raise mapped_exc(message) from exc
+httpx.ConnectError: [Errno 111] Connection refused
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/home/hko/evalscope-env/lib/python3.14/site-packages/evalscope/utils/function_utils.py", line 277, in run_in_threads_with_progress
+    result = fut.result()
+  File "/usr/lib/python3.14/concurrent/futures/_base.py", line 443, in result
+    return self.__get_result()
+           ~~~~~~~~~~~~~~~~~^^
+  File "/usr/lib/python3.14/concurrent/futures/_base.py", line 395, in __get_result
+    raise self._exception
+  File "/usr/lib/python3.14/concurrent/futures/thread.py", line 86, in run
+    result = ctx.run(self.task)
+  File "/usr/lib/python3.14/concurrent/futures/thread.py", line 73, in run
+    return fn(*args, **kwargs)
+  File "/home/hko/evalscope-env/lib/python3.14/site-packages/evalscope/evaluator/evaluator.py", line 288, in worker
+    return self._process_work_item(item, context.model_prediction_dir)
+           ~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/hko/evalscope-env/lib/python3.14/site-packages/evalscope/evaluator/evaluator.py", line 332, in _process_work_item
+    self._predict_sample(item.sample, model_prediction_dir) if item.needs_predict else item.task_state
+    ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/hko/evalscope-env/lib/python3.14/site-packages/evalscope/evaluator/evaluator.py", line 431, in _predict_sample
+    task_state = self.benchmark.run_inference(model=self.model, sample=sample, output_dir=model_prediction_dir)
+  File "/home/hko/evalscope-env/lib/python3.14/site-packages/evalscope/api/benchmark/adapters/default_data_adapter.py", line 453, in run_inference
+    model_output = self._on_inference(model, sample)
+  File "/home/hko/evalscope-env/lib/python3.14/site-packages/evalscope/api/benchmark/adapters/default_data_adapter.py", line 404, in _on_inference
+    model_output = model.generate(input=sample.input, tools=sample.tools)
+  File "/home/hko/evalscope-env/lib/python3.14/site-packages/evalscope/api/model/model.py", line 198, in generate
+    output = self.api.generate(
+        input=processed_input,
+    ...<2 lines>...
+        config=processed_config,
+    )
+  File "/home/hko/evalscope-env/lib/python3.14/site-packages/evalscope/models/openai_compatible.py", line 93, in generate
+    completion = retry_call(
+        self.client.chat.completions.create,
+    ...<2 lines>...
+        **request
+    )
+  File "/home/hko/evalscope-env/lib/python3.14/site-packages/evalscope/utils/function_utils.py", line 106, in retry_call
+    return func(*args, **kwargs)
+  File "/home/hko/evalscope-env/lib/python3.14/site-packages/openai/_utils/_utils.py", line 286, in wrapper
+    return func(*args, **kwargs)
+  File "/home/hko/evalscope-env/lib/python3.14/site-packages/openai/resources/chat/completions/completions.py", line 1211, in create
+    return self._post(
+           ~~~~~~~~~~^
+        "/chat/completions",
+        ^^^^^^^^^^^^^^^^^^^^
+    ...<47 lines>...
+        stream_cls=Stream[ChatCompletionChunk],
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "/home/hko/evalscope-env/lib/python3.14/site-packages/openai/_base_client.py", line 1297, in post
+    return cast(ResponseT, self.request(cast_to, opts, stream=stream, stream_cls=stream_cls))
+                           ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/hko/evalscope-env/lib/python3.14/site-packages/openai/_base_client.py", line 1037, in request
+    raise APIConnectionError(request=request) from err
+openai.APIConnectionError: Connection error.
+
+2026-06-14 21:31:11 - evalscope - WARNING: Error ignored, continuing with next sample.
+2026-06-14 21:31:12 - evalscope - WARNING: Attempt 1 / 5 failed: Connection error.. Retrying...
+2026-06-14 21:31:24 - evalscope - WARNING: Attempt 2 / 5 failed: Connection error.. Retrying...
+2026-06-14 21:31:35 - evalscope - WARNING: Attempt 3 / 5 failed: Connection error.. Retrying...
+2026-06-14 21:31:46 - evalscope - WARNING: Attempt 4 / 5 failed: Connection error.. Retrying...
+2026-06-14 21:31:48 - evalscope - INFO: Evaluating[live_code_bench]  90%| 18/20 [Elapsed: 1:35:09 < Remaining: 01:40, 50.03s/it]
+2026-06-14 21:31:58 - evalscope - ERROR: Processing item in subset='release_latest' failed: Connection error.
+Traceback:
+Traceback (most recent call last):
+  File "/home/hko/evalscope-env/lib/python3.14/site-packages/httpx/_transports/default.py", line 101, in map_httpcore_exceptions
+    yield
+  File "/home/hko/evalscope-env/lib/python3.14/site-packages/httpx/_transports/default.py", line 250, in handle_request
+    resp = self._pool.handle_request(req)
+  File "/home/hko/evalscope-env/lib/python3.14/site-packages/httpcore/_sync/connection_pool.py", line 256, in handle_request
+    raise exc from None
+  File "/home/hko/evalscope-env/lib/python3.14/site-packages/httpcore/_sync/connection_pool.py", line 236, in handle_request
+    response = connection.handle_request(
+        pool_request.request
+    )
+  File "/home/hko/evalscope-env/lib/python3.14/site-packages/httpcore/_sync/connection.py", line 101, in handle_request
+    raise exc
+  File "/home/hko/evalscope-env/lib/python3.14/site-packages/httpcore/_sync/connection.py", line 78, in handle_request
+    stream = self._connect(request)
+  File "/home/hko/evalscope-env/lib/python3.14/site-packages/httpcore/_sync/connection.py", line 124, in _connect
+    stream = self._network_backend.connect_tcp(**kwargs)
+  File "/home/hko/evalscope-env/lib/python3.14/site-packages/httpcore/_backends/sync.py", line 207, in connect_tcp
+    with map_exceptions(exc_map):
+         ~~~~~~~~~~~~~~^^^^^^^^^
+  File "/usr/lib/python3.14/contextlib.py", line 162, in __exit__
+    self.gen.throw(value)
+    ~~~~~~~~~~~~~~^^^^^^^
+  File "/home/hko/evalscope-env/lib/python3.14/site-packages/httpcore/_exceptions.py", line 14, in map_exceptions
+    raise to_exc(exc) from exc
+httpcore.ConnectError: [Errno 111] Connection refused
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/home/hko/evalscope-env/lib/python3.14/site-packages/openai/_base_client.py", line 1005, in request
+    response = self._client.send(
+        request,
+        stream=stream or self._should_stream_response_body(request=request),
+        **kwargs,
+    )
+  File "/home/hko/evalscope-env/lib/python3.14/site-packages/httpx/_client.py", line 914, in send
+    response = self._send_handling_auth(
+        request,
+    ...<2 lines>...
+        history=[],
+    )
+  File "/home/hko/evalscope-env/lib/python3.14/site-packages/httpx/_client.py", line 942, in _send_handling_auth
+    response = self._send_handling_redirects(
+        request,
+        follow_redirects=follow_redirects,
+        history=history,
+    )
+  File "/home/hko/evalscope-env/lib/python3.14/site-packages/httpx/_client.py", line 979, in _send_handling_redirects
+    response = self._send_single_request(request)
+  File "/home/hko/evalscope-env/lib/python3.14/site-packages/httpx/_client.py", line 1014, in _send_single_request
+    response = transport.handle_request(request)
+  File "/home/hko/evalscope-env/lib/python3.14/site-packages/httpx/_transports/default.py", line 249, in handle_request
+    with map_httpcore_exceptions():
+         ~~~~~~~~~~~~~~~~~~~~~~~^^
+  File "/usr/lib/python3.14/contextlib.py", line 162, in __exit__
+    self.gen.throw(value)
+    ~~~~~~~~~~~~~~^^^^^^^
+  File "/home/hko/evalscope-env/lib/python3.14/site-packages/httpx/_transports/default.py", line 118, in map_httpcore_exceptions
+    raise mapped_exc(message) from exc
+httpx.ConnectError: [Errno 111] Connection refused
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/home/hko/evalscope-env/lib/python3.14/site-packages/evalscope/utils/function_utils.py", line 277, in run_in_threads_with_progress
+    result = fut.result()
+  File "/usr/lib/python3.14/concurrent/futures/_base.py", line 443, in result
+    return self.__get_result()
+           ~~~~~~~~~~~~~~~~~^^
+  File "/usr/lib/python3.14/concurrent/futures/_base.py", line 395, in __get_result
+    raise self._exception
+  File "/usr/lib/python3.14/concurrent/futures/thread.py", line 86, in run
+    result = ctx.run(self.task)
+  File "/usr/lib/python3.14/concurrent/futures/thread.py", line 73, in run
+    return fn(*args, **kwargs)
+  File "/home/hko/evalscope-env/lib/python3.14/site-packages/evalscope/evaluator/evaluator.py", line 288, in worker
+    return self._process_work_item(item, context.model_prediction_dir)
+           ~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/hko/evalscope-env/lib/python3.14/site-packages/evalscope/evaluator/evaluator.py", line 332, in _process_work_item
+    self._predict_sample(item.sample, model_prediction_dir) if item.needs_predict else item.task_state
+    ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/hko/evalscope-env/lib/python3.14/site-packages/evalscope/evaluator/evaluator.py", line 431, in _predict_sample
+    task_state = self.benchmark.run_inference(model=self.model, sample=sample, output_dir=model_prediction_dir)
+  File "/home/hko/evalscope-env/lib/python3.14/site-packages/evalscope/api/benchmark/adapters/default_data_adapter.py", line 453, in run_inference
+    model_output = self._on_inference(model, sample)
+  File "/home/hko/evalscope-env/lib/python3.14/site-packages/evalscope/api/benchmark/adapters/default_data_adapter.py", line 404, in _on_inference
+    model_output = model.generate(input=sample.input, tools=sample.tools)
+  File "/home/hko/evalscope-env/lib/python3.14/site-packages/evalscope/api/model/model.py", line 198, in generate
+    output = self.api.generate(
+        input=processed_input,
+    ...<2 lines>...
+        config=processed_config,
+    )
+  File "/home/hko/evalscope-env/lib/python3.14/site-packages/evalscope/models/openai_compatible.py", line 93, in generate
+    completion = retry_call(
+        self.client.chat.completions.create,
+    ...<2 lines>...
+        **request
+    )
+  File "/home/hko/evalscope-env/lib/python3.14/site-packages/evalscope/utils/function_utils.py", line 106, in retry_call
+    return func(*args, **kwargs)
+  File "/home/hko/evalscope-env/lib/python3.14/site-packages/openai/_utils/_utils.py", line 286, in wrapper
+    return func(*args, **kwargs)
+  File "/home/hko/evalscope-env/lib/python3.14/site-packages/openai/resources/chat/completions/completions.py", line 1211, in create
+    return self._post(
+           ~~~~~~~~~~^
+        "/chat/completions",
+        ^^^^^^^^^^^^^^^^^^^^
+    ...<47 lines>...
+        stream_cls=Stream[ChatCompletionChunk],
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "/home/hko/evalscope-env/lib/python3.14/site-packages/openai/_base_client.py", line 1297, in post
+    return cast(ResponseT, self.request(cast_to, opts, stream=stream, stream_cls=stream_cls))
+                           ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/hko/evalscope-env/lib/python3.14/site-packages/openai/_base_client.py", line 1037, in request
+    raise APIConnectionError(request=request) from err
+openai.APIConnectionError: Connection error.
+
+2026-06-14 21:31:58 - evalscope - WARNING: Error ignored, continuing with next sample.
+2026-06-14 21:31:59 - evalscope - WARNING: Attempt 1 / 5 failed: Connection error.. Retrying...
+2026-06-14 21:32:10 - evalscope - WARNING: Attempt 2 / 5 failed: Connection error.. Retrying...
+2026-06-14 21:32:22 - evalscope - WARNING: Attempt 3 / 5 failed: Connection error.. Retrying...
+2026-06-14 21:32:33 - evalscope - WARNING: Attempt 4 / 5 failed: Connection error.. Retrying...
+2026-06-14 21:32:44 - evalscope - ERROR: Processing item in subset='release_latest' failed: Connection error.
+Traceback:
+Traceback (most recent call last):
+  File "/home/hko/evalscope-env/lib/python3.14/site-packages/httpx/_transports/default.py", line 101, in map_httpcore_exceptions
+    yield
+  File "/home/hko/evalscope-env/lib/python3.14/site-packages/httpx/_transports/default.py", line 250, in handle_request
+    resp = self._pool.handle_request(req)
+  File "/home/hko/evalscope-env/lib/python3.14/site-packages/httpcore/_sync/connection_pool.py", line 256, in handle_request
+    raise exc from None
+  File "/home/hko/evalscope-env/lib/python3.14/site-packages/httpcore/_sync/connection_pool.py", line 236, in handle_request
+    response = connection.handle_request(
+        pool_request.request
+    )
+  File "/home/hko/evalscope-env/lib/python3.14/site-packages/httpcore/_sync/connection.py", line 101, in handle_request
+    raise exc
+  File "/home/hko/evalscope-env/lib/python3.14/site-packages/httpcore/_sync/connection.py", line 78, in handle_request
+    stream = self._connect(request)
+  File "/home/hko/evalscope-env/lib/python3.14/site-packages/httpcore/_sync/connection.py", line 124, in _connect
+    stream = self._network_backend.connect_tcp(**kwargs)
+  File "/home/hko/evalscope-env/lib/python3.14/site-packages/httpcore/_backends/sync.py", line 207, in connect_tcp
+    with map_exceptions(exc_map):
+         ~~~~~~~~~~~~~~^^^^^^^^^
+  File "/usr/lib/python3.14/contextlib.py", line 162, in __exit__
+    self.gen.throw(value)
+    ~~~~~~~~~~~~~~^^^^^^^
+  File "/home/hko/evalscope-env/lib/python3.14/site-packages/httpcore/_exceptions.py", line 14, in map_exceptions
+    raise to_exc(exc) from exc
+httpcore.ConnectError: [Errno 111] Connection refused
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/home/hko/evalscope-env/lib/python3.14/site-packages/openai/_base_client.py", line 1005, in request
+    response = self._client.send(
+        request,
+        stream=stream or self._should_stream_response_body(request=request),
+        **kwargs,
+    )
+  File "/home/hko/evalscope-env/lib/python3.14/site-packages/httpx/_client.py", line 914, in send
+    response = self._send_handling_auth(
+        request,
+    ...<2 lines>...
+        history=[],
+    )
+  File "/home/hko/evalscope-env/lib/python3.14/site-packages/httpx/_client.py", line 942, in _send_handling_auth
+    response = self._send_handling_redirects(
+        request,
+        follow_redirects=follow_redirects,
+        history=history,
+    )
+  File "/home/hko/evalscope-env/lib/python3.14/site-packages/httpx/_client.py", line 979, in _send_handling_redirects
+    response = self._send_single_request(request)
+  File "/home/hko/evalscope-env/lib/python3.14/site-packages/httpx/_client.py", line 1014, in _send_single_request
+    response = transport.handle_request(request)
+  File "/home/hko/evalscope-env/lib/python3.14/site-packages/httpx/_transports/default.py", line 249, in handle_request
+    with map_httpcore_exceptions():
+         ~~~~~~~~~~~~~~~~~~~~~~~^^
+  File "/usr/lib/python3.14/contextlib.py", line 162, in __exit__
+    self.gen.throw(value)
+    ~~~~~~~~~~~~~~^^^^^^^
+  File "/home/hko/evalscope-env/lib/python3.14/site-packages/httpx/_transports/default.py", line 118, in map_httpcore_exceptions
+    raise mapped_exc(message) from exc
+httpx.ConnectError: [Errno 111] Connection refused
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/home/hko/evalscope-env/lib/python3.14/site-packages/evalscope/utils/function_utils.py", line 277, in run_in_threads_with_progress
+    result = fut.result()
+  File "/usr/lib/python3.14/concurrent/futures/_base.py", line 443, in result
+    return self.__get_result()
+           ~~~~~~~~~~~~~~~~~^^
+  File "/usr/lib/python3.14/concurrent/futures/_base.py", line 395, in __get_result
+    raise self._exception
+  File "/usr/lib/python3.14/concurrent/futures/thread.py", line 86, in run
+    result = ctx.run(self.task)
+  File "/usr/lib/python3.14/concurrent/futures/thread.py", line 73, in run
+    return fn(*args, **kwargs)
+  File "/home/hko/evalscope-env/lib/python3.14/site-packages/evalscope/evaluator/evaluator.py", line 288, in worker
+    return self._process_work_item(item, context.model_prediction_dir)
+           ~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/hko/evalscope-env/lib/python3.14/site-packages/evalscope/evaluator/evaluator.py", line 332, in _process_work_item
+    self._predict_sample(item.sample, model_prediction_dir) if item.needs_predict else item.task_state
+    ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/hko/evalscope-env/lib/python3.14/site-packages/evalscope/evaluator/evaluator.py", line 431, in _predict_sample
+    task_state = self.benchmark.run_inference(model=self.model, sample=sample, output_dir=model_prediction_dir)
+  File "/home/hko/evalscope-env/lib/python3.14/site-packages/evalscope/api/benchmark/adapters/default_data_adapter.py", line 453, in run_inference
+    model_output = self._on_inference(model, sample)
+  File "/home/hko/evalscope-env/lib/python3.14/site-packages/evalscope/api/benchmark/adapters/default_data_adapter.py", line 404, in _on_inference
+    model_output = model.generate(input=sample.input, tools=sample.tools)
+  File "/home/hko/evalscope-env/lib/python3.14/site-packages/evalscope/api/model/model.py", line 198, in generate
+    output = self.api.generate(
+        input=processed_input,
+    ...<2 lines>...
+        config=processed_config,
+    )
+  File "/home/hko/evalscope-env/lib/python3.14/site-packages/evalscope/models/openai_compatible.py", line 93, in generate
+    completion = retry_call(
+        self.client.chat.completions.create,
+    ...<2 lines>...
+        **request
+    )
+  File "/home/hko/evalscope-env/lib/python3.14/site-packages/evalscope/utils/function_utils.py", line 106, in retry_call
+    return func(*args, **kwargs)
+  File "/home/hko/evalscope-env/lib/python3.14/site-packages/openai/_utils/_utils.py", line 286, in wrapper
+    return func(*args, **kwargs)
+  File "/home/hko/evalscope-env/lib/python3.14/site-packages/openai/resources/chat/completions/completions.py", line 1211, in create
+    return self._post(
+           ~~~~~~~~~~^
+        "/chat/completions",
+        ^^^^^^^^^^^^^^^^^^^^
+    ...<47 lines>...
+        stream_cls=Stream[ChatCompletionChunk],
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "/home/hko/evalscope-env/lib/python3.14/site-packages/openai/_base_client.py", line 1297, in post
+    return cast(ResponseT, self.request(cast_to, opts, stream=stream, stream_cls=stream_cls))
+                           ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/hko/evalscope-env/lib/python3.14/site-packages/openai/_base_client.py", line 1037, in request
+    raise APIConnectionError(request=request) from err
+openai.APIConnectionError: Connection error.
+
+2026-06-14 21:32:44 - evalscope - WARNING: Error ignored, continuing with next sample.
+2026-06-14 21:32:44 - evalscope - INFO: Evaluating[live_code_bench] 100%| 20/20 [Elapsed: 1:36:05 < Remaining: 00:00, 48.30s/it]
+2026-06-14 21:32:44 - evalscope - INFO: Unified pool finished for live_code_bench.
+2026-06-14 21:32:44 - evalscope - INFO: Aggregating scores for subset: release_latest
+2026-06-14 21:32:44 - evalscope - INFO: Generating report...
+2026-06-14 21:32:44 - evalscope - INFO: 
+live_code_bench report table:
++--------------------------+-----------------+-----------------+----------------+-------+---------+---------+
+| Model                    | Dataset         | Metric          | Subset         |   Num |   Score | Cat.0   |
++==========================+=================+=================+================+=======+=========+=========+
+| North-Mini-Code-1.0-IQ1M | live_code_bench | mean_acc        | release_latest |     1 |       1 | default |
++--------------------------+-----------------+-----------------+----------------+-------+---------+---------+
+| North-Mini-Code-1.0-IQ1M | live_code_bench | mean_acc_pass@1 | release_latest |     1 |       1 | default |
++--------------------------+-----------------+-----------------+----------------+-------+---------+---------+ 
+
+2026-06-14 21:32:44 - evalscope - INFO: Skipping report analysis (`analysis_report=False`).
+2026-06-14 21:32:44 - evalscope - INFO: Dump report to: /home/hko/agent/evalscope-results/north-mini-code-v2/live_code_bench/reports/North-Mini-Code-1.0-IQ1M/live_code_bench.json 
+
+2026-06-14 21:32:44 - evalscope - INFO: Benchmark live_code_bench evaluation finished.
+2026-06-14 21:32:44 - evalscope - INFO: Running[eval] 100%| 1/1 [Elapsed: 1:36:05 < Remaining: 00:00, 5765.84s/benchmark]
+2026-06-14 21:32:44 - evalscope - INFO: Overall report table: 
++--------------------------+-----------------+-----------------+----------------+-------+---------+---------+
+| Model                    | Dataset         | Metric          | Subset         |   Num |   Score | Cat.0   |
++==========================+=================+=================+================+=======+=========+=========+
+| North-Mini-Code-1.0-IQ1M | live_code_bench | mean_acc        | release_latest |     1 |       1 | default |
++--------------------------+-----------------+-----------------+----------------+-------+---------+---------+
+| North-Mini-Code-1.0-IQ1M | live_code_bench | mean_acc_pass@1 | release_latest |     1 |       1 | default |
++--------------------------+-----------------+-----------------+----------------+-------+---------+---------+ 
+
+2026-06-14 21:32:45 - evalscope - INFO: HTML report generated: /home/hko/agent/evalscope-results/north-mini-code-v2/live_code_bench/reports/report.html
+2026-06-14 21:32:45 - evalscope - INFO: Finished evaluation for North-Mini-Code-1.0-IQ1M on ['live_code_bench']
+2026-06-14 21:32:45 - evalscope - INFO: Output directory: /home/hko/agent/evalscope-results/north-mini-code-v2/live_code_bench
