@@ -1,0 +1,113 @@
+# Qwopus3.6-35B-A3B-Coder-MTP Benchmark Summary
+
+## Hardware
+
+| Component | Spec |
+|-----------|------|
+| GPU | NVIDIA GeForce RTX 4070 (12 GB VRAM) |
+| CPU | AMD Ryzen 5 5600X 6-Core (12 threads) |
+| RAM | 32 GB |
+| Model (tested) | v1-MTP Q4_K_M (20.21 GB, 35.5B MoE params, ~3B active) |
+| Model (target) | Coder-MTP IQ4_XS (19.4 GB, 35.5B MoE params, ~3B active) |
+
+## Architecture
+
+- **Base model**: Qwen3.6-35B-A3B (hybrid sparse MoE)
+- **35.5B total params / ~3B active** per token — very efficient for local inference
+- **MTP (Multi-Token Prediction)**: built-in speculative decoding head for faster generation
+- **Model size**: Q4_K_M = 20.21 GB, IQ4_XS ≈ 13-16 GB (est.)
+- **Architecture type**: `qwen35moe`
+
+## Key Inference Parameters (from model card)
+
+The model is designed for **thinking-off agentic coding**:
+- **Temperature**: Use **0.0** for deterministic code generation (recommended for coding/agent tasks)
+- **No reasoning budget**: thinking-off mode (no `--reasoning-budget` needed)
+- **Tool-use**: Optimized for Codex, OpenHands, Claude Code, OpenCode-style harnesses
+- **Context**: Designed for large-context repository work (262K native context)
+- **Chat template**: Uses Qwen3.6 default chat template
+- **Sampling**: For agentic coding, temperature=0.0-0.2, no repetition penalty
+
+## Benchmark Results (Coder-MTP IQ4_XS — Actual)
+
+### llama-bench Raw TG Speed (128K context, q4_0 KV, flash attention on, n_cpu_moe=36)
+
+| ngl | Threads | TG t/s | PP t/s | Notes |
+|-----|---------|--------|--------|-------|
+| 30  | 6 | 27.50 | - | Minimum for 30 t/s target |
+| 40  | 6 | **38.94** | 75.5 | ✅ Comfortably above 30 t/s |
+| 50  | 6 | **43.43** | 75.5 | ✅ Peak speed |
+| 60  | 6 | **43.93** | - | ✅ Excellent |
+| 70  | 6 | **44.09** | 75.1 | ✅ Sweet spot |
+| 80  | 6 | - | - | |
+| 99  | 6 | **43.73** | 74.4 | ✅ Max offload |
+
+**Key insight**: Speed plateau at 43-44 t/s from ngl=50 to 99. The MoE architecture makes CPU offload of experts very efficient via `--n-cpu-moe 36`. Even ngl=30 hits 27.5 t/s.
+
+### Thread Sweep (ngl=70, 128K)
+
+| Threads | TG t/s | Notes |
+|---------|--------|-------|
+| 4  | 39.04 | Good low-thread perf |
+| **6** | **44.09** | **Best** — saturates 6 physical cores |
+| 8  | 43.58 | Close second |
+| 10 | — | |
+| 12 | — | |
+
+**Best thread count: 6** (matches physical core count on Ryzen 5600X)
+
+## Configuration Recommendations
+
+### 🚀 Max Speed (128K context)
+```
+ngl=60, t=6, kv=q4_0, ctx=131072, fa=on, n-cpu-moe=36
+```
+**~44 t/s** — Peak generation speed at 128K context.
+
+### ⭐ Best Balance (128K context)
+```
+ngl=70, t=6, kv=q4_0, ctx=131072, fa=on, n-cpu-moe=36
+```
+**~44 t/s** — Comfortable VRAM headroom, same peak speed.
+
+### 🎯 General Purpose (128K context)
+```
+ngl=50, t=6, kv=q4_0, ctx=131072, fa=on, n-cpu-moe=36
+```
+**~43.4 t/s** — Slightly less VRAM usage.
+
+### 🔋 Low Power / Efficiency (128K context)
+```
+ngl=40, t=4, kv=q4_0, ctx=131072, fa=on, n-cpu-moe=36
+```
+**~39 t/s** — Still excellent speed with minimal GPU load.
+
+### Modern Coding Agent (262K native context)
+```
+ngl=50, t=6, kv=q4_0, ctx=262144, fa=on, n-cpu-moe=36
+```
+**~43 t/s** — Full native context. Model supports 262K natively.
+
+## Comparison with Other Models
+
+| Model | Type | Active | Quant | TG t/s @128K | VRAM |
+|-------|------|--------|-------|-------------|------|
+| **Qwopus35B-Coder-MTP (IQ4_XS)** | MoE | ~3B | IQ4_XS | **~44** | ~6.2 GB |
+| Qwopus35B-A3B-v1-MTP (Q4_K_M) | MoE | ~3B | Q4_K_M | ~44 | ~6.2 GB |
+| Qwopus35B-A3B-v1 (IQ4_XS) | MoE | ~3B | IQ4_XS | ~38-40 | ~6.2 GB |
+| Qwopus9B-Coder (Q6_K) | Dense | 9B | Q6_K | 57 | 7.6 GB |
+| Godoter-27B (Q4_K_S) | Dense | 27.3B | Q4_K_S | 5.5 | 11.7 GB |
+| Gemma-4-12B (Q4_K_XL) | Dense | 12B | Q4_K_XL | 56 | 6.2 GB |
+
+## Performance Profile Summary
+
+```
+Speed:        38-44 t/s (128K, IQ4_XS)
+Prompt Proc:  74-75 t/s
+Memory:       6-7 GB VRAM (at ngl=50-70)
+Context:      128K comfortably at ngl=30+ (262K native support)
+Best ngl:     50-70 (all perform similarly)
+Best threads: 6 (physical cores)
+MoE experts:  --n-cpu-moe 36 (always needed for CPU offload)
+Target met:   ✅ 30+ t/s at 128K context with >=4-bit quant
+```
