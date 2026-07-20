@@ -1,0 +1,148 @@
+{
+  "payload": {
+    "benchmarkMode": "remote",
+    "cacheReuse": {
+      "nPromptTokensCacheMax": 0,
+      "slots": [
+        {
+          "id": 0,
+          "id_task": 2744,
+          "is_processing": false,
+          "n_ctx": 170240,
+          "n_prompt_tokens": 40039,
+          "n_prompt_tokens_cache": 0,
+          "n_prompt_tokens_processed": 31028,
+          "next_token": [
+            {
+              "has_new_line": false,
+              "has_next_token": false,
+              "n_decoded": 1,
+              "n_remain": 0
+            }
+          ],
+          "params": {
+            "backend_sampling": false,
+            "chat_format": "peg-native",
+            "dry_allowed_length": 2,
+            "dry_base": 1.75,
+            "dry_multiplier": 0,
+            "dry_penalty_last_n": 170240,
+            "dynatemp_exponent": 1,
+            "dynatemp_range": 0,
+            "frequency_penalty": 0,
+            "generation_prompt": "<|im_start|>assistant\n<think>\n\n</think>\n\nContext received.",
+            "ignore_eos": false,
+            "lora": [],
+            "max_tokens": 1,
+            "min_keep": 0,
+            "min_p": 0,
+            "mirostat": 0,
+            "mirostat_eta": 0.10000000149011612,
+            "mirostat_tau": 5,
+            "n_discard": 0,
+            "n_keep": 0,
+            "n_predict": 1,
+            "n_probs": 0,
+            "post_sampling_probs": false,
+            "presence_penalty": 0,
+            "reasoning_format": "deepseek",
+            "reasoning_in_content": false,
+            "repeat_last_n": 64,
+            "repeat_penalty": 1,
+            "samplers": [
+              "penalties",
+              "dry",
+              "top_n_sigma",
+              "top_k",
+              "typ_p",
+              "top_p",
+              "min_p",
+              "xtc",
+              "temperature"
+            ],
+            "seed": 4294967295,
+            "speculative.types": "none",
+            "stream": false,
+            "temperature": 0,
+            "timings_per_token": false,
+            "top_k": 20,
+            "top_n_sigma": -1,
+            "top_p": 0.949999988079071,
+            "typical_p": 1,
+            "xtc_probability": 0,
+            "xtc_threshold": 0.10000000149011612
+          },
+          "speculative": false
+        }
+      ],
+      "status": "not_retained",
+      "warning": "Server does not appear to retain KV cache between requests; results reflect cold prefill, not cached-context speed."
+    },
+    "contextTokens": 40000,
+    "engineName": "vllm",
+    "hardware": {
+      "cpu": "AMD Ryzen 5 5600X 6-Core Processor",
+      "cpuThreads": 12,
+      "gpuCount": 1,
+      "gpuName": "NVIDIA GeForce RTX 4070",
+      "gpus": [
+        {
+          "name": "NVIDIA GeForce RTX 4070",
+          "vramGb": 12
+        }
+      ],
+      "hwClass": "DISCRETE_GPU",
+      "os": "linux",
+      "totalVramGb": 12,
+      "vramGb": 12
+    },
+    "hardwareSource": "file",
+    "hfId": "deepreinforce-ai/Ornith-1.0-35B-GGUF",
+    "kind": "kvcache_context_sweep",
+    "methodology": "Single streaming request with inline filler padded to target context size; measures cold prefill + decode at that context depth.",
+    "metricSource": "remote_endpoint",
+    "modelResolution": {
+      "candidates": [],
+      "declaredBaseModel": "unsloth/Qwen3-8B",
+      "hfId": "deepreinforce-ai/Ornith-1.0-35B-GGUF",
+      "loadedFilename": "ornith-1.0-35b-Q4_K_M.gguf",
+      "searchCommand": "lmx model search deepreinforce-ai/Ornith-1.0-35B-GGUF:Q4_K_M",
+      "searchQuery": "deepreinforce-ai/Ornith-1.0-35B-GGUF:Q4_K_M",
+      "searchQuerySource": "served_model",
+      "servedModel": "deepreinforce-ai/Ornith-1.0-35B-GGUF:Q4_K_M",
+      "servedModelSource": "explicit",
+      "status": "alias"
+    },
+    "modelRevision": "main",
+    "outputTokens": 67,
+    "peakVramGb": null,
+    "promptTokens": 40058,
+    "provenance": {
+      "benchmarkMode": "remote",
+      "cli": "localmaxxing-go",
+      "createdAt": "2026-07-20T10:52:37Z",
+      "metricSource": "remote_endpoint",
+      "timingSource": "client_observed_http",
+      "ttftSource": "estimated_from_prefill"
+    },
+    "quantization": "Q4_K_M",
+    "quantizationResolution": {
+      "cli": "Q4_K_M",
+      "filename": "Q4_K_M",
+      "modelPath": "/home/llm/.cache/huggingface/hub/models--deepreinforce-ai--Ornith-1.0-35B-GGUF/snapshots/383064f72a1ef3087b779f268d3ca117eb989aac/ornith-1.0-35b-Q4_K_M.gguf",
+      "status": "matched",
+      "trusted": "Q4_K_M",
+      "trustedSource": "filename"
+    },
+    "timingSource": "client_observed_http",
+    "tokSOut": 46.3,
+    "tokSPrefill": 114422,
+    "tokSTotal": 22305.1,
+    "ttftMs": 350.09,
+    "usagePromptTokens": 40058,
+    "warnings": [
+      "Remote OpenAI-compatible endpoints do not provide a portable persistent KV-cache session API; this sweep resends the full prefix at each depth and can only verify cache reuse when backend-specific cache metrics are exposed. Results may fall back to cold depth TPS instead of retained KV-cache TPS.",
+      "Server does not appear to retain KV cache between requests; results reflect cold prefill, not cached-context speed."
+    ]
+  }
+}

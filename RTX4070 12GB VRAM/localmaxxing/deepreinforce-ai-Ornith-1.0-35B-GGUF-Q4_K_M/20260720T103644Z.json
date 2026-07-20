@@ -1,0 +1,58 @@
+{
+  "agentFeedback": {
+    "benchmarkStatus": "planned",
+    "canApiValidate": false,
+    "canSubmit": false,
+    "engine": "vllm",
+    "message": "Measurement plan written. No benchmark command or API request ran. Run without --dry-run to measure, or pass explicit --tok-s-out metrics before API validation.",
+    "mode": "remote",
+    "nextCommand": "lmx benchmark run \u003cengine\u003e \u003csame options without --dry-run\u003e",
+    "outputPath": "runs/deepreinforce-ai-Ornith-1.0-35B-GGUF-Q4_K_M/20260720T103644Z.json",
+    "outputPathAbsolute": "/home/llm/agent/runs/deepreinforce-ai-Ornith-1.0-35B-GGUF-Q4_K_M/20260720T103644Z.json",
+    "requiresMetrics": true,
+    "savedRunPathAbsolute": "/home/llm/agent/runs/deepreinforce-ai-Ornith-1.0-35B-GGUF-Q4_K_M/20260720T103644Z.json",
+    "savedRunPathRelative": "runs/deepreinforce-ai-Ornith-1.0-35B-GGUF-Q4_K_M/20260720T103644Z.json",
+    "status": "plan_needs_metrics",
+    "submissionStatus": "needs_metrics"
+  },
+  "backend": "cuda",
+  "benchmarkMode": "remote",
+  "detectedEngines": [],
+  "dryRun": true,
+  "engineFlags": {
+    "baseUrl": "http://192.168.0.99:8080",
+    "commandSnippet": "# Remote endpoint: http://192.168.0.99:8080  servedModel: deepreinforce-ai/Ornith-1.0-35B-GGUF:Q4_K_M",
+    "mode": "remote",
+    "servedModel": "deepreinforce-ai/Ornith-1.0-35B-GGUF:Q4_K_M"
+  },
+  "engineName": "vllm",
+  "hardware": {
+    "cpu": "AMD Ryzen 5 5600X 6-Core Processor",
+    "cpuThreads": 12,
+    "gpuCount": 1,
+    "gpuName": "NVIDIA GeForce RTX 4070",
+    "gpus": [
+      {
+        "name": "NVIDIA GeForce RTX 4070",
+        "vramGb": 12
+      }
+    ],
+    "hwClass": "DISCRETE_GPU",
+    "os": "linux",
+    "totalVramGb": 12,
+    "vramGb": 12
+  },
+  "hardwareSource": "file",
+  "hfId": "deepreinforce-ai/Ornith-1.0-35B-GGUF:Q4_K_M",
+  "metricSource": "remote_endpoint",
+  "modelRevision": "main",
+  "provenance": {
+    "benchmarkMode": "remote",
+    "cli": "localmaxxing-go",
+    "createdAt": "2026-07-20T10:36:44Z",
+    "metricSource": "remote_endpoint",
+    "timingSource": "client_observed_http"
+  },
+  "quantization": "Q4_K_M",
+  "timingSource": "client_observed_http"
+}
