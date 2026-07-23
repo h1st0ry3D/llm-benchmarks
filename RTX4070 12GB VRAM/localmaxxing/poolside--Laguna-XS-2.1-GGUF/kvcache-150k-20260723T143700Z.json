@@ -1,0 +1,56 @@
+{
+  "payload": {
+    "benchmarkMode": "remote",
+    "contextTokens": 150000,
+    "engineName": "llama.cpp",
+    "hardware": {
+      "cpu": "AMD Ryzen 5 5600X 6-Core Processor",
+      "cpuThreads": 12,
+      "gpuCount": 1,
+      "gpuName": "NVIDIA GeForce RTX 4070",
+      "gpus": [
+        {
+          "name": "NVIDIA GeForce RTX 4070",
+          "vramGb": 12
+        }
+      ],
+      "hwClass": "DISCRETE_GPU",
+      "os": "linux",
+      "totalVramGb": 12,
+      "vramGb": 12
+    },
+    "hardwareSource": "file",
+    "hfId": "poolside/Laguna-XS-2.1-GGUF",
+    "kind": "kvcache_context_sweep",
+    "methodology": "Cold prefill at 150K depth; llama.cpp v1 (1425386), --fit auto-offload, q8_0 KV",
+    "modelRevision": "main",
+    "outputTokens": 5,
+    "promptTokens": 148522,
+    "provenance": {
+      "benchmarkMode": "remote",
+      "createdAt": "2026-07-23T14:37:00Z",
+      "metricSource": "remote_endpoint",
+      "timingSource": "client_observed_http",
+      "ttftSource": "server_timings_prompt_ms"
+    },
+    "quantization": "Q4_K_M",
+    "quantizationResolution": {
+      "cli": "Q4_K_M",
+      "filename": "Q4_K_M",
+      "modelPath": "",
+      "status": "matched",
+      "trusted": "Q4_K_M",
+      "trustedSource": "filename"
+    },
+    "serverArgs": "-c 150000 -fa on --cache-type-k q8_0 --cache-type-v q8_0 -b 2048 -ub 1024 (--fit auto-offload)",
+    "timingSource": "client_observed_http",
+    "tokSOut": 55.1,
+    "tokSPrefill": 1020,
+    "tokSTotal": 1015,
+    "ttftMs": 145600,
+    "usagePromptTokens": 148522,
+    "warnings": [
+      "Cold prefill at 150K; q8_0 KV, ~10.8GB VRAM."
+    ]
+  }
+}
