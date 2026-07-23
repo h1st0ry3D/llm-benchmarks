@@ -1,0 +1,54 @@
+{
+  "payload": {
+    "benchmarkMode": "local",
+    "contextTokens": 131072,
+    "engineName": "llama.cpp",
+    "hardware": {
+      "cpu": "AMD Ryzen 5 5600X 6-Core Processor",
+      "cpuThreads": 12,
+      "gpuCount": 1,
+      "gpuName": "NVIDIA GeForce RTX 4070",
+      "gpus": [
+        {
+          "name": "NVIDIA GeForce RTX 4070",
+          "vramGb": 12
+        }
+      ],
+      "hwClass": "DISCRETE_GPU",
+      "os": "linux",
+      "totalVramGb": 12,
+      "vramGb": 12
+    },
+    "hardwareSource": "file",
+    "hfId": "Jackrong/Qwopus3.6-35B-A3B-Coder-MTP-GGUF",
+    "kind": "speed_single",
+    "methodology": "Single completion via llama-server with 200 output tokens, q4_0 KV cache offloaded to RAM, --fit auto offload to 12GB VRAM",
+    "metricSource": "llama-server response timings",
+    "modelRevision": "main",
+    "outputTokens": 200,
+    "peakVramGb": 11.5,
+    "promptTokens": 10,
+    "provenance": {
+      "benchmarkMode": "local",
+      "cli": "manual_curl",
+      "createdAt": "2026-07-23T15:41:00Z",
+      "metricSource": "llama-server response timings",
+      "timingSource": "client_observed_http",
+      "ttftSource": "server_timings_prompt_ms"
+    },
+    "quantization": "Q4_K_M",
+    "quantizationResolution": {
+      "filename": "Q4_K_M",
+      "status": "matched",
+      "trusted": "Q4_K_M",
+      "trustedSource": "filename"
+    },
+    "timingSource": "client_observed_http",
+    "tokSOut": 54.1,
+    "tokSPrefill": 71.4,
+    "tokSTotal": 54.1,
+    "ttftMs": 140,
+    "usagePromptTokens": 10,
+    "serverArgs": "-m model.q4_k_m.gguf -c 131072 -fa on -np 1 --kv-offload --cache-type-k q4_0 --cache-type-v q4_0 -b 2048 -ub 1024 --temp 1.0 --top-p 0.95 --top-k 64"
+  }
+}
