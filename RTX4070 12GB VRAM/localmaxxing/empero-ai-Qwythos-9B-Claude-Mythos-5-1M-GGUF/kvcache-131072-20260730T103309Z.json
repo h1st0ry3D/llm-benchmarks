@@ -1,0 +1,49 @@
+{
+  "payload": {
+    "benchmarkMode": "local",
+    "contextTokens": 131072,
+    "engineFlags": {
+      "commandSnippet": "llama-bench -m /home/llm/.cache/huggingface/hub/models--empero-ai--Qwythos-9B-Claude-Mythos-5-1M-GGUF/snapshots/5cebd89dd078b033c26988248740ddadf40f2fbd/Qwythos-9B-Claude-Mythos-5-1M-Q4_K_M.gguf -p 512 -n 128 -d 131072 -o json -ctk q8_0 -ctv q8_0 -fa 1",
+      "mode": "local"
+    },
+    "engineName": "llama.cpp",
+    "hardware": {
+      "cpu": "AMD Ryzen 5 5600X 6-Core Processor",
+      "cpuThreads": 12,
+      "gpuCount": 1,
+      "gpuName": "NVIDIA GeForce RTX 4070",
+      "gpus": [
+        {
+          "name": "NVIDIA GeForce RTX 4070",
+          "vramGb": 12
+        }
+      ],
+      "hwClass": "DISCRETE_GPU",
+      "os": "linux",
+      "totalVramGb": 12,
+      "vramGb": 12
+    },
+    "hardwareSource": "detected_local",
+    "hfId": "empero-ai/Qwythos-9B-Claude-Mythos-5-1M-GGUF",
+    "kind": "kvcache_context_sweep",
+    "metricSource": "local_runtime",
+    "modelRevision": "main",
+    "outputTokens": 128,
+    "peakVramGb": null,
+    "promptTokens": 512,
+    "provenance": {
+      "benchmarkMode": "local",
+      "cli": "localmaxxing-go",
+      "createdAt": "2026-07-30T10:33:09Z",
+      "metricSource": "local_runtime",
+      "timingSource": "llama_cpp_runtime",
+      "ttftSource": "estimated_from_prefill"
+    },
+    "quantization": "",
+    "timingSource": "llama_cpp_runtime",
+    "tokSOut": 45.702922,
+    "tokSPrefill": 1196.664197,
+    "tokSTotal": 198.2,
+    "ttftMs": 427.9
+  }
+}

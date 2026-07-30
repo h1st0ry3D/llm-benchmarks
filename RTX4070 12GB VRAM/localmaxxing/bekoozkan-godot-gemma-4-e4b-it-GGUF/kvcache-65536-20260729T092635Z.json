@@ -1,0 +1,49 @@
+{
+  "payload": {
+    "benchmarkMode": "local",
+    "contextTokens": 65536,
+    "engineFlags": {
+      "commandSnippet": "llama-bench -m /home/llm/.cache/huggingface/hub/models--bekoozkan--godot-gemma-4-e4b-it-GGUF/snapshots/22c66baaa04343fcd00bcece4df26a7d24b727a1/gemma-4-e4b-it.Q8_0.gguf -p 512 -n 128 -d 65536 -o json -ctk q8_0 -ctv q8_0 -fa 1",
+      "mode": "local"
+    },
+    "engineName": "llama.cpp",
+    "hardware": {
+      "cpu": "AMD Ryzen 5 5600X 6-Core Processor",
+      "cpuThreads": 12,
+      "gpuCount": 1,
+      "gpuName": "NVIDIA GeForce RTX 4070",
+      "gpus": [
+        {
+          "name": "NVIDIA GeForce RTX 4070",
+          "vramGb": 12
+        }
+      ],
+      "hwClass": "DISCRETE_GPU",
+      "os": "linux",
+      "totalVramGb": 12,
+      "vramGb": 12
+    },
+    "hardwareSource": "detected_local",
+    "hfId": "bekoozkan/godot-gemma-4-e4b-it-GGUF",
+    "kind": "kvcache_context_sweep",
+    "metricSource": "local_runtime",
+    "modelRevision": "main",
+    "outputTokens": 128,
+    "peakVramGb": null,
+    "promptTokens": 512,
+    "provenance": {
+      "benchmarkMode": "local",
+      "cli": "localmaxxing-go",
+      "createdAt": "2026-07-29T09:26:35Z",
+      "metricSource": "local_runtime",
+      "timingSource": "llama_cpp_runtime",
+      "ttftSource": "estimated_from_prefill"
+    },
+    "quantization": "",
+    "timingSource": "llama_cpp_runtime",
+    "tokSOut": 40.272326,
+    "tokSPrefill": 2130.328146,
+    "tokSTotal": 187.2,
+    "ttftMs": 240.3
+  }
+}
