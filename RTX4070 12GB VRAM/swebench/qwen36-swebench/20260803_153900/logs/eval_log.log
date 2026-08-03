@@ -1,0 +1,106 @@
+2026-08-03 15:39:00 - evalscope - INFO: Running with native backend
+2026-08-03 15:39:00 - evalscope - INFO: Dump task config to outputs/qwen36-swebench/20260803_153900/configs/task_config.yaml
+2026-08-03 15:39:00 - evalscope - INFO: {
+    "model_id": "qwen36-27b",
+    "model_args": {},
+    "model_task": "text_generation",
+    "chat_template": null,
+    "datasets": [
+        "swe_bench_verified_mini"
+    ],
+    "dataset_args": {
+        "swe_bench_verified_mini": {
+            "name": "swe_bench_verified_mini",
+            "dataset_id": "evalscope/swe-bench-verified-mini",
+            "output_types": [
+                "generation"
+            ],
+            "subset_list": [
+                "default"
+            ],
+            "default_subset": "default",
+            "few_shot_num": 0,
+            "few_shot_random": false,
+            "train_split": null,
+            "eval_split": "test",
+            "prompt_template": "{question}",
+            "few_shot_prompt_template": null,
+            "system_prompt": null,
+            "query_template": null,
+            "pretty_name": "SWE-bench_Verified_mini",
+            "description": "\n## Overview\n\nSWE-bench Verified Mini is a compact subset of SWE-bench Verified, containing 50 carefully selected samples that maintain the same distribution of performance, test pass rates, and difficulty as the full dataset while requiring only 5GB of storage instead of 130GB.\n\n## Task Description\n\n- **Task Type**: Automated Software Engineering / Bug Fixing\n- **Input**: GitHub issue description with repository context\n- **Output**: Code patch (diff format) that resolves the issue\n- **Size**: 50 samples (vs 500 in full Verified set)\n\n## Key Features\n\n- Representative 50-sample subset of SWE-bench Verified\n- Same difficulty distribution as full dataset\n- Dramatically reduced storage requirements (5GB vs 130GB)\n- Ideal for quick evaluation and development iteration\n- Maintains statistical validity for benchmarking\n\n## Evaluation Notes\n\n- Requires `pip install swebench==4.1.0` before evaluation\n- Docker images are built/pulled automatically\n- See the [usage documentation](https://evalscope.readthedocs.io/en/latest/third_party/swe_bench.html) for detailed setup\n- Good for rapid prototyping and initial model assessment\n",
+            "paper_url": null,
+            "data_statistics": null,
+            "sample_example": null,
+            "tags": [
+                "Coding"
+            ],
+            "filters": null,
+            "metric_list": [
+                "acc"
+            ],
+            "aggregation": "mean",
+            "shuffle": false,
+            "shuffle_choices": false,
+            "force_redownload": false,
+            "review_timeout": null,
+            "extra_params": {
+                "build_docker_images": true,
+                "pull_remote_images_if_available": true,
+                "inference_dataset_id": "princeton-nlp/SWE-bench_oracle",
+                "force_arch": "",
+                "dockerhub_username": "swebench"
+            },
+            "sandbox_config": {},
+            "max_image_bytes": null
+        }
+    },
+    "dataset_dir": "/home/llm/.cache/modelscope/hub/datasets",
+    "dataset_hub": "huggingface",
+    "repeats": 1,
+    "eval_type": "openai_api",
+    "eval_backend": "Native",
+    "eval_config": null,
+    "limit": 2,
+    "eval_batch_size": 1,
+    "use_cache": null,
+    "rerun_review": false,
+    "work_dir": "outputs/qwen36-swebench/20260803_153900",
+    "no_timestamp": false,
+    "enable_progress_tracker": false,
+    "ignore_errors": false,
+    "debug": false,
+    "seed": 42,
+    "api_url": "http://127.0.0.1:8092/v1",
+    "api_key": "**********",
+    "timeout": null,
+    "stream": null,
+    "judge_strategy": "auto",
+    "judge_worker_num": 1,
+    "judge_model_args": {},
+    "analysis_report": false,
+    "collect_perf": true,
+    "sandbox": {
+        "enabled": false,
+        "engine": "docker",
+        "default_config": {},
+        "manager_config": {},
+        "pool_size": null
+    },
+    "use_sandbox": false,
+    "sandbox_type": "docker",
+    "sandbox_manager_config": {},
+    "agent_config": null,
+    "evalscope_version": "1.9.1",
+    "model": "qwen36-27b",
+    "generation_config": {
+        "batch_size": 1,
+        "max_tokens": 2000,
+        "temperature": 0.2
+    }
+}
+2026-08-03 15:39:00 - evalscope - INFO: Start loading benchmark dataset: swe_bench_verified_mini
+2026-08-03 15:39:00 - evalscope - INFO: Loading oracle dataset: princeton-nlp/SWE-bench_oracle
+2026-08-03 15:39:00 - evalscope - INFO: Loading dataset princeton-nlp/SWE-bench_oracle from modelscope > subset: default > split: test ...
+2026-08-03 15:39:27 - evalscope - INFO: Loading dataset evalscope/swe-bench-verified-mini from huggingface > subset: default > split: test ...
+2026-08-03 15:39:27 - evalscope - INFO: Running[eval]   0%| 0/1 [Elapsed: 00:27 < Remaining: ?, ?benchmark/s]

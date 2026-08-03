@@ -1,0 +1,108 @@
+2026-08-03 14:35:28 - evalscope - INFO: Running with native backend
+2026-08-03 14:35:28 - evalscope - INFO: Dump task config to outputs/qwen36-livecodebench/20260803_143528/configs/task_config.yaml
+2026-08-03 14:35:28 - evalscope - INFO: {
+    "model_id": "qwen36-27b",
+    "model_args": {},
+    "model_task": "text_generation",
+    "chat_template": null,
+    "datasets": [
+        "live_code_bench"
+    ],
+    "dataset_args": {
+        "live_code_bench": {
+            "name": "live_code_bench",
+            "dataset_id": "evalscope/livecodebench_code_generation_lite_parquet",
+            "output_types": [
+                "generation"
+            ],
+            "subset_list": [
+                "release_latest"
+            ],
+            "default_subset": "default",
+            "few_shot_num": 0,
+            "few_shot_random": false,
+            "train_split": null,
+            "eval_split": "test",
+            "prompt_template": "### Question:\n{question_content}\n\n{format_prompt} ### Answer: (use the provided format with backticks)\n\n",
+            "few_shot_prompt_template": null,
+            "system_prompt": null,
+            "query_template": null,
+            "pretty_name": "Live-Code-Bench",
+            "description": "\n## Overview\n\nLiveCodeBench is a contamination-free benchmark for evaluating code generation models on real-world competitive programming problems. It continuously collects new problems from coding platforms to ensure models haven't seen the test data during training.\n\n## Task Description\n\n- **Task Type**: Competitive Programming / Code Generation\n- **Input**: Programming problem description with input/output format\n- **Output**: Complete solution code\n- **Source**: Problems from LeetCode, Codeforces, and AtCoder\n\n## Key Features\n\n- Continuously updated with new problems post model training cutoff\n- Problems from major competitive programming platforms\n- Multiple test cases per problem for thorough evaluation\n- Date-based filtering to control for data contamination\n- Supports both local and sandbox code execution\n\n## Evaluation Notes\n\n- Default configuration uses **0-shot** evaluation\n- **Security Warning**: By default, code is executed in the local environment. We recommend using sandbox execution. See the [sandbox documentation](https://evalscope.readthedocs.io/en/latest/user_guides/sandbox.html) for details.\n- Use `start_date` and `end_date` parameters to filter problems by date\n- Default timeout is 6 seconds per test case\n- Supports `pass@k` metric calculation\n",
+            "paper_url": null,
+            "data_statistics": null,
+            "sample_example": null,
+            "tags": [
+                "Coding"
+            ],
+            "filters": null,
+            "metric_list": [
+                "acc"
+            ],
+            "aggregation": "mean_and_pass_at_k",
+            "shuffle": false,
+            "shuffle_choices": false,
+            "force_redownload": false,
+            "review_timeout": 6,
+            "extra_params": {
+                "start_date": null,
+                "end_date": null,
+                "debug": false
+            },
+            "sandbox_config": {
+                "image": "python:3.11-slim",
+                "tools_config": {
+                    "shell_executor": {},
+                    "python_executor": {}
+                }
+            },
+            "max_image_bytes": null
+        }
+    },
+    "dataset_dir": "/home/llm/.cache/modelscope/hub/datasets",
+    "dataset_hub": "huggingface",
+    "repeats": 1,
+    "eval_type": "openai_api",
+    "eval_backend": "Native",
+    "eval_config": null,
+    "limit": 50,
+    "eval_batch_size": 1,
+    "use_cache": null,
+    "rerun_review": false,
+    "work_dir": "outputs/qwen36-livecodebench/20260803_143528",
+    "no_timestamp": false,
+    "enable_progress_tracker": false,
+    "ignore_errors": false,
+    "debug": false,
+    "seed": 42,
+    "api_url": "http://127.0.0.1:8092/v1",
+    "api_key": "**********",
+    "timeout": null,
+    "stream": null,
+    "judge_strategy": "auto",
+    "judge_worker_num": 1,
+    "judge_model_args": {},
+    "analysis_report": false,
+    "collect_perf": true,
+    "sandbox": {
+        "enabled": false,
+        "engine": "docker",
+        "default_config": {},
+        "manager_config": {},
+        "pool_size": null
+    },
+    "use_sandbox": false,
+    "sandbox_type": "docker",
+    "sandbox_manager_config": {},
+    "agent_config": null,
+    "evalscope_version": "1.9.1",
+    "model": "qwen36-27b",
+    "generation_config": {
+        "batch_size": 1,
+        "max_tokens": 1200,
+        "temperature": 0.2
+    }
+}
+2026-08-03 14:35:28 - evalscope - INFO: Start loading benchmark dataset: live_code_bench
+2026-08-03 14:35:28 - evalscope - INFO: Loading dataset evalscope/livecodebench_code_generation_lite_parquet from huggingface > subset: release_latest > split: test ...
+2026-08-03 14:35:29 - evalscope - INFO: Running[eval]   0%| 0/1 [Elapsed: 00:00 < Remaining: ?, ?benchmark/s]

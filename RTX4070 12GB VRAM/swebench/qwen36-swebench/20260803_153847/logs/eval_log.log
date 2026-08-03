@@ -1,0 +1,2 @@
+2026-08-03 15:38:47 - evalscope - INFO: Running with native backend
+2026-08-03 15:38:47 - evalscope - WARNING: `swebench` not found. Please run `pip install 'evalscope[swe_bench]'` to use SWE-bench_Verified_mini.

@@ -1,0 +1,228 @@
+2026-08-03 13:16:56 - evalscope - INFO: Running with native backend
+2026-08-03 13:16:56 - evalscope - INFO: Dump task config to outputs/qwen36-humaneval/20260803_131656/configs/task_config.yaml
+2026-08-03 13:16:56 - evalscope - INFO: {
+    "model_id": "qwen36-27b",
+    "model_args": {},
+    "model_task": "text_generation",
+    "chat_template": null,
+    "datasets": [
+        "humaneval"
+    ],
+    "dataset_args": {
+        "humaneval": {
+            "name": "humaneval",
+            "dataset_id": "opencompass/humaneval",
+            "output_types": [
+                "generation"
+            ],
+            "subset_list": [
+                "openai_humaneval"
+            ],
+            "default_subset": "default",
+            "few_shot_num": 0,
+            "few_shot_random": false,
+            "train_split": null,
+            "eval_split": "test",
+            "prompt_template": "Read the following function signature and docstring, and fully implement the function described. Your response should only contain the code for this function.\n{question}",
+            "few_shot_prompt_template": null,
+            "system_prompt": null,
+            "query_template": null,
+            "pretty_name": "HumanEval",
+            "description": "\n## Overview\n\nHumanEval is a benchmark for evaluating the code generation capabilities of language models. It consists of 164 hand-written Python programming problems with function signatures, docstrings, and comprehensive test cases.\n\n## Task Description\n\n- **Task Type**: Code Generation (Python)\n- **Input**: Function signature with docstring describing the expected behavior\n- **Output**: Complete Python function implementation\n- **Languages**: Python only\n\n## Key Features\n\n- 164 hand-crafted programming problems\n- Each problem includes a function signature, docstring, and test cases\n- Problems range from simple string manipulation to complex algorithms\n- Canonical solutions provided for reference\n- Automatic correctness verification through test execution\n\n## Evaluation Notes\n\n- **Security Warning**: By default, code is executed in the local environment. We strongly recommend using sandbox execution for safety. See the [sandbox documentation](https://evalscope.readthedocs.io/en/latest/user_guides/sandbox.html) for details.\n- Supports `pass@k` metric calculation for measuring generation quality\n- Default timeout is 4 seconds per problem\n- Code is extracted from markdown code blocks if present\n",
+            "paper_url": null,
+            "data_statistics": null,
+            "sample_example": null,
+            "tags": [
+                "Coding"
+            ],
+            "filters": null,
+            "metric_list": [
+                "acc"
+            ],
+            "aggregation": "mean_and_pass_at_k",
+            "shuffle": false,
+            "shuffle_choices": false,
+            "force_redownload": false,
+            "review_timeout": 4,
+            "extra_params": {},
+            "sandbox_config": {
+                "image": "python:3.11-slim",
+                "tools_config": {
+                    "shell_executor": {},
+                    "python_executor": {}
+                }
+            },
+            "max_image_bytes": null
+        }
+    },
+    "dataset_dir": "/home/llm/.cache/modelscope/hub/datasets",
+    "dataset_hub": "huggingface",
+    "repeats": 1,
+    "eval_type": "openai_api",
+    "eval_backend": "Native",
+    "eval_config": null,
+    "limit": null,
+    "eval_batch_size": 1,
+    "use_cache": null,
+    "rerun_review": false,
+    "work_dir": "outputs/qwen36-humaneval/20260803_131656",
+    "no_timestamp": false,
+    "enable_progress_tracker": false,
+    "ignore_errors": false,
+    "debug": false,
+    "seed": 42,
+    "api_url": "http://127.0.0.1:8092/v1",
+    "api_key": "**********",
+    "timeout": null,
+    "stream": null,
+    "judge_strategy": "auto",
+    "judge_worker_num": 1,
+    "judge_model_args": {},
+    "analysis_report": false,
+    "collect_perf": true,
+    "sandbox": {
+        "enabled": false,
+        "engine": "docker",
+        "default_config": {},
+        "manager_config": {},
+        "pool_size": null
+    },
+    "use_sandbox": false,
+    "sandbox_type": "docker",
+    "sandbox_manager_config": {},
+    "agent_config": null,
+    "evalscope_version": "1.9.1",
+    "model": "qwen36-27b",
+    "generation_config": {
+        "batch_size": 1,
+        "max_tokens": 1024,
+        "temperature": 0.2
+    }
+}
+2026-08-03 13:16:56 - evalscope - INFO: Start loading benchmark dataset: humaneval
+2026-08-03 13:16:56 - evalscope - INFO: humaneval: 164 samples to evaluate (1 subset)
+2026-08-03 13:16:56 - evalscope - INFO: Subsets of humaneval: ['openai_humaneval']
+2026-08-03 13:16:56 - evalscope - INFO: Loading model for prediction...
+2026-08-03 13:16:56 - evalscope - INFO: Creating model qwen36-27b with eval_type=openai_api base_url=http://127.0.0.1:8092/v1, config={'retries': 5, 'retry_interval': 10, 'batch_size': 1, 'max_tokens': 1024, 'temperature': 0.2, 'anthropic_cache_strategy': 'evaluation'}, model_args={}
+2026-08-03 13:16:56 - evalscope - INFO: Model loaded successfully.
+2026-08-03 13:17:57 - evalscope - INFO: Evaluating[humaneval]   1%| 2/164 [Elapsed: 01:00 < Remaining: 1:08:49, 25.49s/it]
+2026-08-03 13:18:57 - evalscope - INFO: Evaluating[humaneval]   4%| 6/164 [Elapsed: 02:01 < Remaining: 47:35, 18.08s/it]
+2026-08-03 13:19:57 - evalscope - INFO: Evaluating[humaneval]   5%| 9/164 [Elapsed: 03:01 < Remaining: 49:19, 19.09s/it]
+2026-08-03 13:20:58 - evalscope - INFO: Evaluating[humaneval]   7%| 11/164 [Elapsed: 04:02 < Remaining: 1:04:34, 25.32s/it]
+2026-08-03 13:21:59 - evalscope - INFO: Evaluating[humaneval]   9%| 15/164 [Elapsed: 05:02 < Remaining: 41:40, 16.78s/it]
+2026-08-03 13:22:59 - evalscope - INFO: Evaluating[humaneval]  11%| 18/164 [Elapsed: 06:03 < Remaining: 46:26, 19.09s/it]
+2026-08-03 13:24:00 - evalscope - INFO: Evaluating[humaneval]  12%| 20/164 [Elapsed: 07:03 < Remaining: 53:05, 22.12s/it]
+2026-08-03 13:25:01 - evalscope - INFO: Evaluating[humaneval]  15%| 24/164 [Elapsed: 08:04 < Remaining: 42:39, 18.28s/it]
+2026-08-03 13:26:01 - evalscope - INFO: Evaluating[humaneval]  16%| 27/164 [Elapsed: 09:05 < Remaining: 44:09, 19.34s/it]
+2026-08-03 13:27:02 - evalscope - INFO: Evaluating[humaneval]  19%| 31/164 [Elapsed: 10:05 < Remaining: 33:56, 15.31s/it]
+2026-08-03 13:28:03 - evalscope - INFO: Evaluating[humaneval]  20%| 33/164 [Elapsed: 11:06 < Remaining: 1:01:39, 28.24s/it]
+2026-08-03 13:29:03 - evalscope - INFO: Evaluating[humaneval]  22%| 36/164 [Elapsed: 12:06 < Remaining: 44:27, 20.84s/it]
+2026-08-03 13:30:04 - evalscope - INFO: Evaluating[humaneval]  23%| 38/164 [Elapsed: 13:07 < Remaining: 46:47, 22.28s/it]
+2026-08-03 13:31:04 - evalscope - INFO: Evaluating[humaneval]  24%| 40/164 [Elapsed: 14:08 < Remaining: 51:35, 24.97s/it]
+2026-08-03 13:32:05 - evalscope - INFO: Evaluating[humaneval]  26%| 43/164 [Elapsed: 15:09 < Remaining: 49:31, 24.56s/it]
+2026-08-03 13:33:06 - evalscope - INFO: Evaluating[humaneval]  28%| 46/164 [Elapsed: 16:09 < Remaining: 36:55, 18.77s/it]
+2026-08-03 13:34:06 - evalscope - INFO: Evaluating[humaneval]  30%| 49/164 [Elapsed: 17:09 < Remaining: 38:33, 20.11s/it]
+2026-08-03 13:35:06 - evalscope - INFO: Evaluating[humaneval]  32%| 53/164 [Elapsed: 18:10 < Remaining: 30:32, 16.50s/it]
+2026-08-03 13:36:07 - evalscope - INFO: Evaluating[humaneval]  34%| 56/164 [Elapsed: 19:11 < Remaining: 29:06, 16.17s/it]
+2026-08-03 13:37:08 - evalscope - INFO: Evaluating[humaneval]  36%| 59/164 [Elapsed: 20:11 < Remaining: 31:51, 18.20s/it]
+2026-08-03 13:38:09 - evalscope - INFO: Evaluating[humaneval]  38%| 63/164 [Elapsed: 21:12 < Remaining: 31:22, 18.64s/it]
+2026-08-03 13:39:09 - evalscope - INFO: Evaluating[humaneval]  40%| 65/164 [Elapsed: 22:12 < Remaining: 36:38, 22.20s/it]
+2026-08-03 13:40:09 - evalscope - INFO: Evaluating[humaneval]  41%| 68/164 [Elapsed: 23:13 < Remaining: 31:02, 19.41s/it]
+2026-08-03 13:41:10 - evalscope - INFO: Evaluating[humaneval]  43%| 71/164 [Elapsed: 24:14 < Remaining: 32:01, 20.66s/it]
+2026-08-03 13:42:11 - evalscope - INFO: Evaluating[humaneval]  45%| 73/164 [Elapsed: 25:14 < Remaining: 33:27, 22.07s/it]
+2026-08-03 13:43:11 - evalscope - INFO: Evaluating[humaneval]  46%| 75/164 [Elapsed: 26:14 < Remaining: 37:30, 25.28s/it]
+2026-08-03 13:44:11 - evalscope - INFO: Evaluating[humaneval]  46%| 76/164 [Elapsed: 27:15 < Remaining: 39:42, 27.08s/it]
+2026-08-03 13:45:12 - evalscope - INFO: Evaluating[humaneval]  48%| 78/164 [Elapsed: 28:15 < Remaining: 54:27, 38.00s/it]
+2026-08-03 13:46:13 - evalscope - INFO: Evaluating[humaneval]  49%| 80/164 [Elapsed: 29:16 < Remaining: 47:33, 33.96s/it]
+2026-08-03 13:47:13 - evalscope - INFO: Evaluating[humaneval]  49%| 81/164 [Elapsed: 30:16 < Remaining: 42:31, 30.74s/it]
+2026-08-03 13:48:14 - evalscope - INFO: Evaluating[humaneval]  51%| 83/164 [Elapsed: 31:17 < Remaining: 41:10, 30.50s/it]
+2026-08-03 13:49:14 - evalscope - INFO: Evaluating[humaneval]  52%| 86/164 [Elapsed: 32:18 < Remaining: 33:32, 25.81s/it]
+2026-08-03 13:50:15 - evalscope - INFO: Evaluating[humaneval]  54%| 88/164 [Elapsed: 33:18 < Remaining: 37:41, 29.76s/it]
+2026-08-03 13:51:16 - evalscope - INFO: Evaluating[humaneval]  55%| 91/164 [Elapsed: 34:19 < Remaining: 30:24, 24.99s/it]
+2026-08-03 13:52:17 - evalscope - INFO: Evaluating[humaneval]  56%| 92/164 [Elapsed: 35:20 < Remaining: 32:46, 27.32s/it]
+2026-08-03 13:53:17 - evalscope - INFO: Evaluating[humaneval]  57%| 94/164 [Elapsed: 36:20 < Remaining: 37:37, 32.25s/it]
+2026-08-03 13:54:17 - evalscope - INFO: Evaluating[humaneval]  58%| 95/164 [Elapsed: 37:21 < Remaining: 44:02, 38.30s/it]
+2026-08-03 13:55:17 - evalscope - INFO: Evaluating[humaneval]  60%| 98/164 [Elapsed: 38:21 < Remaining: 33:56, 30.86s/it]
+2026-08-03 13:56:17 - evalscope - INFO: Evaluating[humaneval]  60%| 99/164 [Elapsed: 39:21 < Remaining: 28:58, 26.74s/it]
+2026-08-03 13:57:18 - evalscope - INFO: Evaluating[humaneval]  62%| 102/164 [Elapsed: 40:21 < Remaining: 28:42, 27.79s/it]
+2026-08-03 13:58:18 - evalscope - INFO: Evaluating[humaneval]  64%| 105/164 [Elapsed: 41:22 < Remaining: 21:31, 21.89s/it]
+2026-08-03 13:59:19 - evalscope - INFO: Evaluating[humaneval]  65%| 107/164 [Elapsed: 42:22 < Remaining: 25:00, 26.32s/it]
+2026-08-03 14:00:19 - evalscope - INFO: Evaluating[humaneval]  66%| 108/164 [Elapsed: 43:23 < Remaining: 27:28, 29.43s/it]
+2026-08-03 14:01:20 - evalscope - INFO: Evaluating[humaneval]  67%| 110/164 [Elapsed: 44:23 < Remaining: 32:27, 36.07s/it]
+2026-08-03 14:02:20 - evalscope - INFO: Evaluating[humaneval]  68%| 111/164 [Elapsed: 45:24 < Remaining: 33:01, 37.39s/it]
+2026-08-03 14:03:21 - evalscope - INFO: Evaluating[humaneval]  70%| 114/164 [Elapsed: 46:25 < Remaining: 25:04, 30.09s/it]
+2026-08-03 14:04:22 - evalscope - INFO: Evaluating[humaneval]  71%| 116/164 [Elapsed: 47:26 < Remaining: 25:30, 31.88s/it]
+2026-08-03 14:05:22 - evalscope - INFO: Evaluating[humaneval]  71%| 116/164 [Elapsed: 48:26 < Remaining: 25:30, 31.88s/it]
+2026-08-03 14:06:23 - evalscope - INFO: Evaluating[humaneval]  71%| 117/164 [Elapsed: 49:26 < Remaining: 47:03, 60.07s/it]
+2026-08-03 14:07:24 - evalscope - INFO: Evaluating[humaneval]  72%| 118/164 [Elapsed: 50:27 < Remaining: 40:11, 52.42s/it]
+2026-08-03 14:08:24 - evalscope - INFO: Evaluating[humaneval]  73%| 120/164 [Elapsed: 51:27 < Remaining: 34:39, 47.26s/it]
+2026-08-03 14:09:25 - evalscope - INFO: Evaluating[humaneval]  74%| 122/164 [Elapsed: 52:28 < Remaining: 24:38, 35.21s/it]
+2026-08-03 14:10:25 - evalscope - INFO: Evaluating[humaneval]  76%| 124/164 [Elapsed: 53:29 < Remaining: 22:56, 34.41s/it]
+2026-08-03 14:11:25 - evalscope - INFO: Evaluating[humaneval]  76%| 124/164 [Elapsed: 54:29 < Remaining: 22:56, 34.41s/it]
+2026-08-03 14:12:26 - evalscope - INFO: Evaluating[humaneval]  77%| 126/164 [Elapsed: 55:30 < Remaining: 29:22, 46.38s/it]
+2026-08-03 14:13:27 - evalscope - INFO: Evaluating[humaneval]  77%| 127/164 [Elapsed: 56:30 < Remaining: 27:34, 44.71s/it]
+2026-08-03 14:14:28 - evalscope - INFO: Evaluating[humaneval]  79%| 129/164 [Elapsed: 57:31 < Remaining: 24:05, 41.29s/it]
+2026-08-03 14:15:28 - evalscope - INFO: Evaluating[humaneval]  79%| 129/164 [Elapsed: 58:31 < Remaining: 24:05, 41.29s/it]
+2026-08-03 14:16:28 - evalscope - INFO: Evaluating[humaneval]  79%| 129/164 [Elapsed: 59:31 < Remaining: 24:05, 41.29s/it]
+2026-08-03 14:17:28 - evalscope - INFO: Evaluating[humaneval]  79%| 130/164 [Elapsed: 1:00:32 < Remaining: 38:41, 68.27s/it]
+2026-08-03 14:18:28 - evalscope - INFO: Evaluating[humaneval]  79%| 130/164 [Elapsed: 1:01:32 < Remaining: 38:41, 68.27s/it]
+2026-08-03 14:19:29 - evalscope - INFO: Evaluating[humaneval]  80%| 132/164 [Elapsed: 1:02:32 < Remaining: 34:34, 64.82s/it]
+2026-08-03 14:20:29 - evalscope - INFO: Evaluating[humaneval]  80%| 132/164 [Elapsed: 1:03:32 < Remaining: 34:34, 64.82s/it]
+2026-08-03 14:21:29 - evalscope - INFO: Evaluating[humaneval]  81%| 133/164 [Elapsed: 1:04:32 < Remaining: 44:40, 86.48s/it]
+2026-08-03 14:22:29 - evalscope - INFO: Evaluating[humaneval]  82%| 135/164 [Elapsed: 1:05:32 < Remaining: 28:02, 58.00s/it]
+2026-08-03 14:23:30 - evalscope - INFO: Evaluating[humaneval]  84%| 138/164 [Elapsed: 1:06:33 < Remaining: 14:47, 34.14s/it]
+2026-08-03 14:24:30 - evalscope - INFO: Evaluating[humaneval]  86%| 141/164 [Elapsed: 1:07:33 < Remaining: 10:53, 28.42s/it]
+2026-08-03 14:25:31 - evalscope - INFO: Evaluating[humaneval]  87%| 142/164 [Elapsed: 1:08:34 < Remaining: 12:40, 34.58s/it]
+2026-08-03 14:26:31 - evalscope - INFO: Evaluating[humaneval]  88%| 144/164 [Elapsed: 1:09:35 < Remaining: 10:52, 32.62s/it]
+2026-08-03 14:27:32 - evalscope - INFO: Evaluating[humaneval]  89%| 146/164 [Elapsed: 1:10:35 < Remaining: 09:18, 31.01s/it]
+2026-08-03 14:28:32 - evalscope - INFO: Evaluating[humaneval]  90%| 147/164 [Elapsed: 1:11:36 < Remaining: 08:55, 31.48s/it]
+2026-08-03 14:29:32 - evalscope - INFO: Evaluating[humaneval]  91%| 149/164 [Elapsed: 1:12:36 < Remaining: 09:05, 36.40s/it]
+2026-08-03 14:30:33 - evalscope - INFO: Evaluating[humaneval]  92%| 151/164 [Elapsed: 1:13:37 < Remaining: 06:25, 29.69s/it]
+2026-08-03 14:31:34 - evalscope - INFO: Evaluating[humaneval]  93%| 153/164 [Elapsed: 1:14:37 < Remaining: 04:26, 24.21s/it]
+2026-08-03 14:32:34 - evalscope - INFO: Evaluating[humaneval]  95%| 156/164 [Elapsed: 1:15:38 < Remaining: 03:26, 25.76s/it]
+2026-08-03 14:33:35 - evalscope - INFO: Evaluating[humaneval]  97%| 159/164 [Elapsed: 1:16:38 < Remaining: 02:00, 24.08s/it]
+2026-08-03 14:34:35 - evalscope - INFO: Evaluating[humaneval]  98%| 161/164 [Elapsed: 1:17:39 < Remaining: 01:08, 22.80s/it]
+2026-08-03 14:35:17 - evalscope - INFO: Evaluating[humaneval] 100%| 164/164 [Elapsed: 1:18:20 < Remaining: 00:00, 21.76s/it]
+2026-08-03 14:35:17 - evalscope - INFO: humaneval: predictions complete, aggregating scores...
+2026-08-03 14:35:17 - evalscope - INFO: Aggregating scores for subset: openai_humaneval
+2026-08-03 14:35:17 - evalscope - INFO: Generating report...
+2026-08-03 14:35:17 - evalscope - INFO: 
+humaneval report table:
+┌────────────┬───────────┬─────────────────┬──────────────────┬───────┬─────────┬─────────┐
+│ Model      │ Dataset   │ Metric          │ Subset           │   Num │   Score │ Cat.0   │
+├────────────┼───────────┼─────────────────┼──────────────────┼───────┼─────────┼─────────┤
+│ qwen36-27b │ humaneval │ mean_acc        │ openai_humaneval │   164 │  0.8963 │ default │
+├────────────┼───────────┼─────────────────┼──────────────────┼───────┼─────────┼─────────┤
+│ qwen36-27b │ humaneval │ mean_acc_pass@1 │ openai_humaneval │   164 │  0.8963 │ default │
+└────────────┴───────────┴─────────────────┴──────────────────┴───────┴─────────┴─────────┘ 
+
+2026-08-03 14:35:17 - evalscope - INFO: Skipping report analysis (`analysis_report=False`).
+2026-08-03 14:35:17 - evalscope - INFO: Dump report to: outputs/qwen36-humaneval/20260803_131656/reports/qwen36-27b/humaneval.json 
+
+2026-08-03 14:35:17 - evalscope - INFO: 
+humaneval perf table:
+Model       Dataset      Num    Avg Lat  Avg TTFT    Avg TPOT      Avg Thpt    Avg In    Avg Out
+                                    (s)  (ms)        (ms)           (tok/s)       Tok        Tok
+----------  ---------  -----  ---------  ----------  ----------  ----------  --------  ---------
+qwen36-27b  humaneval    164    26.4513  -           -                 8.87       180    234.549
+
+2026-08-03 14:35:17 - evalscope - INFO: Benchmark humaneval evaluation finished.
+2026-08-03 14:35:17 - evalscope - INFO: Running[eval] 100%| 1/1 [Elapsed: 1:18:20 < Remaining: 00:00, 4700.85s/benchmark]
+2026-08-03 14:35:17 - evalscope - INFO: Overall report table: 
+┌────────────┬───────────┬─────────────────┬──────────────────┬───────┬─────────┬─────────┐
+│ Model      │ Dataset   │ Metric          │ Subset           │   Num │   Score │ Cat.0   │
+├────────────┼───────────┼─────────────────┼──────────────────┼───────┼─────────┼─────────┤
+│ qwen36-27b │ humaneval │ mean_acc        │ openai_humaneval │   164 │  0.8963 │ default │
+├────────────┼───────────┼─────────────────┼──────────────────┼───────┼─────────┼─────────┤
+│ qwen36-27b │ humaneval │ mean_acc_pass@1 │ openai_humaneval │   164 │  0.8963 │ default │
+└────────────┴───────────┴─────────────────┴──────────────────┴───────┴─────────┴─────────┘ 
+
+2026-08-03 14:35:17 - evalscope - INFO: Overall perf table: 
+Model       Dataset      Num    Avg Lat  Avg TTFT    Avg TPOT      Avg Thpt    Avg In    Avg Out
+                                    (s)  (ms)        (ms)           (tok/s)       Tok        Tok
+----------  ---------  -----  ---------  ----------  ----------  ----------  --------  ---------
+qwen36-27b  humaneval    164    26.4513  -           -                 8.87       180    234.549 
+
+2026-08-03 14:35:17 - evalscope - INFO: HTML report generated: /home/llm/agent/outputs/qwen36-humaneval/20260803_131656/reports/report.html
+2026-08-03 14:35:18 - evalscope - INFO: Finished evaluation for qwen36-27b on ['humaneval']
+2026-08-03 14:35:18 - evalscope - INFO: Output directory: outputs/qwen36-humaneval/20260803_131656

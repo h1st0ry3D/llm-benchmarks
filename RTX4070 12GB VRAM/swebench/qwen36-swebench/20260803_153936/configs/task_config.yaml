@@ -1,0 +1,136 @@
+agent_config: null
+analysis_report: false
+api_key: '**********'
+api_url: http://127.0.0.1:8092/v1
+chat_template: null
+collect_perf: true
+dataset_args:
+  swe_bench_verified_mini:
+    aggregation: mean
+    data_statistics: null
+    dataset_id: evalscope/swe-bench-verified-mini
+    default_subset: default
+    description: '
+
+      ## Overview
+
+
+      SWE-bench Verified Mini is a compact subset of SWE-bench Verified, containing
+      50 carefully selected samples that maintain the same distribution of performance,
+      test pass rates, and difficulty as the full dataset while requiring only 5GB
+      of storage instead of 130GB.
+
+
+      ## Task Description
+
+
+      - **Task Type**: Automated Software Engineering / Bug Fixing
+
+      - **Input**: GitHub issue description with repository context
+
+      - **Output**: Code patch (diff format) that resolves the issue
+
+      - **Size**: 50 samples (vs 500 in full Verified set)
+
+
+      ## Key Features
+
+
+      - Representative 50-sample subset of SWE-bench Verified
+
+      - Same difficulty distribution as full dataset
+
+      - Dramatically reduced storage requirements (5GB vs 130GB)
+
+      - Ideal for quick evaluation and development iteration
+
+      - Maintains statistical validity for benchmarking
+
+
+      ## Evaluation Notes
+
+
+      - Requires `pip install swebench==4.1.0` before evaluation
+
+      - Docker images are built/pulled automatically
+
+      - See the [usage documentation](https://evalscope.readthedocs.io/en/latest/third_party/swe_bench.html)
+      for detailed setup
+
+      - Good for rapid prototyping and initial model assessment
+
+      '
+    eval_split: test
+    extra_params:
+      build_docker_images: true
+      dockerhub_username: swebench
+      force_arch: ''
+      inference_dataset_id: princeton-nlp/SWE-bench_oracle
+      pull_remote_images_if_available: true
+    few_shot_num: 0
+    few_shot_prompt_template: null
+    few_shot_random: false
+    filters: null
+    force_redownload: false
+    max_image_bytes: null
+    metric_list:
+    - acc
+    name: swe_bench_verified_mini
+    output_types:
+    - generation
+    paper_url: null
+    pretty_name: SWE-bench_Verified_mini
+    prompt_template: '{question}'
+    query_template: null
+    review_timeout: null
+    sample_example: null
+    sandbox_config: {}
+    shuffle: false
+    shuffle_choices: false
+    subset_list:
+    - default
+    system_prompt: null
+    tags:
+    - Coding
+    train_split: null
+dataset_dir: /home/llm/.cache/modelscope/hub/datasets
+dataset_hub: modelscope
+datasets:
+- swe_bench_verified_mini
+debug: false
+enable_progress_tracker: false
+eval_backend: Native
+eval_batch_size: 1
+eval_config: null
+eval_type: openai_api
+evalscope_version: 1.9.1
+generation_config:
+  batch_size: 1
+  max_tokens: 2000
+  temperature: 0.2
+ignore_errors: false
+judge_model_args: {}
+judge_strategy: auto
+judge_worker_num: 1
+limit: 2
+model: qwen36-27b
+model_args: {}
+model_id: qwen36-27b
+model_task: text_generation
+no_timestamp: false
+repeats: 1
+rerun_review: false
+sandbox:
+  default_config: {}
+  enabled: false
+  engine: docker
+  manager_config: {}
+  pool_size: null
+sandbox_manager_config: {}
+sandbox_type: docker
+seed: 42
+stream: null
+timeout: null
+use_cache: null
+use_sandbox: false
+work_dir: outputs/qwen36-swebench/20260803_153936
