@@ -1,0 +1,49 @@
+{
+  "payload": {
+    "benchmarkMode": "local",
+    "contextTokens": 8192,
+    "engineFlags": {
+      "commandSnippet": "llama-bench -m /home/llm/models/qwen3.6-27b/Qwen3.6-27B-Q4_K_M.gguf -p 512 -n 128 -d 8192 -o json",
+      "mode": "local"
+    },
+    "engineName": "llama.cpp",
+    "hardware": {
+      "cpu": "AMD Ryzen 5 5600X 6-Core Processor",
+      "cpuThreads": 12,
+      "gpuCount": 1,
+      "gpuName": "NVIDIA GeForce RTX 4070",
+      "gpus": [
+        {
+          "name": "NVIDIA GeForce RTX 4070",
+          "vramGb": 12
+        }
+      ],
+      "hwClass": "DISCRETE_GPU",
+      "os": "linux",
+      "totalVramGb": 12,
+      "vramGb": 12
+    },
+    "hardwareSource": "detected_local",
+    "hfId": "unsloth/Qwen3.6-27B-GGUF",
+    "kind": "kvcache_context_sweep",
+    "metricSource": "local_runtime",
+    "modelRevision": "main",
+    "outputTokens": 128,
+    "peakVramGb": null,
+    "promptTokens": 512,
+    "provenance": {
+      "benchmarkMode": "local",
+      "cli": "localmaxxing-go",
+      "createdAt": "2026-08-03T09:47:38Z",
+      "metricSource": "local_runtime",
+      "timingSource": "llama_cpp_runtime",
+      "ttftSource": "estimated_from_prefill"
+    },
+    "quantization": "",
+    "timingSource": "llama_cpp_runtime",
+    "tokSOut": 3.906688,
+    "tokSPrefill": 461.319908,
+    "tokSTotal": 18.9,
+    "ttftMs": 1109.9
+  }
+}
