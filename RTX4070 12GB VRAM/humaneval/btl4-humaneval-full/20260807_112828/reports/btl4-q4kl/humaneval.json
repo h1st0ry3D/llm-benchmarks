@@ -1,0 +1,118 @@
+{
+    "name": "btl4-q4kl@humaneval",
+    "dataset_name": "humaneval",
+    "dataset_pretty_name": "HumanEval",
+    "dataset_description": "\n## Overview\n\nHumanEval is a benchmark for evaluating the code generation capabilities of language models. It consists of 164 hand-written Python programming problems with function signatures, docstrings, and comprehensive test cases.\n\n## Task Description\n\n- **Task Type**: Code Generation (Python)\n- **Input**: Function signature with docstring describing the expected behavior\n- **Output**: Complete Python function implementation\n- **Languages**: Python only\n\n## Key Features\n\n- 164 hand-crafted programming problems\n- Each problem includes a function signature, docstring, and test cases\n- Problems range from simple string manipulation to complex algorithms\n- Canonical solutions provided for reference\n- Automatic correctness verification through test execution\n\n## Evaluation Notes\n\n- **Security Warning**: By default, code is executed in the local environment. We strongly recommend using sandbox execution for safety. See the [sandbox documentation](https://evalscope.readthedocs.io/en/latest/user_guides/sandbox.html) for details.\n- Supports `pass@k` metric calculation for measuring generation quality\n- Default timeout is 4 seconds per problem\n- Code is extracted from markdown code blocks if present\n",
+    "model_name": "btl4-q4kl",
+    "score": 0.939,
+    "metrics": [
+        {
+            "name": "mean_acc",
+            "num": 164,
+            "score": 0.939,
+            "macro_score": 0.939,
+            "categories": [
+                {
+                    "name": [
+                        "default"
+                    ],
+                    "num": 164,
+                    "score": 0.939,
+                    "macro_score": 0.939,
+                    "subsets": [
+                        {
+                            "name": "openai_humaneval",
+                            "score": 0.939,
+                            "num": 164,
+                            "is_aggregate": false
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "name": "mean_acc_pass@1",
+            "num": 164,
+            "score": 0.939,
+            "macro_score": 0.939,
+            "categories": [
+                {
+                    "name": [
+                        "default"
+                    ],
+                    "num": 164,
+                    "score": 0.939,
+                    "macro_score": 0.939,
+                    "subsets": [
+                        {
+                            "name": "openai_humaneval",
+                            "score": 0.939,
+                            "num": 164,
+                            "is_aggregate": false
+                        }
+                    ]
+                }
+            ]
+        }
+    ],
+    "analysis": "N/A",
+    "perf_metrics": {
+        "summary": {
+            "n_samples": 164,
+            "latency": {
+                "mean": 5.818599,
+                "std": 3.203141,
+                "min": 2.027163,
+                "25%": 4.035817,
+                "50%": 5.191825,
+                "75%": 6.440765,
+                "90%": 8.524134,
+                "99%": 20.139021,
+                "max": 22.941402
+            },
+            "throughput": {
+                "avg_output_tps": 40.19,
+                "avg_req_ps": 0.1719
+            },
+            "usage": {
+                "input_tokens": {
+                    "mean": 180.0,
+                    "std": 67.587163,
+                    "min": 81.0,
+                    "25%": 133.0,
+                    "50%": 163.0,
+                    "75%": 204.0,
+                    "90%": 273.7,
+                    "99%": 372.11,
+                    "max": 445.0
+                },
+                "output_tokens": {
+                    "mean": 233.853659,
+                    "std": 155.999144,
+                    "min": 53.0,
+                    "25%": 143.0,
+                    "50%": 201.0,
+                    "75%": 263.5,
+                    "90%": 375.0,
+                    "99%": 972.97,
+                    "max": 1024.0
+                },
+                "total_tokens": {
+                    "mean": 413.853659,
+                    "std": 207.277125,
+                    "min": 134.0,
+                    "25%": 287.75,
+                    "50%": 368.5,
+                    "75%": 470.5,
+                    "90%": 688.9,
+                    "99%": 1168.54,
+                    "max": 1469.0
+                },
+                "total_input_tokens": 29520,
+                "total_output_tokens": 38352,
+                "total_tokens_count": 67872
+            }
+        }
+    },
+    "num": 164
+}
