@@ -1,0 +1,194 @@
+2026-08-09 19:54:45 - evalscope - INFO: Running with native backend
+2026-08-09 19:54:45 - evalscope - INFO: Dump task config to outputs/btl4-iq2xxs-humaneval-full/20260809_195445/configs/task_config.yaml
+2026-08-09 19:54:45 - evalscope - INFO: {
+    "model_id": "btl4-iq2xxs",
+    "model_args": {},
+    "model_task": "text_generation",
+    "chat_template": null,
+    "datasets": [
+        "humaneval"
+    ],
+    "dataset_args": {
+        "humaneval": {
+            "name": "humaneval",
+            "dataset_id": "opencompass/humaneval",
+            "output_types": [
+                "generation"
+            ],
+            "subset_list": [
+                "openai_humaneval"
+            ],
+            "default_subset": "default",
+            "few_shot_num": 0,
+            "few_shot_random": false,
+            "train_split": null,
+            "eval_split": "test",
+            "prompt_template": "Read the following function signature and docstring, and fully implement the function described. Your response should only contain the code for this function.\n{question}",
+            "few_shot_prompt_template": null,
+            "system_prompt": null,
+            "query_template": null,
+            "pretty_name": "HumanEval",
+            "description": "\n## Overview\n\nHumanEval is a benchmark for evaluating the code generation capabilities of language models. It consists of 164 hand-written Python programming problems with function signatures, docstrings, and comprehensive test cases.\n\n## Task Description\n\n- **Task Type**: Code Generation (Python)\n- **Input**: Function signature with docstring describing the expected behavior\n- **Output**: Complete Python function implementation\n- **Languages**: Python only\n\n## Key Features\n\n- 164 hand-crafted programming problems\n- Each problem includes a function signature, docstring, and test cases\n- Problems range from simple string manipulation to complex algorithms\n- Canonical solutions provided for reference\n- Automatic correctness verification through test execution\n\n## Evaluation Notes\n\n- **Security Warning**: By default, code is executed in the local environment. We strongly recommend using sandbox execution for safety. See the [sandbox documentation](https://evalscope.readthedocs.io/en/latest/user_guides/sandbox.html) for details.\n- Supports `pass@k` metric calculation for measuring generation quality\n- Default timeout is 4 seconds per problem\n- Code is extracted from markdown code blocks if present\n",
+            "paper_url": null,
+            "data_statistics": null,
+            "sample_example": null,
+            "tags": [
+                "Coding"
+            ],
+            "filters": null,
+            "metric_list": [
+                "acc"
+            ],
+            "aggregation": "mean_and_pass_at_k",
+            "shuffle": false,
+            "shuffle_choices": false,
+            "force_redownload": false,
+            "review_timeout": 4,
+            "extra_params": {},
+            "sandbox_config": {
+                "image": "python:3.11-slim",
+                "tools_config": {
+                    "shell_executor": {},
+                    "python_executor": {}
+                }
+            },
+            "max_image_bytes": null
+        }
+    },
+    "dataset_dir": "/home/llm/.cache/modelscope/hub/datasets",
+    "dataset_hub": "huggingface",
+    "repeats": 1,
+    "eval_type": "openai_api",
+    "eval_backend": "Native",
+    "eval_config": null,
+    "limit": null,
+    "eval_batch_size": 1,
+    "use_cache": null,
+    "rerun_review": false,
+    "work_dir": "outputs/btl4-iq2xxs-humaneval-full/20260809_195445",
+    "no_timestamp": false,
+    "enable_progress_tracker": false,
+    "ignore_errors": false,
+    "debug": false,
+    "seed": 42,
+    "api_url": "http://127.0.0.1:8092/v1",
+    "api_key": "**********",
+    "timeout": null,
+    "stream": null,
+    "judge_strategy": "auto",
+    "judge_worker_num": 1,
+    "judge_model_args": {},
+    "analysis_report": false,
+    "collect_perf": true,
+    "sandbox": {
+        "enabled": false,
+        "engine": "docker",
+        "default_config": {},
+        "manager_config": {},
+        "pool_size": null
+    },
+    "use_sandbox": false,
+    "sandbox_type": "docker",
+    "sandbox_manager_config": {},
+    "agent_config": null,
+    "evalscope_version": "1.9.1",
+    "model": "btl4-iq2xxs",
+    "generation_config": {
+        "batch_size": 1,
+        "max_tokens": 4096,
+        "temperature": 0.2
+    }
+}
+2026-08-09 19:54:45 - evalscope - INFO: Start loading benchmark dataset: humaneval
+2026-08-09 19:54:46 - evalscope - INFO: humaneval: 164 samples to evaluate (1 subset)
+2026-08-09 19:54:46 - evalscope - INFO: Subsets of humaneval: ['openai_humaneval']
+2026-08-09 19:54:46 - evalscope - INFO: Loading model for prediction...
+2026-08-09 19:54:46 - evalscope - INFO: Creating model btl4-iq2xxs with eval_type=openai_api base_url=http://127.0.0.1:8092/v1, config={'retries': 5, 'retry_interval': 10, 'batch_size': 1, 'max_tokens': 4096, 'temperature': 0.2, 'anthropic_cache_strategy': 'evaluation'}, model_args={}
+2026-08-09 19:54:46 - evalscope - INFO: Model loaded successfully.
+2026-08-09 19:55:46 - evalscope - INFO: Evaluating[humaneval]   4%| 6/164 [Elapsed: 01:00 < Remaining: 20:52,  7.93s/it]
+2026-08-09 19:56:47 - evalscope - INFO: Evaluating[humaneval]   6%| 10/164 [Elapsed: 02:01 < Remaining: 24:27,  9.53s/it]
+2026-08-09 19:57:47 - evalscope - INFO: Evaluating[humaneval]  10%| 16/164 [Elapsed: 03:01 < Remaining: 25:01, 10.14s/it]
+2026-08-09 19:58:48 - evalscope - INFO: Evaluating[humaneval]  13%| 21/164 [Elapsed: 04:01 < Remaining: 29:36, 12.42s/it]
+2026-08-09 19:59:48 - evalscope - INFO: Evaluating[humaneval]  16%| 27/164 [Elapsed: 05:02 < Remaining: 20:06,  8.81s/it]
+2026-08-09 20:00:49 - evalscope - INFO: Evaluating[humaneval]  20%| 32/164 [Elapsed: 06:03 < Remaining: 25:15, 11.48s/it]
+2026-08-09 20:01:49 - evalscope - INFO: Evaluating[humaneval]  22%| 36/164 [Elapsed: 07:03 < Remaining: 29:41, 13.92s/it]
+2026-08-09 20:02:50 - evalscope - INFO: Evaluating[humaneval]  25%| 41/164 [Elapsed: 08:04 < Remaining: 27:21, 13.34s/it]
+2026-08-09 20:03:51 - evalscope - INFO: Evaluating[humaneval]  27%| 44/164 [Elapsed: 09:05 < Remaining: 34:25, 17.22s/it]
+2026-08-09 20:04:51 - evalscope - INFO: Evaluating[humaneval]  30%| 50/164 [Elapsed: 10:05 < Remaining: 19:01, 10.01s/it]
+2026-08-09 20:05:51 - evalscope - INFO: Evaluating[humaneval]  33%| 54/164 [Elapsed: 11:05 < Remaining: 19:26, 10.61s/it]
+2026-08-09 20:06:51 - evalscope - INFO: Evaluating[humaneval]  35%| 57/164 [Elapsed: 12:05 < Remaining: 29:10, 16.36s/it]
+2026-08-09 20:07:52 - evalscope - INFO: Evaluating[humaneval]  37%| 60/164 [Elapsed: 13:06 < Remaining: 28:29, 16.44s/it]
+2026-08-09 20:08:52 - evalscope - INFO: Evaluating[humaneval]  38%| 63/164 [Elapsed: 14:06 < Remaining: 33:41, 20.01s/it]
+2026-08-09 20:09:53 - evalscope - INFO: Evaluating[humaneval]  41%| 67/164 [Elapsed: 15:07 < Remaining: 22:19, 13.81s/it]
+2026-08-09 20:10:53 - evalscope - INFO: Evaluating[humaneval]  43%| 70/164 [Elapsed: 16:07 < Remaining: 32:04, 20.48s/it]
+2026-08-09 20:11:54 - evalscope - INFO: Evaluating[humaneval]  46%| 75/164 [Elapsed: 17:08 < Remaining: 19:43, 13.30s/it]
+2026-08-09 20:12:55 - evalscope - INFO: Evaluating[humaneval]  47%| 77/164 [Elapsed: 18:09 < Remaining: 29:58, 20.67s/it]
+2026-08-09 20:13:55 - evalscope - INFO: Evaluating[humaneval]  50%| 82/164 [Elapsed: 19:09 < Remaining: 20:05, 14.70s/it]
+2026-08-09 20:14:56 - evalscope - INFO: Evaluating[humaneval]  52%| 86/164 [Elapsed: 20:10 < Remaining: 16:03, 12.36s/it]
+2026-08-09 20:15:57 - evalscope - INFO: Evaluating[humaneval]  54%| 88/164 [Elapsed: 21:11 < Remaining: 29:37, 23.39s/it]
+2026-08-09 20:16:57 - evalscope - INFO: Evaluating[humaneval]  55%| 91/164 [Elapsed: 22:11 < Remaining: 21:20, 17.54s/it]
+2026-08-09 20:17:58 - evalscope - INFO: Evaluating[humaneval]  58%| 95/164 [Elapsed: 23:12 < Remaining: 22:58, 19.97s/it]
+2026-08-09 20:18:59 - evalscope - INFO: Evaluating[humaneval]  60%| 98/164 [Elapsed: 24:12 < Remaining: 19:18, 17.55s/it]
+2026-08-09 20:19:59 - evalscope - INFO: Evaluating[humaneval]  62%| 102/164 [Elapsed: 25:13 < Remaining: 14:53, 14.42s/it]
+2026-08-09 20:20:59 - evalscope - INFO: Evaluating[humaneval]  63%| 104/164 [Elapsed: 26:13 < Remaining: 19:02, 19.05s/it]
+2026-08-09 20:22:00 - evalscope - INFO: Evaluating[humaneval]  66%| 108/164 [Elapsed: 27:14 < Remaining: 15:14, 16.33s/it]
+2026-08-09 20:23:01 - evalscope - INFO: Evaluating[humaneval]  67%| 110/164 [Elapsed: 28:14 < Remaining: 21:25, 23.81s/it]
+2026-08-09 20:24:01 - evalscope - INFO: Evaluating[humaneval]  69%| 113/164 [Elapsed: 29:15 < Remaining: 18:58, 22.33s/it]
+2026-08-09 20:25:01 - evalscope - INFO: Evaluating[humaneval]  72%| 118/164 [Elapsed: 30:15 < Remaining: 11:21, 14.81s/it]
+2026-08-09 20:26:01 - evalscope - INFO: Evaluating[humaneval]  74%| 122/164 [Elapsed: 31:15 < Remaining: 08:24, 12.01s/it]
+2026-08-09 20:27:02 - evalscope - INFO: Evaluating[humaneval]  76%| 125/164 [Elapsed: 32:16 < Remaining: 11:40, 17.97s/it]
+2026-08-09 20:28:02 - evalscope - INFO: Evaluating[humaneval]  78%| 128/164 [Elapsed: 33:16 < Remaining: 12:20, 20.57s/it]
+2026-08-09 20:29:02 - evalscope - INFO: Evaluating[humaneval]  79%| 130/164 [Elapsed: 34:16 < Remaining: 12:56, 22.84s/it]
+2026-08-09 20:30:03 - evalscope - INFO: Evaluating[humaneval]  80%| 132/164 [Elapsed: 35:17 < Remaining: 12:08, 22.77s/it]
+2026-08-09 20:31:04 - evalscope - INFO: Evaluating[humaneval]  84%| 137/164 [Elapsed: 36:17 < Remaining: 07:33, 16.81s/it]
+2026-08-09 20:32:04 - evalscope - INFO: Evaluating[humaneval]  86%| 141/164 [Elapsed: 37:18 < Remaining: 06:53, 18.00s/it]
+2026-08-09 20:33:05 - evalscope - INFO: Evaluating[humaneval]  88%| 144/164 [Elapsed: 38:19 < Remaining: 06:17, 18.87s/it]
+2026-08-09 20:34:05 - evalscope - INFO: Evaluating[humaneval]  90%| 147/164 [Elapsed: 39:19 < Remaining: 05:28, 19.32s/it]
+2026-08-09 20:35:06 - evalscope - INFO: Evaluating[humaneval]  92%| 151/164 [Elapsed: 40:20 < Remaining: 03:10, 14.62s/it]
+2026-08-09 20:36:06 - evalscope - INFO: Evaluating[humaneval]  95%| 155/164 [Elapsed: 41:20 < Remaining: 02:24, 16.08s/it]
+2026-08-09 20:37:06 - evalscope - INFO: Evaluating[humaneval]  97%| 159/164 [Elapsed: 42:20 < Remaining: 01:17, 15.56s/it]
+2026-08-09 20:38:07 - evalscope - INFO: Evaluating[humaneval]  99%| 163/164 [Elapsed: 43:21 < Remaining: 00:14, 14.75s/it]
+2026-08-09 20:38:10 - evalscope - INFO: Evaluating[humaneval] 100%| 164/164 [Elapsed: 43:24 < Remaining: 00:00, 14.45s/it]
+2026-08-09 20:38:10 - evalscope - INFO: humaneval: predictions complete, aggregating scores...
+2026-08-09 20:38:10 - evalscope - INFO: Aggregating scores for subset: openai_humaneval
+2026-08-09 20:38:10 - evalscope - INFO: Generating report...
+2026-08-09 20:38:10 - evalscope - INFO: 
+humaneval report table:
+┌─────────────┬───────────┬─────────────────┬──────────────────┬───────┬─────────┬─────────┐
+│ Model       │ Dataset   │ Metric          │ Subset           │   Num │   Score │ Cat.0   │
+├─────────────┼───────────┼─────────────────┼──────────────────┼───────┼─────────┼─────────┤
+│ btl4-iq2xxs │ humaneval │ mean_acc        │ openai_humaneval │   164 │  0.8537 │ default │
+├─────────────┼───────────┼─────────────────┼──────────────────┼───────┼─────────┼─────────┤
+│ btl4-iq2xxs │ humaneval │ mean_acc_pass@1 │ openai_humaneval │   164 │  0.8537 │ default │
+└─────────────┴───────────┴─────────────────┴──────────────────┴───────┴─────────┴─────────┘ 
+
+2026-08-09 20:38:10 - evalscope - INFO: Skipping report analysis (`analysis_report=False`).
+2026-08-09 20:38:10 - evalscope - INFO: Dump report to: outputs/btl4-iq2xxs-humaneval-full/20260809_195445/reports/btl4-iq2xxs/humaneval.json 
+
+2026-08-09 20:38:10 - evalscope - INFO: 
+humaneval perf table:
+Model        Dataset      Num    Avg Lat  Avg TTFT    Avg TPOT      Avg Thpt    Avg In    Avg Out
+                                     (s)  (ms)        (ms)           (tok/s)       Tok        Tok
+-----------  ---------  -----  ---------  ----------  ----------  ----------  --------  ---------
+btl4-iq2xxs  humaneval    164    13.6317  -           -               129.48       178    1765.07
+
+2026-08-09 20:38:10 - evalscope - INFO: Benchmark humaneval evaluation finished.
+2026-08-09 20:38:10 - evalscope - INFO: Running[eval] 100%| 1/1 [Elapsed: 43:25 < Remaining: 00:00, 2605.07s/benchmark]
+2026-08-09 20:38:10 - evalscope - INFO: Overall report table: 
+┌─────────────┬───────────┬─────────────────┬──────────────────┬───────┬─────────┬─────────┐
+│ Model       │ Dataset   │ Metric          │ Subset           │   Num │   Score │ Cat.0   │
+├─────────────┼───────────┼─────────────────┼──────────────────┼───────┼─────────┼─────────┤
+│ btl4-iq2xxs │ humaneval │ mean_acc        │ openai_humaneval │   164 │  0.8537 │ default │
+├─────────────┼───────────┼─────────────────┼──────────────────┼───────┼─────────┼─────────┤
+│ btl4-iq2xxs │ humaneval │ mean_acc_pass@1 │ openai_humaneval │   164 │  0.8537 │ default │
+└─────────────┴───────────┴─────────────────┴──────────────────┴───────┴─────────┴─────────┘ 
+
+2026-08-09 20:38:10 - evalscope - INFO: Overall perf table: 
+Model        Dataset      Num    Avg Lat  Avg TTFT    Avg TPOT      Avg Thpt    Avg In    Avg Out
+                                     (s)  (ms)        (ms)           (tok/s)       Tok        Tok
+-----------  ---------  -----  ---------  ----------  ----------  ----------  --------  ---------
+btl4-iq2xxs  humaneval    164    13.6317  -           -               129.48       178    1765.07 
+
+2026-08-09 20:38:11 - evalscope - INFO: HTML report generated: /home/llm/agent/outputs/btl4-iq2xxs-humaneval-full/20260809_195445/reports/report.html
+2026-08-09 20:38:11 - evalscope - INFO: Finished evaluation for btl4-iq2xxs on ['humaneval']
+2026-08-09 20:38:11 - evalscope - INFO: Output directory: outputs/btl4-iq2xxs-humaneval-full/20260809_195445
