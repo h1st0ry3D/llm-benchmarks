@@ -1,0 +1,49 @@
+{
+  "payload": {
+    "benchmarkMode": "local",
+    "contextTokens": 98304,
+    "engineFlags": {
+      "commandSnippet": "llama-bench -m /home/llm/models/nemotron35/NVIDIA-Nemotron-3.5-Lightning-30B-A3B-Q4_K_M.gguf -p 512 -n 128 -d 98304 -o json",
+      "mode": "local"
+    },
+    "engineName": "llama.cpp",
+    "hardware": {
+      "cpu": "AMD Ryzen 5 5600X 6-Core Processor",
+      "cpuThreads": 12,
+      "gpuCount": 1,
+      "gpuName": "NVIDIA GeForce RTX 4070",
+      "gpus": [
+        {
+          "name": "NVIDIA GeForce RTX 4070",
+          "vramGb": 12
+        }
+      ],
+      "hwClass": "DISCRETE_GPU",
+      "os": "linux",
+      "totalVramGb": 12,
+      "vramGb": 12
+    },
+    "hardwareSource": "detected_local",
+    "hfId": "lmstudio-community/NVIDIA-Nemotron-3.5-Lightning-30B-A3B-GGUF",
+    "kind": "kvcache_context_sweep",
+    "metricSource": "local_runtime",
+    "modelRevision": "main",
+    "outputTokens": 128,
+    "peakVramGb": null,
+    "promptTokens": 512,
+    "provenance": {
+      "benchmarkMode": "local",
+      "cli": "localmaxxing-go",
+      "createdAt": "2026-08-11T20:57:04Z",
+      "metricSource": "local_runtime",
+      "timingSource": "llama_cpp_runtime",
+      "ttftSource": "estimated_from_prefill"
+    },
+    "quantization": "",
+    "timingSource": "llama_cpp_runtime",
+    "tokSOut": 35.492143,
+    "tokSPrefill": 419.827637,
+    "tokSTotal": 132.6,
+    "ttftMs": 1219.5
+  }
+}
