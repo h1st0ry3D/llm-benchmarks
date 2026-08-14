@@ -114,6 +114,19 @@ models:
       ${sampling-qwen36}
       --reasoning auto --jinja
 
+  "qwen38-udiq2xxs-gguf_150k":
+    name: "qwen38-udiq2xxs-gguf_150k"
+    description: "score: 88.4, tps: 18.4, ctx: 150k, quant: iq2_xxs, reasoning: on"
+    cmd: |
+      ${ls}
+      -m /home/llm/models/qwen38-lowbit/Qwen3.8-27B-UD-IQ2_XXS.gguf
+      -ngl 99
+      -c 150000 -fa on -np 1
+      --cache-type-k q4_0 --cache-type-v q4_0
+      -b 1024 -ub 256 -t 6
+      --temp 1.0 --top-k 20 --min-p 0.0 --presence-penalty 0.0 --repeat-penalty 1.0
+      --reasoning on --jinja
+
   "qwen36-mtp-gguf_32k":
     name: "qwen36-mtp-gguf_32k"
     description: "score: 89.6, tps: 2.6, ctx: 32k, quant: q4_k_m, reasoning: off"
@@ -745,6 +758,7 @@ routing:
             - qwen36-udiq2m-gguf_32k
             - qwen36-udiq2m-gguf_128k
             - qwen36-udiq2xxs-gguf_112k
+            - qwen38-udiq2xxs-gguf_150k
             - qwen36-udiq2xxs-gguf_128k
             - qwen36-udiq2m-gguf_32k-vision
             - qwen36-udiq2m-gguf_128k-vision
