@@ -1,0 +1,180 @@
+2026-08-14 18:26:58 - evalscope - INFO: Running with native backend
+2026-08-14 18:26:58 - evalscope - INFO: Dump task config to outputs/qwen38-udiq2xxs-humaneval/20260814_182658/configs/task_config.yaml
+2026-08-14 18:26:58 - evalscope - INFO: {
+    "model_id": "qwen38-udiq2xxs",
+    "model_args": {},
+    "model_task": "text_generation",
+    "chat_template": null,
+    "datasets": [
+        "humaneval"
+    ],
+    "dataset_args": {
+        "humaneval": {
+            "name": "humaneval",
+            "dataset_id": "opencompass/humaneval",
+            "output_types": [
+                "generation"
+            ],
+            "subset_list": [
+                "openai_humaneval"
+            ],
+            "default_subset": "default",
+            "few_shot_num": 0,
+            "few_shot_random": false,
+            "train_split": null,
+            "eval_split": "test",
+            "prompt_template": "Read the following function signature and docstring, and fully implement the function described. Your response should only contain the code for this function.\n{question}",
+            "few_shot_prompt_template": null,
+            "system_prompt": null,
+            "query_template": null,
+            "pretty_name": "HumanEval",
+            "description": "\n## Overview\n\nHumanEval is a benchmark for evaluating the code generation capabilities of language models. It consists of 164 hand-written Python programming problems with function signatures, docstrings, and comprehensive test cases.\n\n## Task Description\n\n- **Task Type**: Code Generation (Python)\n- **Input**: Function signature with docstring describing the expected behavior\n- **Output**: Complete Python function implementation\n- **Languages**: Python only\n\n## Key Features\n\n- 164 hand-crafted programming problems\n- Each problem includes a function signature, docstring, and test cases\n- Problems range from simple string manipulation to complex algorithms\n- Canonical solutions provided for reference\n- Automatic correctness verification through test execution\n\n## Evaluation Notes\n\n- **Security Warning**: By default, code is executed in the local environment. We strongly recommend using sandbox execution for safety. See the [sandbox documentation](https://evalscope.readthedocs.io/en/latest/user_guides/sandbox.html) for details.\n- Supports `pass@k` metric calculation for measuring generation quality\n- Default timeout is 4 seconds per problem\n- Code is extracted from markdown code blocks if present\n",
+            "paper_url": null,
+            "data_statistics": null,
+            "sample_example": null,
+            "tags": [
+                "Coding"
+            ],
+            "filters": null,
+            "metric_list": [
+                "acc"
+            ],
+            "aggregation": "mean_and_pass_at_k",
+            "shuffle": false,
+            "shuffle_choices": false,
+            "force_redownload": false,
+            "review_timeout": 4,
+            "extra_params": {},
+            "sandbox_config": {
+                "image": "python:3.11-slim",
+                "tools_config": {
+                    "shell_executor": {},
+                    "python_executor": {}
+                }
+            },
+            "max_image_bytes": null
+        }
+    },
+    "dataset_dir": "/home/llm/.cache/modelscope/hub/datasets",
+    "dataset_hub": "huggingface",
+    "repeats": 1,
+    "eval_type": "openai_api",
+    "eval_backend": "Native",
+    "eval_config": null,
+    "limit": null,
+    "eval_batch_size": 1,
+    "use_cache": null,
+    "rerun_review": false,
+    "work_dir": "outputs/qwen38-udiq2xxs-humaneval/20260814_182658",
+    "no_timestamp": false,
+    "enable_progress_tracker": false,
+    "ignore_errors": false,
+    "debug": false,
+    "seed": 42,
+    "api_url": "http://127.0.0.1:8092/v1",
+    "api_key": "**********",
+    "timeout": null,
+    "stream": null,
+    "judge_strategy": "auto",
+    "judge_worker_num": 1,
+    "judge_model_args": {},
+    "analysis_report": false,
+    "collect_perf": true,
+    "sandbox": {
+        "enabled": false,
+        "engine": "docker",
+        "default_config": {},
+        "manager_config": {},
+        "pool_size": null
+    },
+    "use_sandbox": false,
+    "sandbox_type": "docker",
+    "sandbox_manager_config": {},
+    "agent_config": null,
+    "evalscope_version": "1.9.1",
+    "model": "qwen38-udiq2xxs",
+    "generation_config": {
+        "batch_size": 1,
+        "max_tokens": 1024,
+        "temperature": 0.2
+    }
+}
+2026-08-14 18:26:58 - evalscope - INFO: Start loading benchmark dataset: humaneval
+2026-08-14 18:26:58 - evalscope - INFO: humaneval: 164 samples to evaluate (1 subset)
+2026-08-14 18:26:58 - evalscope - INFO: Subsets of humaneval: ['openai_humaneval']
+2026-08-14 18:26:58 - evalscope - INFO: Loading model for prediction...
+2026-08-14 18:26:58 - evalscope - INFO: Creating model qwen38-udiq2xxs with eval_type=openai_api base_url=http://127.0.0.1:8092/v1, config={'retries': 5, 'retry_interval': 10, 'batch_size': 1, 'max_tokens': 1024, 'temperature': 0.2, 'anthropic_cache_strategy': 'evaluation'}, model_args={}
+2026-08-14 18:26:58 - evalscope - INFO: Model loaded successfully.
+2026-08-14 18:27:59 - evalscope - INFO: Evaluating[humaneval]   5%| 9/164 [Elapsed: 01:00 < Remaining: 16:10,  6.26s/it]
+2026-08-14 18:28:59 - evalscope - INFO: Evaluating[humaneval]  10%| 16/164 [Elapsed: 02:00 < Remaining: 16:06,  6.53s/it]
+2026-08-14 18:30:00 - evalscope - INFO: Evaluating[humaneval]  15%| 24/164 [Elapsed: 03:01 < Remaining: 15:27,  6.63s/it]
+2026-08-14 18:31:00 - evalscope - INFO: Evaluating[humaneval]  20%| 32/164 [Elapsed: 04:01 < Remaining: 13:38,  6.20s/it]
+2026-08-14 18:32:00 - evalscope - INFO: Evaluating[humaneval]  23%| 38/164 [Elapsed: 05:01 < Remaining: 17:48,  8.48s/it]
+2026-08-14 18:33:00 - evalscope - INFO: Evaluating[humaneval]  26%| 43/164 [Elapsed: 06:01 < Remaining: 22:57, 11.38s/it]
+2026-08-14 18:34:00 - evalscope - INFO: Evaluating[humaneval]  32%| 53/164 [Elapsed: 07:01 < Remaining: 10:08,  5.48s/it]
+2026-08-14 18:35:01 - evalscope - INFO: Evaluating[humaneval]  38%| 62/164 [Elapsed: 08:02 < Remaining: 11:22,  6.69s/it]
+2026-08-14 18:36:01 - evalscope - INFO: Evaluating[humaneval]  41%| 68/164 [Elapsed: 09:02 < Remaining: 15:32,  9.71s/it]
+2026-08-14 18:37:01 - evalscope - INFO: Evaluating[humaneval]  45%| 74/164 [Elapsed: 10:02 < Remaining: 15:46, 10.51s/it]
+2026-08-14 18:38:02 - evalscope - INFO: Evaluating[humaneval]  49%| 81/164 [Elapsed: 11:03 < Remaining: 11:53,  8.60s/it]
+2026-08-14 18:39:02 - evalscope - INFO: Evaluating[humaneval]  52%| 86/164 [Elapsed: 12:03 < Remaining: 12:50,  9.88s/it]
+2026-08-14 18:40:03 - evalscope - INFO: Evaluating[humaneval]  55%| 90/164 [Elapsed: 13:04 < Remaining: 20:03, 16.26s/it]
+2026-08-14 18:41:04 - evalscope - INFO: Evaluating[humaneval]  57%| 94/164 [Elapsed: 14:05 < Remaining: 17:05, 14.65s/it]
+2026-08-14 18:42:05 - evalscope - INFO: Evaluating[humaneval]  60%| 98/164 [Elapsed: 15:06 < Remaining: 17:27, 15.87s/it]
+2026-08-14 18:43:05 - evalscope - INFO: Evaluating[humaneval]  63%| 104/164 [Elapsed: 16:06 < Remaining: 11:56, 11.94s/it]
+2026-08-14 18:44:05 - evalscope - INFO: Evaluating[humaneval]  66%| 109/164 [Elapsed: 17:06 < Remaining: 09:46, 10.66s/it]
+2026-08-14 18:45:06 - evalscope - INFO: Evaluating[humaneval]  70%| 114/164 [Elapsed: 18:07 < Remaining: 10:44, 12.90s/it]
+2026-08-14 18:46:06 - evalscope - INFO: Evaluating[humaneval]  72%| 118/164 [Elapsed: 19:07 < Remaining: 09:40, 12.61s/it]
+2026-08-14 18:47:07 - evalscope - INFO: Evaluating[humaneval]  75%| 123/164 [Elapsed: 20:08 < Remaining: 08:32, 12.49s/it]
+2026-08-14 18:48:07 - evalscope - INFO: Evaluating[humaneval]  78%| 128/164 [Elapsed: 21:08 < Remaining: 07:44, 12.91s/it]
+2026-08-14 18:49:08 - evalscope - INFO: Evaluating[humaneval]  79%| 130/164 [Elapsed: 22:09 < Remaining: 10:02, 17.73s/it]
+2026-08-14 18:50:09 - evalscope - INFO: Evaluating[humaneval]  82%| 134/164 [Elapsed: 23:10 < Remaining: 08:16, 16.56s/it]
+2026-08-14 18:51:09 - evalscope - INFO: Evaluating[humaneval]  85%| 140/164 [Elapsed: 24:10 < Remaining: 03:46,  9.42s/it]
+2026-08-14 18:52:09 - evalscope - INFO: Evaluating[humaneval]  87%| 143/164 [Elapsed: 25:10 < Remaining: 06:14, 17.82s/it]
+2026-08-14 18:53:10 - evalscope - INFO: Evaluating[humaneval]  90%| 147/164 [Elapsed: 26:11 < Remaining: 03:28, 12.29s/it]
+2026-08-14 18:54:10 - evalscope - INFO: Evaluating[humaneval]  93%| 153/164 [Elapsed: 27:11 < Remaining: 01:40,  9.17s/it]
+2026-08-14 18:55:11 - evalscope - INFO: Evaluating[humaneval]  96%| 158/164 [Elapsed: 28:12 < Remaining: 01:04, 10.71s/it]
+2026-08-14 18:56:11 - evalscope - INFO: Evaluating[humaneval]  99%| 163/164 [Elapsed: 29:12 < Remaining: 00:11, 11.17s/it]
+2026-08-14 18:56:16 - evalscope - INFO: Evaluating[humaneval] 100%| 164/164 [Elapsed: 29:17 < Remaining: 00:00,  9.86s/it]
+2026-08-14 18:56:16 - evalscope - INFO: humaneval: predictions complete, aggregating scores...
+2026-08-14 18:56:16 - evalscope - INFO: Aggregating scores for subset: openai_humaneval
+2026-08-14 18:56:16 - evalscope - INFO: Generating report...
+2026-08-14 18:56:16 - evalscope - INFO: 
+humaneval report table:
+┌─────────────────┬───────────┬─────────────────┬──────────────────┬───────┬─────────┬─────────┐
+│ Model           │ Dataset   │ Metric          │ Subset           │   Num │   Score │ Cat.0   │
+├─────────────────┼───────────┼─────────────────┼──────────────────┼───────┼─────────┼─────────┤
+│ qwen38-udiq2xxs │ humaneval │ mean_acc        │ openai_humaneval │   164 │  0.8841 │ default │
+├─────────────────┼───────────┼─────────────────┼──────────────────┼───────┼─────────┼─────────┤
+│ qwen38-udiq2xxs │ humaneval │ mean_acc_pass@1 │ openai_humaneval │   164 │  0.8841 │ default │
+└─────────────────┴───────────┴─────────────────┴──────────────────┴───────┴─────────┴─────────┘ 
+
+2026-08-14 18:56:16 - evalscope - INFO: Skipping report analysis (`analysis_report=False`).
+2026-08-14 18:56:16 - evalscope - INFO: Dump report to: outputs/qwen38-udiq2xxs-humaneval/20260814_182658/reports/qwen38-udiq2xxs/humaneval.json 
+
+2026-08-14 18:56:16 - evalscope - INFO: 
+humaneval perf table:
+Model            Dataset      Num    Avg Lat  Avg TTFT    Avg TPOT      Avg Thpt    Avg In    Avg Out
+                                         (s)  (ms)        (ms)           (tok/s)       Tok        Tok
+---------------  ---------  -----  ---------  ----------  ----------  ----------  --------  ---------
+qwen38-udiq2xxs  humaneval    164     8.0331  -           -                38.19       180    306.811
+
+2026-08-14 18:56:16 - evalscope - INFO: Benchmark humaneval evaluation finished.
+2026-08-14 18:56:16 - evalscope - INFO: Running[eval] 100%| 1/1 [Elapsed: 29:17 < Remaining: 00:00, 1757.35s/benchmark]
+2026-08-14 18:56:16 - evalscope - INFO: Overall report table: 
+┌─────────────────┬───────────┬─────────────────┬──────────────────┬───────┬─────────┬─────────┐
+│ Model           │ Dataset   │ Metric          │ Subset           │   Num │   Score │ Cat.0   │
+├─────────────────┼───────────┼─────────────────┼──────────────────┼───────┼─────────┼─────────┤
+│ qwen38-udiq2xxs │ humaneval │ mean_acc        │ openai_humaneval │   164 │  0.8841 │ default │
+├─────────────────┼───────────┼─────────────────┼──────────────────┼───────┼─────────┼─────────┤
+│ qwen38-udiq2xxs │ humaneval │ mean_acc_pass@1 │ openai_humaneval │   164 │  0.8841 │ default │
+└─────────────────┴───────────┴─────────────────┴──────────────────┴───────┴─────────┴─────────┘ 
+
+2026-08-14 18:56:16 - evalscope - INFO: Overall perf table: 
+Model            Dataset      Num    Avg Lat  Avg TTFT    Avg TPOT      Avg Thpt    Avg In    Avg Out
+                                         (s)  (ms)        (ms)           (tok/s)       Tok        Tok
+---------------  ---------  -----  ---------  ----------  ----------  ----------  --------  ---------
+qwen38-udiq2xxs  humaneval    164     8.0331  -           -                38.19       180    306.811 
+
+2026-08-14 18:56:16 - evalscope - INFO: HTML report generated: /home/llm/agent/outputs/qwen38-udiq2xxs-humaneval/20260814_182658/reports/report.html
+2026-08-14 18:56:16 - evalscope - INFO: Finished evaluation for qwen38-udiq2xxs on ['humaneval']
+2026-08-14 18:56:16 - evalscope - INFO: Output directory: outputs/qwen38-udiq2xxs-humaneval/20260814_182658
