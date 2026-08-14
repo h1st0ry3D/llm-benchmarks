@@ -1,0 +1,759 @@
+models:
+
+  "qwen36-35b-a3b-udq4xl-gguf_184k":
+    name: "qwen36-35b-a3b-udq4xl-gguf_184k"
+    description: "score: 93.9, tps: 29.7, ctx: 184k, vision: no, reasoning: off"
+    cmd: |
+      ${ls}
+      -m ${qwen36-35b-a3b-udq4xl-gguf}
+      --no-mmproj
+      -ngl 99 --n-cpu-moe 26
+      -c 184000 -fa on -np 1
+      --cache-type-k q8_0 --cache-type-v q8_0
+      -b 2048 -ub 256 -t 6
+      ${sampling-qwen36}
+      --reasoning off --jinja
+
+  "btl4-gguf_32k":
+    name: "btl4-gguf_32k"
+    description: "score: 93.9, tps: 48.5, ctx: 32k, quant: q4_k_l, reasoning: on"
+    cmd: |
+      ${ls}
+      -m ${btl4-gguf}
+      -ngl 99 --n-cpu-moe 26
+      -c 32768 -fa on --jinja -np 1
+      --cache-type-k q8_0 --cache-type-v q8_0
+      -b 2048 -ub 1024 -t 6
+      --temp 0.6 --top-p 0.95 --top-k 20 --min-p 0.0
+      --presence-penalty 0.0 --repeat-penalty 1.0
+      --reasoning-format deepseek
+
+  "qwen36-35b-a3b-udq4xl-gguf_150k-vision":
+    name: "qwen36-35b-a3b-udq4xl-gguf_150k-vision"
+    description: "score: 93.9, tps: 33.1, ctx: 150k, vision: yes, quant: q4_k_xl, reasoning: off"
+    cmd: |
+      ${ls}
+      -m ${qwen36-35b-a3b-udq4xl-gguf}
+      --mmproj ${qwen36-35b-a3b-mmproj-f16}
+      --no-mmproj-offload
+      --image-min-tokens 1024
+      -ngl 99 --n-cpu-moe 26
+      -c 150000 -fa on -np 1
+      --cache-type-k q8_0 --cache-type-v q8_0
+      -b 2048 -ub 1024 -t 6
+      ${sampling-qwen36}
+      --reasoning off --jinja
+
+  "btl4-gguf_188k":
+    name: "btl4-gguf_188k"
+    description: "score: 93.9, tps: 27.6, ctx: 188k, quant: q4_k_l, reasoning: on"
+    cmd: |
+      ${ls}
+      -m ${btl4-gguf}
+      -ngl 99 --n-cpu-moe 26
+      -c 188000 -fa on --jinja -np 1
+      --cache-type-k q8_0 --cache-type-v q8_0
+      -b 2048 -ub 256 -t 6
+      --temp 0.6 --top-p 0.95 --top-k 20 --min-p 0.0
+      --presence-penalty 0.0 --repeat-penalty 1.0
+      --reasoning-format deepseek
+
+  "btl4-gguf_180k-vision":
+    name: "btl4-gguf_180k-vision"
+    description: "score: 93.9, ctx: 180k, vision: yes, quant: q4_k_l, reasoning: on"
+    cmd: |
+      ${ls}
+      -m ${btl4-gguf}
+      --mmproj ${btl4-mmproj-f16}
+      --no-mmproj-offload
+      --image-min-tokens 1024
+      -ngl 99 --n-cpu-moe 26
+      -c 180000 -fa on --jinja -np 1
+      --cache-type-k q8_0 --cache-type-v q8_0
+      -b 2048 -ub 256 -t 6
+      --temp 0.6 --top-p 0.95 --top-k 20 --min-p 0.0
+      --presence-penalty 0.0 --repeat-penalty 1.0
+      --reasoning-format deepseek
+
+  "qwen36-udiq2m-gguf_32k":
+    name: "qwen36-udiq2m-gguf_32k"
+    description: "score: 91.5, tps: 29.5, ctx: 32k, quant: iq2_m, reasoning: off"
+    cmd: |
+      ${ls}
+      -m ${qwen36-udiq2m-gguf}
+      -ngl 99
+      -c 32768 -fa on -np 1
+      --cache-type-k q4_0 --cache-type-v q4_0
+      -b 2048 -ub 1024 -t 6
+      ${sampling-qwen36}
+      --reasoning auto --jinja
+
+  "qwen36-udiq2m-gguf_8k":
+    name: "qwen36-udiq2m-gguf_8k"
+    description: "score: 91.5, tps: 34.9, ctx: 8k, quant: iq2_m, reasoning: off"
+    cmd: |
+      ${ls}
+      -m ${qwen36-udiq2m-gguf}
+      -ngl 99
+      -c 8192 -fa on -np 1
+      --cache-type-k q4_0 --cache-type-v q4_0
+      -b 2048 -ub 1024 -t 6
+      ${sampling-qwen36}
+      --reasoning auto --jinja
+
+  "qwen36-udiq2xxs-gguf_112k":
+    name: "qwen36-udiq2xxs-gguf_112k"
+    description: "score: 89.0, tps: 21.1, ctx: 112k, quant: iq2_xxs, reasoning: off"
+    cmd: |
+      ${ls}
+      -m ${qwen36-udiq2xxs-gguf}
+      -ngl 99
+      -c 114688 -fa on -np 1
+      --cache-type-k q4_0 --cache-type-v q4_0
+      -b 512 -ub 128 -t 6
+      ${sampling-qwen36}
+      --reasoning auto --jinja
+
+  "qwen36-mtp-gguf_32k":
+    name: "qwen36-mtp-gguf_32k"
+    description: "score: 89.6, tps: 2.6, ctx: 32k, quant: q4_k_m, reasoning: off"
+    cmd: |
+      ${ls}
+      -m ${qwen36-mtp-gguf}
+      -ngl 32
+      -c 32768 -fa on -np 1
+      --cache-type-k q4_0 --cache-type-v q4_0
+      -b 2048 -ub 1024 -t 6
+      --spec-type draft-mtp --spec-draft-n-max 3
+      ${sampling-qwen36}
+      --reasoning auto --jinja
+
+  "kat-coder-repo_128k":
+    name: "kat-coder-repo_128k"
+    description: "ctx: 128k, quant: q4_k_m, reasoning: on"
+    cmd: |
+      ${ls}
+      -hf ${kat-coder-repo}
+      -ngl 99 --n-cpu-moe 40
+      -c 131072 -fa on -np 1
+      --cache-type-k q8_0 --cache-type-v q8_0
+      -b 2048 -ub 1024
+      --temp 0.6 --top-p 0.9 --top-k 20
+      --repeat-penalty 1.05
+      --reasoning on --jinja
+
+  "kat-coder-repo_256k":
+    name: "kat-coder-repo_256k"
+    description: "ctx: 256k, quant: q4_k_m, reasoning: on"
+    cmd: |
+      ${ls}
+      -hf ${kat-coder-repo}
+      -ngl 99 --n-cpu-moe 40
+      -c 262144 -fa on -np 1
+      --cache-type-k q8_0 --cache-type-v q8_0
+      -b 2048 -ub 1024
+      --temp 0.6 --top-p 0.9 --top-k 20
+      --repeat-penalty 1.05
+      --reasoning on --jinja
+
+  "qwythos-repo_128k":
+    name: "qwythos-repo_128k"
+    description: "tps: 45.7, ctx: 128k, quant: q4_k_m, reasoning: on"
+    cmd: |
+      ${ls}
+      -hf ${qwythos-repo}
+      -ngl 99
+      -c 131072 -fa on -np 1
+      --cache-type-k q8_0 --cache-type-v q8_0
+      -b 2048 -ub 1024
+      --temp 0.6 --top-p 0.9 --top-k 40 --repeat-penalty 1.05
+      --reasoning on --jinja
+
+  "qwythos-repo_256k":
+    name: "qwythos-repo_256k"
+    description: "tps: 45.7, ctx: 256k, reasoning: on"
+    cmd: |
+      ${ls}
+      -hf ${qwythos-repo}
+      -ngl 99
+      -c 262144 -fa on -np 1
+      --cache-type-k q4_0 --cache-type-v q4_0
+      -b 2048 -ub 1024
+      --temp 0.6 --top-p 0.9 --top-k 40 --repeat-penalty 1.05
+      --reasoning on --jinja
+
+  "qwythos-repo_128k-vision":
+    name: "qwythos-repo_128k-vision"
+    description: "tps: 45.7, ctx: 128k, vision: yes, reasoning: on"
+    cmd: |
+      ${ls}
+      -hf ${qwythos-repo}
+      --mmproj ${qwythos-mmproj-path}
+      -ngl 99
+      --mmproj-offload
+      -c 131072 -fa on -np 1
+      --cache-type-k q8_0 --cache-type-v q8_0
+      -b 2048 -ub 1024
+      --temp 0.6 --top-p 0.9 --top-k 40 --repeat-penalty 1.05
+      --reasoning on --jinja
+
+  "godot-gemma4-e4b-repo_128k":
+    name: "godot-gemma4-e4b-repo_128k"
+    description: "tps: 28.0, ctx: 128k, reasoning: on"
+    cmd: |
+      ${ls}
+      -hf ${godot-gemma4-e4b-repo}
+      -ngl 99
+      -c 131072 -fa on -np 1
+      --cache-type-k q8_0 --cache-type-v q8_0
+      -b 2048 -ub 1024
+      --temp 1.0 --top-p 0.95 --top-k 64 --min-p 0.0 --repeat-penalty 1.1
+      --reasoning on --jinja
+
+  "godot-gemma4-e4b-repo_256k":
+    name: "godot-gemma4-e4b-repo_256k"
+    description: "tps: 28.0, ctx: 256k, reasoning: on"
+    cmd: |
+      ${ls}
+      -hf ${godot-gemma4-e4b-repo}
+      -ngl 99
+      -c 262144 -fa on -np 1
+      --cache-type-k q8_0 --cache-type-v q8_0
+      -b 2048 -ub 1024
+      --temp 1.0 --top-p 0.95 --top-k 64 --min-p 0.0 --repeat-penalty 1.1
+      --reasoning on --jinja
+
+  "godot-gemma4-e4b-repo_256k-efficient":
+    name: "godot-gemma4-e4b-repo_256k-efficient"
+    description: "tps: 28.0, ctx: 256k, reasoning: on"
+    cmd: |
+      ${ls}
+      -hf ${godot-gemma4-e4b-repo}
+      -ngl 99
+      -c 262144 -fa on -np 1
+      --cache-type-k q4_0 --cache-type-v q4_0
+      -b 2048 -ub 1024
+      --temp 1.0 --top-p 0.95 --top-k 64 --min-p 0.0 --repeat-penalty 1.1
+      --reasoning on --jinja
+
+  "godot-gemma4-e4b-repo_128k-vision":
+    name: "godot-gemma4-e4b-repo_128k-vision"
+    description: "tps: 28.0, ctx: 128k, vision: yes, reasoning: on"
+    cmd: |
+      ${ls}
+      -hf ${godot-gemma4-e4b-repo}
+      --mmproj ${godot-gemma4-e4b-mmproj-path}
+      --mmproj-offload
+      -ngl 99
+      -c 131072 -fa on -np 1
+      --cache-type-k q8_0 --cache-type-v q8_0
+      -b 2048 -ub 1024
+      --temp 1.0 --top-p 0.95 --top-k 64 --min-p 0.0 --repeat-penalty 1.1
+      --reasoning on --jinja
+
+  "qwen36-iq1m-gguf_128k":
+    name: "qwen36-iq1m-gguf_128k"
+    description: "score: 40.0, tps: 18.6, ctx: 128k, quant: iq1_m, reasoning: off"
+    cmd: |
+      ${ls}
+      -m ${qwen36-iq1m-gguf}
+      -ngl 99
+      -c 131072 -fa on -np 1
+      --cache-type-k q4_0 --cache-type-v q4_0
+      -b 512 -ub 128 -t 6
+      ${sampling-qwen36}
+      --reasoning auto --jinja
+
+  "qwen36-iq1m-gguf_160k":
+    name: "qwen36-iq1m-gguf_160k"
+    description: "score: 40.0, tps: 20.4, ctx: 160k, quant: iq1_m, reasoning: off"
+    cmd: |
+      ${ls}
+      -m ${qwen36-iq1m-gguf}
+      -ngl 99
+      -c 163840 -fa on -np 1
+      --cache-type-k q4_0 --cache-type-v q4_0
+      -b 512 -ub 128 -t 6
+      ${sampling-qwen36}
+      --reasoning auto --jinja
+
+  "qwen36-iq1s-gguf_192k":
+    name: "qwen36-iq1s-gguf_192k"
+    description: "score: 16.7, tps: 15.4, ctx: 192k, quant: iq1_s, reasoning: off"
+    cmd: |
+      ${ls}
+      -m ${qwen36-iq1s-gguf}
+      -ngl 99
+      -c 196608 -fa on -np 1
+      --cache-type-k q4_0 --cache-type-v q4_0
+      -b 512 -ub 128 -t 6
+      ${sampling-qwen36}
+      --reasoning auto --jinja
+
+  "qwen36-udiq2m-gguf_128k":
+    name: "qwen36-udiq2m-gguf_128k"
+    description: "score: 91.5, tps: 3.5, ctx: 128k, quant: iq2_m, reasoning: off"
+    cmd: |
+      ${ls}
+      -m ${qwen36-udiq2m-gguf}
+      -ngl 99
+      -c 131072 --no-kv-offload -fa on -np 1
+      --cache-type-k q4_0 --cache-type-v q4_0
+      -b 512 -ub 128 -t 6
+      ${sampling-qwen36}
+      --reasoning auto --jinja
+
+  "qwen36-udiq2xxs-gguf_128k":
+    name: "qwen36-udiq2xxs-gguf_128k"
+    description: "score: 89.0, tps: 0.9, ctx: 128k, quant: iq2_xxs, reasoning: off"
+    cmd: |
+      ${ls}
+      -m ${qwen36-udiq2xxs-gguf}
+      -ngl 99
+      -c 131072 --no-kv-offload -fa on -np 1
+      --cache-type-k q4_0 --cache-type-v q4_0
+      -b 512 -ub 128 -t 6
+      ${sampling-qwen36}
+      --reasoning auto --jinja
+
+  "qwen36-udiq2m-gguf_32k-vision":
+    name: "qwen36-udiq2m-gguf_32k-vision"
+    description: "score: 91.5, tps: 2.1, ctx: 32k, vision: yes, quant: iq2_m, reasoning: off"
+    cmd: |
+      ${ls}
+      -m ${qwen36-udiq2m-gguf}
+      --mmproj ${qwen36-mmproj-f16}
+      --no-mmproj-offload
+      --image-max-tokens 8192
+      -ngl 99
+      -c 32768 -fa on -np 1
+      --cache-type-k q4_0 --cache-type-v q4_0
+      -b 512 -ub 256 -t 6
+      ${sampling-qwen36}
+      --reasoning off --jinja
+
+  "qwen36-udiq2m-gguf_128k-vision":
+    name: "qwen36-udiq2m-gguf_128k-vision"
+    description: "score: 91.5, tps: 3.5, ctx: 128k, vision: yes, quant: iq2_m, reasoning: off"
+    cmd: |
+      ${ls}
+      -m ${qwen36-udiq2m-gguf}
+      --mmproj ${qwen36-mmproj-f16}
+      --no-mmproj-offload
+      --image-max-tokens 8192
+      -ngl 99
+      -c 131072 --no-kv-offload -fa on -np 1
+      --cache-type-k q4_0 --cache-type-v q4_0
+      -b 512 -ub 128 -t 6
+      ${sampling-qwen36}
+      --reasoning off --jinja
+
+  "qwen36-mtp-gguf_8k":
+    name: "qwen36-mtp-gguf_8k"
+    description: "score: 89.6, tps: 4.0, ctx: 8k, quant: q4_k_m, reasoning: off"
+    cmd: |
+      ${ls}
+      -m ${qwen36-mtp-gguf}
+      -ngl 36
+      -c 8192 -fa on -np 1
+      --cache-type-k q4_0 --cache-type-v q4_0
+      -b 2048 -ub 1024 -t 6
+      --spec-type draft-mtp --spec-draft-n-max 3
+      ${sampling-qwen36}
+      --reasoning auto --jinja
+
+  "qwen36-mtp-gguf_64k":
+    name: "qwen36-mtp-gguf_64k"
+    description: "score: 89.6, tps: 1.4, ctx: 64k, quant: q4_k_m, reasoning: off"
+    cmd: |
+      ${ls}
+      -m ${qwen36-mtp-gguf}
+      -ngl 30
+      -c 65536 -fa on -np 1
+      --kv-offload
+      --cache-type-k q4_0 --cache-type-v q4_0
+      -b 2048 -ub 1024 -t 6
+      --spec-type draft-mtp --spec-draft-n-max 3
+      ${sampling-qwen36}
+      --reasoning auto --jinja
+
+  "godoter-27b-repo_8k":
+    name: "godoter-27b-repo_8k"
+    description: "tps: 4.8, ctx: 8k, quant: q4_k_m, reasoning: on"
+    cmd: |
+      ${ls}
+      -hf ${godoter-27b-repo}
+      -ngl 42
+      -c 8192 -fa on -np 1
+      --cache-type-k q4_0 --cache-type-v q4_0
+      -b 2048 -ub 1024
+      --cpupre 2 --cpupost 2
+      --temp 0.6 --top-p 0.9 --top-k 40 --repeat-penalty 1.05
+      --reasoning on --jinja
+
+  "godoter-27b-repo_32k":
+    name: "godoter-27b-repo_32k"
+    description: "tps: 3.2, ctx: 32k, quant: q4_k_m, reasoning: on"
+    cmd: |
+      ${ls}
+      -hf ${godoter-27b-repo}
+      -ngl 36
+      -c 32768 -fa on -np 1
+      --cache-type-k q4_0 --cache-type-v q4_0
+      -b 2048 -ub 1024
+      --cpupre 2 --cpupost 2
+      --temp 0.6 --top-p 0.9 --top-k 40 --repeat-penalty 1.05
+      --reasoning on --jinja
+
+  "btl4-iq2xxs-gguf_144k":
+    name: "btl4-iq2xxs-gguf_144k"
+    description: "score: 85.4, tps: 57.9, ctx: 144k, quant: iq2_xxs, reasoning: on"
+    cmd: |
+      ${ls}
+      -m ${btl4-iq2xxs-gguf}
+      --host 0.0.0.0
+      --jinja --reasoning-format deepseek
+      -c 147456 -fa on --no-context-shift
+      --cache-type-k q8_0 --cache-type-v q8_0
+      --parallel 1
+      --threads 6 --threads-batch 6
+      --batch-size 2048 --ubatch-size 512
+      --gpu-layers 99
+      --temp 1.0 --top-p 0.95 --top-k 20
+
+  "btl4-iq2xxs-gguf_144k-vision":
+    name: "btl4-iq2xxs-gguf_144k-vision"
+    description: "score: 85.4, tps: 57.9, ctx: 144k, vision: yes, quant: iq2_xxs, reasoning: on"
+    cmd: |
+      ${ls}
+      -m ${btl4-iq2xxs-gguf}
+      --mmproj ${btl4-mmproj-f16}
+      --no-mmproj-offload
+      --image-min-tokens 1024
+      --host 0.0.0.0
+      --jinja --reasoning-format deepseek
+      -c 147456 -fa on --no-context-shift
+      --cache-type-k q8_0 --cache-type-v q8_0
+      --parallel 1
+      --threads 6 --threads-batch 6
+      --batch-size 2048 --ubatch-size 512
+      --gpu-layers 99
+      --temp 1.0 --top-p 0.95 --top-k 20
+
+  "nemotron35-gguf_128k":
+    name: "nemotron35-gguf_128k"
+    description: "score: 89.0, tps: 32.8, ctx: 128k, quant: q4_k_m, reasoning: on"
+    cmd: |
+      ${ls}
+      -m ${nemotron35-gguf}
+      -ngl 99 --n-cpu-moe 36
+      -c 131072 -fa on --jinja -np 1
+      --cache-type-k q8_0 --cache-type-v q8_0
+      -b 2048 -ub 512 -t 6
+      --temp 0.6 --top-p 0.95 --top-k 20
+      --repeat-penalty 1.0
+      --reasoning on --reasoning-format deepseek
+
+  "nemotron35-gguf_256k":
+    name: "nemotron35-gguf_256k"
+    description: "score: 89.0, tps: 29.6, ctx: 256k, quant: q4_k_m, reasoning: on"
+    cmd: |
+      ${ls}
+      -m ${nemotron35-gguf}
+      -ngl 99 --n-cpu-moe 40
+      -c 262144 -fa on --jinja -np 1
+      --cache-type-k q4_0 --cache-type-v q4_0
+      -b 2048 -ub 512 -t 6
+      --temp 0.6 --top-p 0.95 --top-k 20
+      --repeat-penalty 1.0
+      --reasoning on --reasoning-format deepseek
+
+  "nemotron35-gguf_512k":
+    name: "nemotron35-gguf_512k"
+    description: "score: 89.0, tps: 29.6, ctx: 512k, quant: q4_k_m, reasoning: on"
+    cmd: |
+      ${ls}
+      -m ${nemotron35-gguf}
+      -ngl 99 --n-cpu-moe 40
+      -c 524288 -fa on --jinja -np 1
+      --cache-type-k q4_0 --cache-type-v q4_0
+      -b 2048 -ub 1024 -t 6
+      --temp 0.6 --top-p 0.95 --top-k 20
+      --repeat-penalty 1.0
+      --reasoning on --reasoning-format deepseek
+
+  "nemotron35-gguf_1m":
+    name: "nemotron35-gguf_1m"
+    description: "score: 89.0, tps: 29.6, ctx: 1m, quant: q4_k_m, reasoning: on"
+    cmd: |
+      ${ls}
+      -m ${nemotron35-gguf}
+      -ngl 99 --n-cpu-moe 48
+      -c 1048576 -fa on --jinja -np 1
+      --cache-type-k q4_0 --cache-type-v q4_0
+      -b 2048 -ub 1024 -t 6
+      --temp 0.6 --top-p 0.95 --top-k 20
+      --repeat-penalty 1.0
+      --reasoning on --reasoning-format deepseek
+
+  "nemotron35-iq4xs-gguf_256k":
+    name: "nemotron35-iq4xs-gguf_256k"
+    description: "score: 89.0, ctx: 256k, quant: iq4_xs, reasoning: on"
+    cmd: |
+      ${ls}
+      -m ${nemotron35-iq4xs-gguf}
+      -ngl 99 --n-cpu-moe 28
+      -c 262144 -fa on --jinja -np 1
+      --cache-type-k q8_0 --cache-type-v q8_0
+      -b 2048 -ub 1024 -t 6
+      --temp 1.0 --top-p 0.95
+      --reasoning on --reasoning-format deepseek
+
+  "nemotron35-gguf_32k":
+    name: "nemotron35-gguf_32k"
+    description: "score: 89.0, tps: 40.0, ctx: 32k, quant: q4_k_m, reasoning: on"
+    cmd: |
+      ${ls}
+      -m ${nemotron35-gguf}
+      -md ${nemotron35-mtp-q4}
+      -ngl 99 --n-cpu-moe 42 -ngld 99
+      --spec-type draft-mtp --spec-draft-n-max 3
+      -c 32768 -fa on --jinja -np 1
+      --cache-type-k q4_0 --cache-type-v q4_0
+      -b 2048 -ub 512 -t 6
+      --temp 0.6 --top-p 0.95 --top-k 20
+      --repeat-penalty 1.0
+      --reasoning on --reasoning-format deepseek
+
+  "gemma4-12b-repo_128k":
+    name: "gemma4-12b-repo_128k"
+    description: "tps: 30.8, ctx: 128k, quant: q4_k_m, reasoning: off"
+    cmd: |
+      ${ls}
+      -hf ${gemma4-12b-repo}
+      -ngl 99
+      -c 131072 -fa on -np 1
+      --cache-type-k q8_0 --cache-type-v q8_0
+      -b 2048 -ub 512
+      ${sampling-gemma4}
+      --reasoning auto --jinja
+
+  "gemma4-12b-repo_128k-godot":
+    name: "gemma4-12b-repo_128k-godot"
+    description: "tps: 30.8, ctx: 128k, quant: q4_k_m, reasoning: on"
+    cmd: |
+      ${ls}
+      -hf ${gemma4-12b-repo}
+      -ngl 99
+      -c 131072 -fa on -np 1
+      --cache-type-k q8_0 --cache-type-v q8_0
+      -b 2048 -ub 512
+      ${sampling-gemma4}
+      --reasoning on --jinja
+
+  "gemma4-26b-nonqat-gguf_256k":
+    name: "gemma4-26b-nonqat-gguf_256k"
+    description: "tps: 17.7, ctx: 256k, quant: q4_k_xl, reasoning: on"
+    cmd: |
+      ${ls}
+      -m ${gemma4-26b-nonqat-gguf}
+      -c 262144 -fa on -np 1
+      --kv-offload
+      --cache-type-k q4_0 --cache-type-v q4_0
+      -b 1024 -ub 512
+      --temp 1.0 --top-p 0.95 --top-k 64 --repeat-penalty 1.0
+      --reasoning on --jinja
+
+  "gemma4-26b-qat-repo_160k":
+    name: "gemma4-26b-qat-repo_160k"
+    description: "tps: 24.4, ctx: 160k, quant: q4_k_xl, reasoning: on"
+    cmd: |
+      ${ls}
+      -hf "${gemma4-26b-qat-repo}:gemma-4-26B-A4B-it-qat-UD-Q4_K_XL.gguf"
+      -ngl 99 --n-cpu-moe 12
+      -c 160000 -fa on -np 1
+      --cache-type-k q8_0 --cache-type-v q8_0
+      -b 2048 -ub 1024
+      --temp 1.0 --top-p 0.95 --top-k 64 --repeat-penalty 1.0
+      --reasoning on --jinja
+
+  "gemma4-26b-qat-repo_70k":
+    name: "gemma4-26b-qat-repo_70k"
+    description: "tps: 30.6, ctx: 70k, quant: q4_k_xl, reasoning: on"
+    cmd: |
+      ${ls}
+      -hf "${gemma4-26b-qat-repo}:gemma-4-26B-A4B-it-qat-UD-Q4_K_XL.gguf"
+      -hfrd "${gemma4-26b-qat-repo}:mtp-gemma-4-26B-A4B-it.gguf"
+      -ngld 99 --spec-type draft-mtp --spec-draft-n-max 3
+      -ngl 99 --n-cpu-moe 12
+      -c 70000 -fa on -np 1
+      --cache-type-k f16 --cache-type-v f16
+      -b 2048 -ub 1024
+      --temp 1.0 --top-p 0.95 --top-k 64 --repeat-penalty 1.0
+      --reasoning on --jinja
+
+  "qwopus-gguf_128k":
+    name: "qwopus-gguf_128k"
+    description: "tps: 15.2, ctx: 128k, quant: q4_k_m, reasoning: off"
+    cmd: |
+      ${ls}
+      -m ${qwopus-gguf}
+      -c 131072 -fa on -np 1
+      --kv-offload
+      --cache-type-k q4_0 --cache-type-v q4_0
+      -b 2048 -ub 1024
+      ${sampling-default}
+      --reasoning auto --jinja
+
+  "qwopus-gguf_128k-mtp":
+    name: "qwopus-gguf_128k-mtp"
+    description: "tps: 15.2, ctx: 128k, quant: q4_k_m, reasoning: off"
+    cmd: |
+      ${ls}
+      -m ${qwopus-gguf}
+      -c 131072 -fa on -np 1
+      --kv-offload
+      --cache-type-k q4_0 --cache-type-v q4_0
+      -b 2048 -ub 1024
+      ${sampling-default}
+      --reasoning auto --jinja
+      --spec-type draft-mtp --spec-draft-n-max 3
+
+  "qwopus-gguf_256k":
+    name: "qwopus-gguf_256k"
+    description: "tps: 15.2, ctx: 256k, quant: q4_k_m, reasoning: off"
+    cmd: |
+      ${ls}
+      -m ${qwopus-gguf}
+      -c 262144 -fa on -np 1
+      --kv-offload
+      --cache-type-k q4_0 --cache-type-v q4_0
+      -b 1024 -ub 512
+      ${sampling-default}
+      --reasoning auto --jinja
+
+  "qwopus-gguf_256k-mtp":
+    name: "qwopus-gguf_256k-mtp"
+    description: "tps: 15.2, ctx: 256k, quant: q4_k_m, reasoning: off"
+    cmd: |
+      ${ls}
+      -m ${qwopus-gguf}
+      -c 262144 -fa on -np 1
+      --kv-offload
+      --cache-type-k q4_0 --cache-type-v q4_0
+      -b 1024 -ub 512
+      ${sampling-default}
+      --reasoning auto --jinja
+      --spec-type draft-mtp --spec-draft-n-max 3
+
+  "qwopus-gguf_150k":
+    name: "qwopus-gguf_150k"
+    description: "tps: 56.7, ctx: 150k, quant: q4_k_m, reasoning: off"
+    cmd: |
+      ${ls}
+      -m ${qwopus-gguf}
+      -ngl 99 --n-cpu-moe 26
+      -c 150000 -fa on --jinja -np 1
+      --cache-type-k q8_0 --cache-type-v q8_0
+      -b 2048 -ub 1024
+      --temp 1.0 --top-k 20 --top-p 1.0 --repeat-penalty 1.0
+      --reasoning auto --reasoning-preserve
+
+  "qwopus-gguf_256k-fast":
+    name: "qwopus-gguf_256k-fast"
+    description: "tps: 15.2, ctx: 256k, quant: q4_k_m, reasoning: off"
+    cmd: |
+      ${ls}
+      -m ${qwopus-gguf}
+      -ngl 99 --n-cpu-moe 26
+      -c 262144 -fa on --jinja -np 1
+      --cache-type-k q8_0 --cache-type-v q8_0
+      -b 2048 -ub 1024
+      --temp 1.0 --top-k 20 --top-p 1.0 --repeat-penalty 1.0
+      --reasoning auto --reasoning-preserve
+
+  "ornith-repo_170k":
+    name: "ornith-repo_170k"
+    description: "ctx: 170k, reasoning: on"
+    cmd: |
+      ${ls}
+      -hf ${ornith-repo}
+      -ngl 99 --n-cpu-moe 30
+      -c 170000 -fa on -np 1
+      --cache-type-k q8_0 --cache-type-v q8_0
+      -b 2048 -ub 1024
+      --temp 0.6 --top-p 0.95 --top-k 20 --min-p 0.0
+      --presence-penalty 0.0 --repeat-penalty 1.0
+      --reasoning on
+
+  "laguna-gguf_150k":
+    name: "laguna-gguf_150k"
+    description: "tps: 55.1, ctx: 150k, reasoning: on"
+    cmd: |
+      ${ls-laguna}
+      -m ${laguna-gguf}
+      -c 150000 -fa on --jinja -np 1
+      --reasoning-preserve
+      --cache-type-k q8_0 --cache-type-v q8_0
+      -b 2048 -ub 1024
+      --temp 1.0 --top-k 20 --top-p 1.0 --repeat-penalty 1.0
+
+routing:
+  router:
+    use: group
+    settings:
+      groups:
+        "gpu12gb":
+          swap: true        # only one member runs at a time
+          exclusive: true   # loading any member unloads other groups
+          members:
+            - gemma4-12b-repo_128k
+            - gemma4-12b-repo_128k-godot
+            - gemma4-26b-nonqat-gguf_256k
+            - gemma4-26b-qat-repo_160k
+            - gemma4-26b-qat-repo_70k
+            - qwopus-gguf_128k
+            - qwopus-gguf_128k-mtp
+            - qwopus-gguf_256k
+            - qwopus-gguf_256k-mtp
+            - qwopus-gguf_150k
+            - qwopus-gguf_256k-fast
+            - ornith-repo_170k
+            - laguna-gguf_150k
+            - godot-gemma4-e4b-repo_128k
+            - godot-gemma4-e4b-repo_128k-vision
+            - godot-gemma4-e4b-repo_256k
+            - godot-gemma4-e4b-repo_256k-efficient
+            - godoter-27b-repo_8k
+            - godoter-27b-repo_32k
+            - kat-coder-repo_128k
+            - kat-coder-repo_256k
+            - qwythos-repo_128k
+            - qwythos-repo_256k
+            - qwythos-repo_128k-vision
+            - qwen36-35b-a3b-udq4xl-gguf_150k-vision
+            - qwen36-35b-a3b-udq4xl-gguf_184k
+            - btl4-gguf_32k
+            - btl4-gguf_188k
+            - btl4-gguf_180k-vision
+            - btl4-iq2xxs-gguf_144k
+            - btl4-iq2xxs-gguf_144k-vision
+            - qwen36-mtp-gguf_8k
+            - qwen36-mtp-gguf_32k
+            - qwen36-mtp-gguf_64k
+            - qwen36-udiq2m-gguf_8k
+            - qwen36-udiq2m-gguf_32k
+            - qwen36-udiq2m-gguf_128k
+            - qwen36-udiq2xxs-gguf_112k
+            - qwen36-udiq2xxs-gguf_128k
+            - qwen36-udiq2m-gguf_32k-vision
+            - qwen36-udiq2m-gguf_128k-vision
+            - qwen36-iq1m-gguf_128k
+            - qwen36-iq1m-gguf_160k
+            - qwen36-iq1s-gguf_192k
+            - nemotron35-gguf_128k
+            - nemotron35-gguf_256k
+            - nemotron35-gguf_512k
+            - nemotron35-gguf_1m
+            - nemotron35-iq4xs-gguf_256k
+            - nemotron35-gguf_32k
