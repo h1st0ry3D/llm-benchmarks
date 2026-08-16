@@ -1,3 +1,180 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/mostlygeek/llama-swap/refs/heads/main/config-schema.json
+#
+# llama-swap config — maps all run-*.sh scripts to model entries
+#
+# Usage:
+#   llama-swap --config llama-swap.yaml --listen 192.168.0.99:8080
+#
+# Then use any OpenAI client with base_url=http://192.168.0.99:8080
+# and model=<model-id> to auto-start/swap the right llama-server.
+#
+# ── Updating snapshot hashes ────────────────────────────────────────────
+# If a model is re-downloaded via HuggingFace Hub, the snapshot hash
+# (the hex directory under .../snapshots/) may change. To find the new
+# hash, run:
+#   ls -d ${HOME}/.cache/huggingface/hub/models--*/snapshots/*/
+# Then update the corresponding macro below.
+#
+
+# ── Naming & description conventions (how to add new entries) ──────────
+#
+# MODEL KEY / name  (the string you pass as OpenAI `model=`):
+#   <family>-<quant/role>_<ctxlabel>
+#     <family>   model family, lowercase, dashes ok:
+#                kat-coder, qwen38, qwen36, btl4, nemotron35, godoter-27b,
+#                gemma4-26b-nonqat, qwopus, qwythos ...
+#     <quant/role>  quant or role tag:
+#                gguf            local GGUF (path in a macro)
+#                udiq2xxs-gguf   specific quant (UD-IQ2_XXS)
+#                mtp-gguf        MTP draft head baked in
+#                repo / qat-repo HF repo shorthand (used with -hf ${...})
+#     <ctxlabel> context window in k, from the model's real usable ctx:
+#                8k 32k 64k 128k 150k 184k 256k 512k 1m
+#   Variant suffixes (append with '-'):
+#     -vision   has --mmproj (multimodal)
+#     -mtp      uses --spec-type draft-mtp
+#   Examples: kat-coder-gguf_256k, qwen38-udiq2xxs-gguf_150k,
+#             qwen36-mtp-gguf_32k, qwen38-udiq2xxs-gguf_64k-vision
+#   NOTE: `name:` MUST equal the top-level key exactly.
+#
+# description:  comma-separated key:value pairs, kept short. Common keys:
+#   score: <num>      benchmark (usually HumanEval pass@1) if measured
+#   tps:   <num>      decode tok/s at that ctx (LMX-verified preferred)
+#   ctx:   <N>k       context window
+#   quant: <name>     quant lowercased, underscores: q4_k_l, iq2_xxs,
+#                     q4_k_m, q4_k_xl, ud-iq2_xxs, q4_k_m
+#   reasoning: on|off  whether --reasoning on
+#   vision: yes|no    (omit if no)
+#   mtp: yes          (omit if no)
+#   Examples:
+#     "score: 88.4, tps: 18.4, ctx: 150k, quant: iq2_xxs, reasoning: on"
+#     "score: 88.4, tps: 69.5, ctx: 32k, quant: iq2_xxs, mtp: yes, reasoning: on"
+#     "ctx: 256k, quant: q4_k_l, reasoning: on"   # score pending
+#
+# macros:  reusable ${name} substitutions (defined in the `macros:` block):
+#   "ls"                 llama-server binary + --port ${PORT} (proxy injects PORT)
+#   "<family>-gguf"      absolute local GGUF path  (use ${env.HOME}, NOT ~)
+#   "<family>-repo"      HF repo shorthand  user/repo:Q4_K_M  (used with -hf)
+#   "sampling-<x>"       preset sampling flags, reused via ${sampling-<x>}
+#   ${PORT} is special — injected per-instance, do not set it yourself.
+#
+# ENTRY SHAPE (under `models:`):
+#   "model-id":
+#     name: "model-id"
+#     description: "score: .., tps: .., ctx: ..k, quant: .., reasoning: on"
+#     cmd: |
+#       ${ls}
+#       -m ${macro-or-abs-path}      # or: -hf ${repo-macro}
+#       -ngl 99 [--n-cpu-moe N]      # GPU layers; offload N experts to CPU for big MoE
+#       -c <ctx> -fa on -np 1        # context + flash-attn + 1 parallel seq
+#       [--cache-type-k q4_0 --cache-type-v q4_0]   # KV quant (q4_0 tiny, q8_0 bigger)
+#       [-b 2048 -ub 512 -t 6]       # batch / ubatch / threads
+#       [--mmproj <path>]            # vision only
+#       [--temp .. --top-p .. --top-k .. --min-p .. --presence-penalty .. --repeat-penalty ..]
+#       [--reasoning on --jinja]
+#
+# TO ADD A NEW MODEL:
+#   1. (optional) add a `macros:` entry for the GGUF path or HF repo.
+#   2. add the block under `models:` with a unique key == name.
+#   3. add the key to the relevant `groups:` member list (e.g. `gpu12gb`,
+#      which is swap:true + exclusive:true → loads on demand, one at a time).
+#   4. reload:  systemctl --user restart llama-swap
+#      (comment-only edits need no restart; structural edits do.)
+#
+
+# ── Global settings ─────────────────────────────────────────────────────
+logLevel: info
+logToStdout: proxy
+startPort: 10001                        # auto-port for upstream servers
+sendLoadingState: true
+healthCheckTimeout: 300                 # 5min — some MoE models load slow
+globalTTL: 0                            # never auto-unload
+unloadTimeout: 15                       # graceful stop before SIGKILL
+
+macros:
+  # ── llama-server binaries ──────────────────────────────────────────
+  "ls": >
+    /home/llm/.unsloth/llama.cpp/build/bin/llama-server --port ${PORT}
+
+  "ls-laguna": >
+    /tmp/llama.cpp/build/bin/llama-server --port ${PORT}
+
+  # ── Resolved HF snapshot paths ─────────────────────────────────────
+  # Use `ls -d ${HOME}/.cache/huggingface/hub/models--*/snapshots/*/`
+  # to list current hashes if models are re-downloaded.
+  "qwopus-gguf": "${env.HOME}/.cache/huggingface/hub/models--Jackrong--Qwopus3.6-35B-A3B-Coder-MTP-GGUF/snapshots/6a5663090399e07f669c6f036a6ade65062c96db/Qwopus3.6-35B-A3B-Coder-MTP-Q4_K_M.gguf"
+
+  "laguna-gguf": "${env.HOME}/.cache/huggingface/hub/models--poolside--Laguna-XS-2.1-GGUF/snapshots/1a37c0a5fb8c7a18e6106decb6be6327d1b63fa6/Laguna-XS-2.1-Q4_K_M.gguf"
+
+  "gemma4-26b-nonqat-gguf": "${env.HOME}/.cache/huggingface/hub/models--unsloth--gemma-4-26B-A4B-it-GGUF/snapshots/3bb10d594514ef4edb7f3a65d41a7e4eb8c5767a/gemma-4-26B-A4B-it-UD-Q4_K_XL.gguf"
+
+  # ── Qwen3.6-27B (dense, hybrid GPU/CPU offload) ─────────────────
+  # MTP repo file = base model + MTP head baked in (17.1GB). Use it with
+  # --spec-type draft-mtp for ~2-6x faster decode on this box.
+  "qwen36-mtp-gguf": "${env.HOME}/models/qwen3.6-27b-mtp/Qwen3.6-27B-Q4_K_M.gguf"
+  "qwen36-gguf": "${env.HOME}/models/qwen3.6-27b/Qwen3.6-27B-Q4_K_M.gguf"
+
+  # ── Qwen3.6-35B-A3B vision MoE ─────────────────────────────────────
+  "qwen36-35b-a3b-udq4xl-gguf": "${env.HOME}/models/qwen36-35b-a3b/Qwen3.6-35B-A3B-UD-Q4_K_XL.gguf"
+  "qwen36-35b-a3b-mmproj-f16": "${env.HOME}/models/qwen36-35b-a3b/mmproj-F16.gguf"
+
+  # ── NVIDIA Nemotron 3.5 Lightning 30B-A3B (nemotron_h_moe) ────────────
+  "nemotron35-gguf": "${env.HOME}/models/nemotron35/NVIDIA-Nemotron-3.5-Lightning-30B-A3B-Q4_K_M.gguf"
+  "nemotron35-mtp-q4": "${env.HOME}/models/nemotron35/mtp-NVIDIA-Nemotron-3.5-Lightning-30B-A3B-Q4_K_M.gguf"
+  "nemotron35-iq4xs-gguf": "${env.HOME}/models/nemotron35-iq4xs/NVIDIA-Nemotron-3.5-Lightning-30B-A3B-IQ4_XS.gguf"
+  "nemotron35-mtp-f16": "${env.HOME}/models/nemotron35/mtp-NVIDIA-Nemotron-3.5-Lightning-30B-A3B.gguf"
+
+  # ── BTL-4 (Ornith-1.0-35B finetune, qwen35moe) ────────────────────
+  # Fine-tuned from Ornith-1.0-35B. Agentic reasoning model.
+  # Official: --reasoning-format deepseek, temp 1.0 top-p 0.95, 262144 native ctx.
+  # Measured on this box: humaneval 0.939 (reasoning off); ncmoe 26 best;
+  # 188K stable text (ub 256), 180K stable vision (ub 256); ~55 t/s short decode.
+  "btl4-gguf": "${env.HOME}/models/btl4/badtheorylabs_BTL-4-Q4_K_L.gguf"
+  "btl4-iq2xxs-gguf": "${env.HOME}/models/btl4/BTL-4-IQ2_XXS.gguf"
+  "btl4-mmproj-f16": "${env.HOME}/models/btl4/mmproj-badtheorylabs_BTL-4-f16.gguf"
+
+  # ── Qwen3.6-27B low-bit (UD = unsloth dynamic per-tensor quant) ────
+  # UD-IQ2_M  = 2.7bpw dynamic mix (IQ2_S 47% / Q5_K 18% / Q4_K 13% / IQ3 16% / Q3_K 5%)
+  #              10.84GB → full GPU at ngl 99. humaneval 0.9146 (vs Q4 0.8963). ~35 t/s.
+  # UD-IQ2_XXS = 2.06bpw, 9.39GB → full GPU + room for 112K KV in VRAM. ~39 t/s.
+  # 16 attn layers only (48 SSM) → KV = 18KB/token q4_0. KV must stay on GPU:
+  #   --no-kv-offload puts attn KV + SSM state on CPU → ~14 t/s (slow, don't use).
+  "qwen36-udiq2m-gguf": "${env.HOME}/models/qwen36-lowbit/Qwen3.6-27B-UD-IQ2_M.gguf"
+  "qwen36-udiq2xxs-gguf": "${env.HOME}/models/qwen36-lowbit/Qwen3.6-27B-UD-IQ2_XXS.gguf"
+  "qwen36-mmproj-f16": "${env.HOME}/models/qwen36-vision/mmproj-F16.gguf"
+  "qwen36-iq1m-gguf": "${env.HOME}/models/qwen36-iq1/Qwen3.6-27B.i1-IQ1_M.gguf"
+  "qwen36-iq1s-gguf": "${env.HOME}/models/qwen36-iq1/Qwen3.6-27B.i1-IQ1_S.gguf"
+
+  # ── Common sampling presets ────────────────────────────────────────
+  "sampling-default": "--temp 1.0 --top-p 0.95 --top-k 64 --repeat-penalty 1.0"
+
+  "sampling-qwen36": "--temp 0.6 --top-p 0.95 --top-k 20 --min-p 0.0 --presence-penalty 0.0 --repeat-penalty 1.0"
+
+  "sampling-gemma4": >
+    --temp 1.0 --top-p 0.95 --top-k 64 --min-p 0.0 --repeat-penalty 1.1
+
+  # ── HF repo shortcuts ──────────────────────────────────────────────
+  "gemma4-12b-repo": "yuxinlu1/gemma-4-12B-agentic-fable5-composer2.5-v2-3.5x-tau2-GGUF:Q4_K_M"
+  "gemma4-26b-qat-repo": "unsloth/gemma-4-26B-A4B-it-qat-GGUF"
+  "ornith-repo": "deepreinforce-ai/Ornith-1.0-35B-GGUF:Q4_K_M"
+
+  # ── Godot-tuned model repos ────────────────────────────────────────
+  "godot-qwen-repo": "bekoozkan/godot-qwen2.5-coder-7b-instruct-bnb-4bit:Q8_0"
+  "godot-gemma4-e4b-repo": "bekoozkan/godot-gemma-4-e4b-it-GGUF:Q8_0"
+  "godot-gemma4-e4b-multimodal-repo": "bekoozkan/godot-gemma-4-e4b-it-GGUF:F16"
+  "godot-gemma4-e4b-mmproj": "bekoozkan/godot-gemma-4-e4b-it-GGUF:gemma-4-e4b-it.BF16-mmproj.gguf"
+  "godoter-27b-repo": "Ruler97/Godoter-27B-GGUF:Q4_K_M"
+
+  # ── KAT-Coder-V2.5-Dev (local, downloaded Q4_K_L) ─────────────────
+  # MoE 35B/3B (Qwen3.6-35B-A3B base), native 262144 ctx, Qwen3 reasoning.
+  # Q4_K_L chosen: MoE + --n-cpu-moe 40 lets the 21.8GB quant fit a 12GB GPU
+  # (KV ~4.4GB @262144 q4_0). Decode ~42 t/s @262144 (LMX-verified).
+  "kat-coder-gguf": "/home/llm/models/katcoder/Kwaipilot_KAT-Coder-V2.5-Dev-Q4_K_L.gguf"
+  "qwythos-repo": "empero-ai/Qwythos-9B-Claude-Mythos-5-1M-GGUF:Q4_K_M"
+  "qwythos-mmproj-path": "/home/llm/.cache/huggingface/hub/models--empero-ai--Qwythos-9B-Claude-Mythos-5-1M-GGUF/snapshots/5cebd89dd078b033c26988248740ddadf40f2fbd/mmproj-Qwythos-9B-Claude-Mythos-5-1M-F16.gguf"
+  "godot-gemma4-e4b-mmproj-path": "/home/llm/.cache/huggingface/hub/models--bekoozkan--godot-gemma-4-e4b-it-GGUF/snapshots/22c66baaa04343fcd00bcece4df26a7d24b727a1/gemma-4-e4b-it.BF16-mmproj.gguf"
+
+# ── Models ──────────────────────────────────────────────────────────────
 models:
 
   "qwen36-35b-a3b-udq4xl-gguf_184k":
@@ -116,7 +293,7 @@ models:
 
   "qwen38-udiq2xxs-gguf_150k":
     name: "qwen38-udiq2xxs-gguf_150k"
-    description: "score: 88.4, tps: 18.4, ctx: 150k, quant: iq2_xxs, reasoning: on"
+    description: "score: 37.2, tps: 40.7, ctx: 150k, quant: iq2_xxs, reasoning: on"
     cmd: |
       ${ls}
       -m /home/llm/models/qwen38-lowbit/Qwen3.8-27B-UD-IQ2_XXS.gguf
@@ -126,6 +303,87 @@ models:
       -b 1024 -ub 256 -t 6
       --temp 1.0 --top-k 20 --min-p 0.0 --presence-penalty 0.0 --repeat-penalty 1.0
       --reasoning on --jinja
+
+  "qwen38-udiq2xxs-gguf_150k-nothink":
+    name: "qwen38-udiq2xxs-gguf_150k-nothink"
+    description: "score: 81.7, tps: 40.7, ctx: 150k, quant: iq2_xxs, reasoning: off"
+    cmd: |
+      ${ls}
+      -m /home/llm/models/qwen38-lowbit/Qwen3.8-27B-UD-IQ2_XXS.gguf
+      -ngl 99
+      -c 150000 -fa on -np 1
+      --cache-type-k q4_0 --cache-type-v q4_0
+      -b 1024 -ub 256 -t 6
+      --temp 1.0 --top-k 20 --min-p 0.0 --presence-penalty 0.0 --repeat-penalty 1.0
+      --reasoning off --jinja
+
+  "qwen38-udiq2xxs-gguf_150k-low":
+    name: "qwen38-udiq2xxs-gguf_150k-low"
+    description: "score: 75.0, tps: 40.7, ctx: 150k, quant: iq2_xxs, reasoning: low"
+    cmd: |
+      ${ls}
+      -m /home/llm/models/qwen38-lowbit/Qwen3.8-27B-UD-IQ2_XXS.gguf
+      -ngl 99
+      -c 150000 -fa on -np 1
+      --cache-type-k q4_0 --cache-type-v q4_0
+      -b 1024 -ub 256 -t 6
+      --temp 1.0 --top-k 20 --min-p 0.0 --presence-penalty 0.0 --repeat-penalty 1.0
+      --reasoning on --reasoning-budget 512 --jinja
+
+  "qwen38-udiq2xxs-gguf_150k-medium":
+    name: "qwen38-udiq2xxs-gguf_150k-medium"
+    description: "score: 37.8, tps: 40.7, ctx: 150k, quant: iq2_xxs, reasoning: medium"
+    cmd: |
+      ${ls}
+      -m /home/llm/models/qwen38-lowbit/Qwen3.8-27B-UD-IQ2_XXS.gguf
+      -ngl 99
+      -c 150000 -fa on -np 1
+      --cache-type-k q4_0 --cache-type-v q4_0
+      -b 1024 -ub 256 -t 6
+      --temp 1.0 --top-k 20 --min-p 0.0 --presence-penalty 0.0 --repeat-penalty 1.0
+      --reasoning on --reasoning-budget 2048 --jinja
+
+  "qwen38-udiq2xxs-gguf_64k-vision":
+    name: "qwen38-udiq2xxs-gguf_64k-vision"
+    description: "ctx: 64k, vision: yes, quant: iq2_xxs, reasoning: off"
+    cmd: |
+      ${ls}
+      -m /home/llm/models/qwen38-lowbit/Qwen3.8-27B-UD-IQ2_XXS.gguf
+      --mmproj /home/llm/models/qwen38-lowbit/mmproj-F16.gguf
+      -ngl 99
+      -c 65536 -fa on -np 1
+      --cache-type-k q4_0 --cache-type-v q4_0
+      -b 1024 -ub 256 -t 6
+      --temp 1.0 --top-k 20 --min-p 0.0 --presence-penalty 0.0 --repeat-penalty 1.0
+      --reasoning off --jinja
+      --image-min-tokens 1024
+
+  "qwen38-udiq2xxs-gguf_8k":
+    name: "qwen38-udiq2xxs-gguf_8k"
+    description: "score: 88.4, tps: 38.4, ctx: 8k, quant: iq2_xxs, reasoning: off"
+    cmd: |
+      ${ls}
+      -m /home/llm/models/qwen38-lowbit/Qwen3.8-27B-UD-IQ2_XXS.gguf
+      -ngl 99
+      -c 8192 -fa on -np 1
+      --cache-type-k q4_0 --cache-type-v q4_0
+      -b 2048 -ub 1024 -t 6
+      --temp 1.0 --top-k 20 --min-p 0.0 --presence-penalty 0.0 --repeat-penalty 1.0
+      --reasoning off --jinja
+
+  "qwen38-mtp-gguf_32k":
+    name: "qwen38-mtp-gguf_32k"
+    description: "score: 88.4, tps: 69.5, ctx: 32k, quant: iq2_xxs, mtp: yes, reasoning: on"
+    cmd: |
+      ${ls}
+      -m /home/llm/models/qwen38-lowbit/Qwen3.8-27B-UD-IQ2_XXS.gguf
+      -ngl 99
+      -c 32768 -fa on -np 1
+      --cache-type-k q4_0 --cache-type-v q4_0
+      -b 2048 -ub 1024 -t 6
+      --spec-default --spec-type draft-mtp --spec-draft-n-max 3
+      --temp 1.0 --top-k 20 --min-p 0.0 --presence-penalty 0.0 --repeat-penalty 1.0
+      --reasoning auto --jinja --reasoning-preserve
 
   "qwen36-mtp-gguf_32k":
     name: "qwen36-mtp-gguf_32k"
@@ -141,32 +399,43 @@ models:
       ${sampling-qwen36}
       --reasoning auto --jinja
 
-  "kat-coder-repo_128k":
-    name: "kat-coder-repo_128k"
-    description: "ctx: 128k, quant: q4_k_m, reasoning: on"
+  "kat-coder-gguf_256k":
+    name: "kat-coder-gguf_256k"
+    description: "score: 92.1, tps: 42.2, ctx: 256k, quant: q4_k_l, reasoning: on"
     cmd: |
       ${ls}
-      -hf ${kat-coder-repo}
-      -ngl 99 --n-cpu-moe 40
-      -c 131072 -fa on -np 1
-      --cache-type-k q8_0 --cache-type-v q8_0
-      -b 2048 -ub 1024
-      --temp 0.6 --top-p 0.9 --top-k 20
-      --repeat-penalty 1.05
-      --reasoning on --jinja
-
-  "kat-coder-repo_256k":
-    name: "kat-coder-repo_256k"
-    description: "ctx: 256k, quant: q4_k_m, reasoning: on"
-    cmd: |
-      ${ls}
-      -hf ${kat-coder-repo}
+      -m ${kat-coder-gguf}
       -ngl 99 --n-cpu-moe 40
       -c 262144 -fa on -np 1
-      --cache-type-k q8_0 --cache-type-v q8_0
-      -b 2048 -ub 1024
-      --temp 0.6 --top-p 0.9 --top-k 20
-      --repeat-penalty 1.05
+      --cache-type-k q4_0 --cache-type-v q4_0
+      -b 2048 -ub 512 -t 6
+      --temp 1.0 --top-p 0.95 --top-k 20 --min-p 0.0 --presence-penalty 1.5 --repeat-penalty 1.0
+      --reasoning on --jinja
+
+  "kat-coder-gguf_256k-nothink":
+    name: "kat-coder-gguf_256k-nothink"
+    description: "score: 94.5, tps: 42.2, ctx: 256k, quant: q4_k_l, reasoning: off"
+    cmd: |
+      ${ls}
+      -m ${kat-coder-gguf}
+      -ngl 99 --n-cpu-moe 40
+      -c 262144 -fa on -np 1
+      --cache-type-k q4_0 --cache-type-v q4_0
+      -b 2048 -ub 512 -t 6
+      --temp 1.0 --top-p 0.95 --top-k 20 --min-p 0.0 --presence-penalty 1.5 --repeat-penalty 1.0
+      --reasoning off --jinja
+
+  "kat-coder-gguf_128k":
+    name: "kat-coder-gguf_128k"
+    description: "tps: 42.4, ctx: 128k, quant: q4_k_l, reasoning: on"
+    cmd: |
+      ${ls}
+      -m ${kat-coder-gguf}
+      -ngl 99 --n-cpu-moe 40
+      -c 131072 -fa on -np 1
+      --cache-type-k q4_0 --cache-type-v q4_0
+      -b 2048 -ub 512 -t 6
+      --temp 1.0 --top-p 0.95 --top-k 20 --min-p 0.0 --presence-penalty 1.5 --repeat-penalty 1.0
       --reasoning on --jinja
 
   "qwythos-repo_128k":
@@ -739,8 +1008,9 @@ routing:
             - godot-gemma4-e4b-repo_256k-efficient
             - godoter-27b-repo_8k
             - godoter-27b-repo_32k
-            - kat-coder-repo_128k
-            - kat-coder-repo_256k
+            - kat-coder-gguf_128k
+            - kat-coder-gguf_256k
+            - kat-coder-gguf_256k-nothink
             - qwythos-repo_128k
             - qwythos-repo_256k
             - qwythos-repo_128k-vision
@@ -759,6 +1029,11 @@ routing:
             - qwen36-udiq2m-gguf_128k
             - qwen36-udiq2xxs-gguf_112k
             - qwen38-udiq2xxs-gguf_150k
+            - qwen38-udiq2xxs-gguf_150k-nothink
+            - qwen38-udiq2xxs-gguf_150k-low
+            - qwen38-udiq2xxs-gguf_150k-medium
+            - qwen38-udiq2xxs-gguf_64k-vision
+            - qwen38-udiq2xxs-gguf_8k
             - qwen36-udiq2xxs-gguf_128k
             - qwen36-udiq2m-gguf_32k-vision
             - qwen36-udiq2m-gguf_128k-vision
